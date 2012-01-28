@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+
+  <rosparam command="load" file="$(find two_lwr_bringup)/cfg/controllers.yaml" />
+
+  <!-- load controllers -->
+  <node name="lwr_controller" pkg="ocl" type="cdeployer-gnulinux" launch-prefix="" args="-s $(find two_lwr_bringup)/cfg/controller.xml --" machine="lwr_controller"/>
+  
+  <node name="hand_controller" pkg="ocl" type="cdeployer-gnulinux" launch-prefix="" args="-s $(find two_lwr_bringup)/cfg/hand_controller.xml --" machine="lwr_controller"/>
+  
+</launch>
+

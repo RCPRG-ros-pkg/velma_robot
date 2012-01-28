@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <rosparam param="robots">["left_","right_"]</rosparam>
+  <node pkg="lwr_dashboard" type="lwr_dashboard" name="dashboard" />
+</launch>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find two_lwr_machine)/two_lwr.machine" />
+  
+  <!-- upload robot description -->
+  <include file="$(find two_lwr_defs)/launch/upload_robot.launch" />
+
+  <!-- start robot_state_publisher -->
+  <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher" machine="lwr_controller"/>
+
+  <!-- startup hardware -->
+  <include file="$(find two_lwr_bringup)/launch/components/controller.launch" />
+
+
+  <!-- start sensors -->
+  <include file="$(find two_lwr_bringup)/launch/components/head_kinect.launch" />
+
+  <!-- start dashboard and rviz -->
+  <include file="$(find two_lwr_bringup)/launch/tools/dashboard.launch" />
+  <include file="$(find two_lwr_bringup)/launch/tools/rviz.launch" />
+</launch>

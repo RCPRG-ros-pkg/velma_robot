@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "cpf.dtd">
+<properties>
+
+<simple name="Import" type="string"><value>rtt_rosnode</value></simple>
+<simple name="Import" type="string"><value>rtt_std_msgs</value></simple>
+<simple name="Import" type="string"><value>rtt_sensor_msgs</value></simple>
+<simple name="Import" type="string"><value>oro_joint_state_publisher</value></simple>
+<simple name="Import" type="string"><value>fake_servo</value></simple>
+
+<struct name="left_joints_state" type="ConnPolicy">
+  <simple name="type" type="short"><value>0</value></simple>
+  <simple name="size" type="short"><value>1</value></simple>
+  <simple name="transport" type="short"><value>3</value></simple>
+  <simple name="name_id" type="string"><value>/joint_states</value></simple>
+</struct>
+
+<struct name="left_JointStatePublisher" type="JointStatePublisher">
+  <struct name="Activity" type="PeriodicActivity">
+    <simple name="Period" type="double"><value>0.01</value></simple>
+    <simple name="Priority" type="short"><value>2</value></simple>
+    <simple name="Scheduler" type="string"><value>ORO_SCHED_RT</value></simple>
+  </struct>
+  
+  <simple name="AutoConf" type="boolean"><value>1</value></simple>
+  <simple name="AutoStart" type="boolean"><value>1</value></simple>
+  
+  <struct name="Properties" type="PropertyBag">
+    <simple name="number_of_joints" type="long"><value>8</value></simple>
+    <simple name="joint0_name" type="string"><value>left_HandFingerOneKnuckleOneJoint</value></simple>
+    <simple name="joint1_name" type="string"><value>left_HandFingerOneKnuckleTwoJoint</value></simple>
+    <simple name="joint2_name" type="string"><value>left_HandFingerOneKnuckleThreeJoint</value></simple>
+    <simple name="joint3_name" type="string"><value>left_HandFingerTwoKnuckleOneJoint</value></simple>
+    <simple name="joint4_name" type="string"><value>left_HandFingerTwoKnuckleTwoJoint</value></simple>
+    <simple name="joint5_name" type="string"><value>left_HandFingerTwoKnuckleThreeJoint</value></simple>
+    <simple name="joint6_name" type="string"><value>left_HandFingerThreeKnuckleTwoJoint</value></simple>
+    <simple name="joint7_name" type="string"><value>left_HandFingerThreeKnuckleThreeJoint</value></simple>
+  </struct>
+  
+  <struct name="Ports" type="PropertyBag">
+    <simple name="msrJntPos" type="string"><value>left_msrJntPos</value></simple>
+    <simple name="joints_state" type="string"><value>left_joints_state</value></simple>
+  </struct>
+</struct>
+
+
+<struct name="left_FRI" type="FakeServo">
+  <struct name="Activity" type="PeriodicActivity">
+    <simple name="Period" type="double"><value>0.01</value></simple>
+    <simple name="Priority" type="short"><value>5</value></simple>
+    <simple name="Scheduler" type="string"><value>ORO_SCHED_RT</value></simple>
+  </struct>
+
+  <simple name="AutoConf" type="boolean"><value>1</value></simple>
+  <simple name="AutoStart" type="boolean"><value>1</value></simple>
+
+  <struct name="Properties" type="PropertyBag">
+  	<simple name="number_of_joints" type="long"><value>8</value></simple>
+  </struct>
+
+  <struct name="Ports" type="PropertyBag">
+    <simple name="msrJntPos" type="string"><value>left_msrJntPos</value></simple>
+  </struct>
+</struct>
+
+
+<!--
+*************************************************************************************************
+*************************************************************************************************
+*************************** Right hand ***********************************************************
+*************************************************************************************************
+-->
+
+<struct name="right_joints_state" type="ConnPolicy">
+  <simple name="type" type="short"><value>0</value></simple>
+  <simple name="size" type="short"><value>1</value></simple>
+  <simple name="transport" type="short"><value>3</value></simple>
+  <simple name="name_id" type="string"><value>/joint_states</value></simple>
+</struct>
+
+
+<struct name="right_FRI" type="FakeServo">
+  <struct name="Activity" type="PeriodicActivity">
+    <simple name="Period" type="double"><value>0.01</value></simple>
+    <simple name="Priority" type="short"><value>5</value></simple>
+    <simple name="Scheduler" type="string"><value>ORO_SCHED_RT</value></simple>
+  </struct>
+
+  <simple name="AutoConf" type="boolean"><value>1</value></simple>
+  <simple name="AutoStart" type="boolean"><value>1</value></simple>
+
+  <struct name="Properties" type="PropertyBag">
+    <simple name="number_of_joints" type="long"><value>8</value></simple>
+  </struct>
+
+  <struct name="Ports" type="PropertyBag">
+    <simple name="msrJntPos" type="string"><value>right_msrJntPos</value></simple>
+  </struct>
+</struct>
+
+<struct name="right_JointStatePublisher" type="JointStatePublisher">
+  <struct name="Activity" type="PeriodicActivity">
+    <simple name="Period" type="double"><value>0.01</value></simple>
+    <simple name="Priority" type="short"><value>2</value></simple>
+    <simple name="Scheduler" type="string"><value>ORO_SCHED_RT</value></simple>
+  </struct>
+  
+  <simple name="AutoConf" type="boolean"><value>1</value></simple>
+  <simple name="AutoStart" type="boolean"><value>1</value></simple>
+  
+  <struct name="Properties" type="PropertyBag">
+    <simple name="number_of_joints" type="long"><value>8</value></simple>
+    <simple name="joint0_name" type="string"><value>right_HandFingerOneKnuckleOneJoint</value></simple>
+    <simple name="joint1_name" type="string"><value>right_HandFingerOneKnuckleTwoJoint</value></simple>
+    <simple name="joint2_name" type="string"><value>right_HandFingerOneKnuckleThreeJoint</value></simple>
+    <simple name="joint3_name" type="string"><value>right_HandFingerTwoKnuckleOneJoint</value></simple>
+    <simple name="joint4_name" type="string"><value>right_HandFingerTwoKnuckleTwoJoint</value></simple>
+    <simple name="joint5_name" type="string"><value>right_HandFingerTwoKnuckleThreeJoint</value></simple>
+    <simple name="joint6_name" type="string"><value>right_HandFingerThreeKnuckleTwoJoint</value></simple>
+    <simple name="joint7_name" type="string"><value>right_HandFingerThreeKnuckleThreeJoint</value></simple>
+  </struct>
+  
+  <struct name="Ports" type="PropertyBag">
+    <simple name="msrJntPos" type="string"><value>right_msrJntPos</value></simple>
+    <simple name="joints_state" type="string"><value>right_joints_state</value></simple>
+  </struct>
+</struct>
+
+</properties>

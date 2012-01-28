@@ -1,0 +1,14 @@
+<package>
+  <description brief="two_lwr_machine">
+
+     two_lwr_machine
+
+  </description>
+  <author>Konrad Banachowicz</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/two_law_machine</url>
+
+</package>
+
+
