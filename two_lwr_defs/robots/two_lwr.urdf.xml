@@ -1,23 +1,30 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+<robot xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+                        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+                        xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+                        xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
 	 name="two_lwr">
 
   <include filename="$(find two_lwr_defs)/calibration/default_cal.xml"/>
   <include filename="$(find lwr_defs)/defs/kuka_lwr_arm_defs.xml"/>
-  <include filename="$(find lwr_defs)/defs/gazebo_defs.xml"/>
   <include filename="$(find lwr_defs)/defs/materials.xml"/>
   <include filename="$(find barret_hand_defs)/defs/barret_hand.urdf.xacro"/>
   <include filename="$(find two_lwr_defs)/defs/kinect_camera.urdf.xacro" />
 
-  <link name="world" />
+<!--  <link name="world" />
 
   <joint name="arm_world_joint" type="fixed">
     <origin xyz="0 0 0.77" rpy="0 0 0"/>
     <parent link="world"/>
     <child link="table_link"/>
   </joint>
+<<<<<<< Updated upstream
 
   <link name="table_link">
+=======
+  -->
+  <link name="world_link">
+>>>>>>> Stashed changes
     <inertial>
       <mass value="50.0"/>
       <com xyz="0 0 0"/>
@@ -59,7 +66,7 @@
     <origin xyz="${cal_base_to_right_arm_x} ${cal_base_to_right_arm_y} ${cal_base_to_right_arm_z}"
             rpy="${cal_base_to_right_arm_roll} ${cal_base_to_right_arm_pitch} ${cal_base_to_right_arm_yaw}"/>
   </kuka_lwr_arm>
-
+  
   <joint name="right_tool_joint" type="fixed">
     <origin xyz="0.13 0 -0.1" rpy="0 ${0.5 * M_PI} 0"/>
     <parent link="right_arm_7_link"/>
@@ -77,15 +84,28 @@
 
   <link name="left_tool_link">
   </link>
-  <!--
+<!--
   <xacro:barret_hand prefix="right" parent="right_tool_link">
-
   </xacro:barret_hand>
 
   <xacro:barret_hand prefix="left" parent="left_tool_link">
-
   </xacro:barret_hand>
--->
+  -->
+  <gazebo>
+    <controller:lwr_controller name="left_lwr_controller" plugin="liblwr_controller.so">
+      <alwaysOn>true</alwaysOn>
+      <robotPrefix>left</robotPrefix>
+      <remotePort>49938</remotePort>
+    </controller:lwr_controller>
+  </gazebo>
+  
+  <gazebo>
+    <controller:lwr_controller name="right_lwr_controller" plugin="liblwr_controller.so">
+      <alwaysOn>true</alwaysOn>
+      <robotPrefix>right</robotPrefix>
+      <remotePort>49948</remotePort>
+    </controller:lwr_controller>
+  </gazebo>
 
   <joint name="head_tilt_joint" type="fixed">
       <origin xyz="0 0 1.1" rpy="0 0 0"/>
@@ -96,8 +116,8 @@
   <link name="head_tilt_link">
   </link>
   
-	<kinect_camera name="head_kinect" parent="head_tilt_link">
-   <!-- <origin xyz="0.018479532907669589 0.022896781792981394 -0.016926539119289877" rpy="-0.054965679246338627 0.74556308149934092 -0.06557700636731946"/> -->
+  <kinect_camera name="head_kinect" parent="head_tilt_link">
+    <!-- <origin xyz="0.018479532907669589 0.022896781792981394 -0.016926539119289877" rpy="-0.054965679246338627 0.74556308149934092 -0.06557700636731946"/> -->
     <origin xyz="0.020125323695896535 0.015178483792492242 -0.03039905856840101" rpy="-0.0029364660459703313 0.7452546797454582 0.03912354632910301"/>
   </kinect_camera>
 

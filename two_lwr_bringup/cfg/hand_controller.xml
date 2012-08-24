@@ -44,7 +44,7 @@
 </struct>
 
 
-<struct name="left_FRI" type="FakeServo">
+<struct name="left_hand" type="FakeServo">
   <struct name="Activity" type="PeriodicActivity">
     <simple name="Period" type="double"><value>0.01</value></simple>
     <simple name="Priority" type="short"><value>5</value></simple>
@@ -59,7 +59,7 @@
   </struct>
 
   <struct name="Ports" type="PropertyBag">
-    <simple name="msrJntPos" type="string"><value>left_msrJntPos</value></simple>
+    <simple name="JointPosition" type="string"><value>left_msrJntPos</value></simple>
   </struct>
 </struct>
 
@@ -79,7 +79,7 @@
 </struct>
 
 
-<struct name="right_FRI" type="FakeServo">
+<struct name="right_hand" type="FakeServo">
   <struct name="Activity" type="PeriodicActivity">
     <simple name="Period" type="double"><value>0.01</value></simple>
     <simple name="Priority" type="short"><value>5</value></simple>
@@ -94,7 +94,7 @@
   </struct>
 
   <struct name="Ports" type="PropertyBag">
-    <simple name="msrJntPos" type="string"><value>right_msrJntPos</value></simple>
+    <simple name="JointPosition" type="string"><value>right_msrJntPos</value></simple>
   </struct>
 </struct>
 

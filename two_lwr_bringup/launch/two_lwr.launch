@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-  <include file="$(find two_lwr_machine)/two_lwr.machine" />
+  <include file="$(find two_lwr_machine)/$(env ROBOT).machine" />
   
   <!-- upload robot description -->
   <include file="$(find two_lwr_defs)/launch/upload_robot.launch" />
@@ -14,9 +14,7 @@
 
 
   <!-- start sensors -->
-  <include file="$(find two_lwr_bringup)/launch/components/head_kinect.launch" />
+  <!--  <include file="$(find two_lwr_bringup)/launch/components/head_kinect.launch" /> -->
 
-  <!-- start dashboard and rviz -->
-  <include file="$(find two_lwr_bringup)/launch/tools/dashboard.launch" />
-  <include file="$(find two_lwr_bringup)/launch/tools/rviz.launch" />
+
 </launch>
