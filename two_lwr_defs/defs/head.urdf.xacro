@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<robot>
+
+  <macro name="velma_head" params="parent *origin">
+    <joint name="head_frame_joint" type="fixed">
+      <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="head_frame"/>
+    </joint>
+    
+    <link name="head_frame">
+
+    </link>
+
+    <!-- pan -->
+    <joint name="head_pan_joint" type="revolute">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <parent link="head_frame"/>
+      <child link="head_pan_link"/>
+      
+      <limit effort="100" velocity="100"/>
+    </joint>
+    
+    <link name="head_pan_link">
+
+    </link>
+
+    <!-- tilt -->
+    <joint name="head_tilt_joint" type="revolute">
+      <origin xyz="0 0 0.05" rpy="-1.57 0.0 0" />
+      <axis xyz="0 0 1"/>
+      <parent link="head_pan_link"/>
+      <child link="head_tilt_link"/>
+      <limit effort="100" velocity="100"/>
+    </joint>
+    
+    <link name="head_tilt_link"/>
+    
+    <joint name="head_plate_joint" type="fixed">
+      <origin xyz="0 -0.03 0.0" rpy="1.57 0 0"/>
+      <parent link="head_tilt_link"/>
+      <child link="head_plate_link"/>
+    </joint>
+    
+    <link name="head_plate_link">
+    </link>
+    
+    <joint name="stereo_left_joint" type="fixed">
+      <origin xyz="0 0.045 0.175 " rpy="0.0 0 0"/>
+      <parent link="head_plate_link"/>
+      <child link="stereo_left_link"/>
+    </joint>
+    
+    <link name="stereo_left_link">
+    </link>
+    
+    <joint name="stereo_right_joint" type="fixed">
+      <origin xyz="0 -0.09 0.0" rpy="0.0 0 0"/>
+      <parent link="stereo_left_link"/>
+      <child link="stereo_right_link"/>
+    </joint>
+    
+    <link name="stereo_right_link">
+    </link>
+    
+  </macro>
+
+</robot>
+

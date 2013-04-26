@@ -10,21 +10,18 @@
   <include filename="$(find lwr_defs)/defs/materials.xml"/>
   <include filename="$(find barret_hand_defs)/defs/barret_hand.urdf.xacro"/>
   <include filename="$(find two_lwr_defs)/defs/kinect_camera.urdf.xacro" />
-
-<!--  <link name="world" />
+  <include filename="$(find two_lwr_defs)/defs/head.urdf.xacro" />
+  
+<link name="world" />
 
   <joint name="arm_world_joint" type="fixed">
     <origin xyz="0 0 0.77" rpy="0 0 0"/>
     <parent link="world"/>
     <child link="table_link"/>
   </joint>
-<<<<<<< Updated upstream
+
 
   <link name="table_link">
-=======
-  -->
-  <link name="world_link">
->>>>>>> Stashed changes
     <inertial>
       <mass value="50.0"/>
       <com xyz="0 0 0"/>
@@ -67,23 +64,60 @@
             rpy="${cal_base_to_right_arm_roll} ${cal_base_to_right_arm_pitch} ${cal_base_to_right_arm_yaw}"/>
   </kuka_lwr_arm>
   
+  <joint name="right_cb_joint" type="fixed">
+    <origin xyz="-0.051 -0.03 0.009" rpy="-${21.0 * M_PI/180.0} 0 ${0.5 * M_PI}"/>
+    <parent link="right_arm_7_link"/>
+    <child link="right_cb_link"/>
+  </joint>
+  
+  <link name="right_cb_link">
+  </link>
+  
+  <joint name="left_cb_joint" type="fixed">
+    <origin xyz="0.051 0.03 0.009" rpy="-${21.0 * M_PI/180.0} 0 ${0.5 * M_PI}"/>
+    <parent link="left_arm_7_link"/>
+    <child link="left_cb_link"/>
+  </joint>
+  
+  <link name="left_cb_link">
+  </link>
+  
   <joint name="right_tool_joint" type="fixed">
-    <origin xyz="0.13 0 -0.1" rpy="0 ${0.5 * M_PI} 0"/>
+    <origin xyz="-0.115 0 -0.055" rpy="0 -${0.5 * M_PI} 0"/>
     <parent link="right_arm_7_link"/>
     <child link="right_tool_link"/>
-  </joint>
-
-  <joint name="left_tool_joint" type="fixed">
-    <origin xyz="0.13 0 -0.1" rpy="0 ${0.5 * M_PI} 0"/>
-    <parent link="left_arm_7_link"/>
-    <child link="left_tool_link"/>
   </joint>
 
   <link name="right_tool_link">
   </link>
 
+  <joint name="left_tool_joint" type="fixed">
+    <origin xyz="0.115 0 -0.055" rpy="0 -${0.5 * M_PI} ${M_PI}"/>
+    <parent link="left_arm_7_link"/>
+    <child link="left_tool_link"/>
+  </joint>
+
   <link name="left_tool_link">
   </link>
+  
+  <joint name="right_finger_joint" type="fixed">
+    <origin xyz="0.0 0.03 0.12" rpy="0 0 0"/>
+    <parent link="right_tool_link"/>
+    <child link="right_finger_link"/>
+  </joint>
+  
+  <link name="right_finger_link">
+  </link>
+  
+  <joint name="left_finger_joint" type="fixed">
+    <origin xyz="0.0 0.03 0.12" rpy="0 0 0"/>
+    <parent link="left_tool_link"/>
+    <child link="left_finger_link"/>
+  </joint>
+  
+  <link name="left_finger_link">
+  </link>
+  
 <!--
   <xacro:barret_hand prefix="right" parent="right_tool_link">
   </xacro:barret_hand>
@@ -91,34 +125,45 @@
   <xacro:barret_hand prefix="left" parent="left_tool_link">
   </xacro:barret_hand>
   -->
+  
   <gazebo>
     <controller:lwr_controller name="left_lwr_controller" plugin="liblwr_controller.so">
       <alwaysOn>true</alwaysOn>
       <robotPrefix>left</robotPrefix>
       <remotePort>49938</remotePort>
+      <baseLink>table_link</baseLink>
+      <toolLink>left_tool_link</toolLink>
+      <left_arm_0_joint>1.57</left_arm_0_joint>
+      <left_arm_1_joint>1.6</left_arm_1_joint>
+      <left_arm_2_joint>-1.57</left_arm_2_joint>
+      <left_arm_3_joint>-1.57</left_arm_3_joint>
+      <left_arm_4_joint>-0.1</left_arm_4_joint>
+      <left_arm_5_joint>1.57</left_arm_5_joint>
+      <left_arm_6_joint>0.0</left_arm_6_joint>
     </controller:lwr_controller>
   </gazebo>
+
   
   <gazebo>
     <controller:lwr_controller name="right_lwr_controller" plugin="liblwr_controller.so">
       <alwaysOn>true</alwaysOn>
       <robotPrefix>right</robotPrefix>
       <remotePort>49948</remotePort>
+      <baseLink>table_link</baseLink>
+      <toolLink>right_tool_link</toolLink>
+      <right_arm_0_joint>0.0</right_arm_0_joint>
+      <right_arm_1_joint>-1.6</right_arm_1_joint>
+      <right_arm_2_joint>1.57</right_arm_2_joint>
+      <right_arm_3_joint>1.57</right_arm_3_joint>
+      <right_arm_4_joint>0.1</right_arm_4_joint>
+      <right_arm_5_joint>-1.57</right_arm_5_joint>
+      <right_arm_6_joint>0.0</right_arm_6_joint>
     </controller:lwr_controller>
   </gazebo>
 
-  <joint name="head_tilt_joint" type="fixed">
-      <origin xyz="0 0 1.1" rpy="0 0 0"/>
-      <parent link="torso_link"/>
-      <child link="head_tilt_link"/>
-  </joint>
-    
-  <link name="head_tilt_link">
-  </link>
-  
-  <kinect_camera name="head_kinect" parent="head_tilt_link">
-    <!-- <origin xyz="0.018479532907669589 0.022896781792981394 -0.016926539119289877" rpy="-0.054965679246338627 0.74556308149934092 -0.06557700636731946"/> -->
-    <origin xyz="0.020125323695896535 0.015178483792492242 -0.03039905856840101" rpy="-0.0029364660459703313 0.7452546797454582 0.03912354632910301"/>
-  </kinect_camera>
+  <velma_head parent="torso_link">
+      <origin xyz="0.10 0 0.795" rpy="0 0 0"/>
+  </velma_head>
+
 
 </robot>
