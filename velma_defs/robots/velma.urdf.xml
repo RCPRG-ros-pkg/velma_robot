@@ -3,14 +3,14 @@
                         xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
                         xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
                         xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-	 name="two_lwr">
+	 name="velma">
 
-  <include filename="$(find two_lwr_defs)/calibration/default_cal.xml"/>
+  <include filename="$(find velma_defs)/calibration/default_cal.xml"/>
   <include filename="$(find lwr_defs)/defs/kuka_lwr_arm_defs.xml"/>
   <include filename="$(find lwr_defs)/defs/materials.xml"/>
   <include filename="$(find barret_hand_defs)/defs/barret_hand.urdf.xacro"/>
-  <include filename="$(find two_lwr_defs)/defs/kinect_camera.urdf.xacro" />
-  <include filename="$(find two_lwr_defs)/defs/head.urdf.xacro" />
+  <include filename="$(find velma_defs)/defs/kinect_camera.urdf.xacro" />
+  <include filename="$(find velma_defs)/defs/head.urdf.xacro" />
   
 <link name="world" />
 

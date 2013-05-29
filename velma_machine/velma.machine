@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <machine name="lwr_controller" address="lwr-controller"/>
+  <machine name="lwr_sensors" address="lwr-sensors"/>
+</launch>

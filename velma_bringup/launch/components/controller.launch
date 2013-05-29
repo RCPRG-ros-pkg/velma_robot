@@ -2,10 +2,25 @@
 <launch>
 
   <rosparam command="load" file="$(find two_lwr_bringup)/cfg/controllers.yaml" />
-
-  <!-- load controllers -->
-  <node name="lwr_controller" pkg="ocl" type="deployer-gnulinux" launch-prefix="lxterm -e" args="-s $(find two_lwr_bringup)/cfg/two_lwr_arm_controller.xml -linfo --" machine="lwr_controller"/>
   
+  <!-- Load head controller -->>
+  
+  <node ns="/head_controller" name="head_controller" pkg="velma_head_controller" type="head_controller" machine="lwr_controller">
+    <rosparam>
+      serial_port: can0
+    </rosparam>
+  </node>
+  
+  <node ns="/head_controller" name="head_action_server" pkg="velma_head_action" type="head_action_server" output="screen" machine="lwr_controller">
+    <rosparam>
+      success_angle_threshold: 0.1
+    </rosparam>
+  </node>
+  
+  
+  <!-- load controllers -->
+<!--  <node name="lwr_controller" pkg="ocl" type="deployer-gnulinux" launch-prefix="lxterm -e" args="-s $(find two_lwr_bringup)/cfg/two_lwr_arm_controller.xml -linfo" machine="lwr_controller"/>
+  -->
   <!--  <node name="hand_controller" pkg="ocl" type="cdeployer-gnulinux" launch-prefix="" args="-s $(find two_lwr_bringup)/cfg/hand_controller.xml " machine="lwr_controller"/> -->
   
 </launch>

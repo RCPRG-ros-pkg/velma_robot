@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-  <machine name="lwr_controller" address="rysiu"/>
-  <machine name="lwr_sensors" address="bolek"/>
-</launch>
