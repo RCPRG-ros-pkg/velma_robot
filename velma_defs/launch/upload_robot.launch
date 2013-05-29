@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <launch>
   <!-- send two_lwr.urdf.xml to param server -->
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find two_lwr_defs)/robots/two_lwr.urdf.xml'" />
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find velma_defs)/robots/velma.urdf.xml'" />
 </launch>

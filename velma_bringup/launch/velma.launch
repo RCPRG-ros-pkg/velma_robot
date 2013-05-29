@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <launch>
 
-  <include file="$(find two_lwr_machine)/$(env ROBOT).machine" />
+  <include file="$(find velma_machine)/$(env ROBOT).machine" />
   
   <!-- upload robot description -->
-  <include file="$(find two_lwr_defs)/launch/upload_robot.launch" />
+  <include file="$(find velma_defs)/launch/upload_robot.launch" />
 
   <!-- start robot_state_publisher -->
   <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher" machine="lwr_controller"/>
 
   <!-- startup hardware -->
-  <include file="$(find two_lwr_bringup)/launch/components/controller.launch" />
+  <include file="$(find velma_bringup)/launch/components/controller.launch" />
 
 
   <!-- start sensors -->

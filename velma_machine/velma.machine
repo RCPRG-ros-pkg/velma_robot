@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-  <machine name="lwr_controller" address="lwr-controller"/>
-  <machine name="lwr_sensors" address="lwr-sensors"/>
+  <machine name="lwr_controller" address="lwr-controller" env-loader="$(find velma_machine)/velma_env.sh"/>
+  <machine name="lwr_sensors" address="lwr-sensors" env-loader="$(find velma_machine)/velma_env.sh"/>
 </launch>
