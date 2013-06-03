@@ -37,18 +37,9 @@
     
     <link name="head_tilt_link"/>
     
-    <joint name="head_plate_joint" type="fixed">
-      <origin xyz="0 -0.03 0.0" rpy="1.57 0 0"/>
-      <parent link="head_tilt_link"/>
-      <child link="head_plate_link"/>
-    </joint>
-    
-    <link name="head_plate_link">
-    </link>
-    
     <joint name="stereo_left_joint" type="fixed">
-      <origin xyz="0 0.045 0.175 " rpy="0.0 0 0"/>
-      <parent link="head_plate_link"/>
+      <origin xyz="0 -0.205 -0.045" rpy="1.57.0 0 0"/>
+      <parent link="head_tilt_link"/>
       <child link="stereo_left_link"/>
     </joint>
     
@@ -56,7 +47,7 @@
     </link>
     
     <joint name="stereo_right_joint" type="fixed">
-      <origin xyz="0 -0.09 0.0" rpy="0.0 0 0"/>
+      <origin xyz="0 -0.09 0.0" rpy="0 0 0"/>
       <parent link="stereo_left_link"/>
       <child link="stereo_right_link"/>
     </joint>
