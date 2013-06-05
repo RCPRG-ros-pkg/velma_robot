@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot>
-
+  <include filename="$(find velma_defs)/defs/camera.urdf.xacro" />
   <macro name="velma_head" params="parent *origin">
     <joint name="head_frame_joint" type="fixed">
       <insert_block name="origin" />
@@ -9,9 +9,9 @@
     </joint>
     
     <link name="head_frame">
-
+    
     </link>
-
+    
     <!-- pan -->
     <joint name="head_pan_joint" type="revolute">
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -23,9 +23,9 @@
     </joint>
     
     <link name="head_pan_link">
-
+    
     </link>
-
+    
     <!-- tilt -->
     <joint name="head_tilt_joint" type="revolute">
       <origin xyz="0 0 0.05" rpy="-1.57 0.0 0" />
@@ -37,25 +37,31 @@
     
     <link name="head_tilt_link"/>
     
-    <joint name="stereo_left_joint" type="fixed">
-      <origin xyz="0 -0.205 -0.045" rpy="1.57.0 0 0"/>
-      <parent link="head_tilt_link"/>
-      <child link="stereo_left_link"/>
-    </joint>
+    <!-- sensors -->
     
-    <link name="stereo_left_link">
-    </link>
+    <head_camera parent="head_tilt_link" name="stereo_left">
+      <origin xyz="0.074819 -0.19424 0.039144" rpy="1.572 -0.0046408 0.0147"/>
+    </head_camera>
     
-    <joint name="stereo_right_joint" type="fixed">
-      <origin xyz="0 -0.09 0.0" rpy="0 0 0"/>
-      <parent link="stereo_left_link"/>
-      <child link="stereo_right_link"/>
-    </joint>
+    <head_camera parent="stereo_left_link" name="stereo_right">
+      <origin xyz="0.0 -0.09 0.0" rpy="0 0 0"/>
+    </head_camera>
     
-    <link name="stereo_right_link">
-    </link>
+    <head_camera parent="stereo_left_link" name="kinect_left_rgb">
+      <origin xyz="0.013309 -0.010124 -0.06841" rpy="1.5634 -0.022662 0.37293"/>
+    </head_camera>
     
+    <head_camera parent="kinect_left_rgb_link" name="kinect_left_ir">
+      <origin xyz="0.0 0.03 0.0" rpy="0 0 0"/>
+    </head_camera>
+    
+    <head_camera parent="stereo_left_link" name="kinect_right_rgb">
+      <origin xyz="0.00045739 -0.071104 -0.074766" rpy="1.5892 -0.035955 -0.34978"/>
+    </head_camera>
+    
+    <head_camera parent="kinect_right_rgb_link" name="kinect_right_ir">
+      <origin xyz="0.0 0.03 0.0" rpy="0 0 0"/>
+    </head_camera>
   </macro>
-
 </robot>
 
