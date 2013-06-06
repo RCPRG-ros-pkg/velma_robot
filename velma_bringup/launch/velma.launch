@@ -1,20 +1,28 @@
 <?xml version="1.0"?>
 <launch>
 
-  <include file="$(find velma_machine)/$(env ROBOT).machine" />
-  
-  <!-- upload robot description -->
-  <include file="$(find velma_defs)/launch/upload_robot.launch" />
+	<arg name="robot" value="velma"/>
+	<arg name="pc1" default="lwr-controller"/>
+	<arg name="pc2" default="lwr-sensors"/>
 
-  <!-- start robot_state_publisher -->
-  <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher" machine="lwr_controller"/>
+	<!--  <include file="$(find velma_machine)/$(env ROBOT).machine" /> -->
 
-  <!-- startup hardware -->
-  <include file="$(find velma_bringup)/launch/components/controller.launch" />
+	<!-- upload robot description -->
+	<include file="$(find velma_defs)/launch/upload_robot.launch" />
 
+	<group>
+		<machine name="pc1" address="$(arg pc1)" env-loader="$(find velma_machine)/velma_env.sh" default="true" />
+		<!-- start robot_state_publisher -->
+		<node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher"/>
 
-  <!-- start sensors -->
-  <!--  <include file="$(find two_lwr_bringup)/launch/components/head_kinect.launch" /> -->
+		<!-- startup hardware -->
+		<include file="$(find velma_bringup)/launch/components/controller.launch" />
+	</group>
 
+	<group>
+		<machine name="pc2" address="$(arg pc2)" env-loader="$(find velma_machine)/velma_env.sh" default="true" />
+		<!-- start sensors -->
+		<include file="$(find velma_bringup)/launch/components/head_sensors.launch" />
+	</group>
 
 </launch>
