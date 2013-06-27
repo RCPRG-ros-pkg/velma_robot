@@ -101,7 +101,7 @@
   </link>
   
   <joint name="right_finger_joint" type="fixed">
-    <origin xyz="0.0 0.03 0.12" rpy="0 0 0"/>
+    <origin xyz="0.0 0.03 0.17" rpy="0 0 0"/>
     <parent link="right_tool_link"/>
     <child link="right_finger_link"/>
   </joint>
@@ -118,13 +118,15 @@
   <link name="left_finger_link">
   </link>
   
-<!--
+  
   <xacro:barret_hand prefix="right" parent="right_tool_link">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 ${M_PI}"/>
   </xacro:barret_hand>
-
+  
   <xacro:barret_hand prefix="left" parent="left_tool_link">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
   </xacro:barret_hand>
-  -->
+  
   
   <gazebo>
     <controller:lwr_controller name="left_lwr_controller" plugin="liblwr_controller.so">
@@ -162,7 +164,8 @@
   </gazebo>
 
   <velma_head parent="torso_link">
-      <origin xyz="0.10 0 0.795" rpy="0 0 0"/>
+    <origin xyz="${cal_torso_to_head_x} ${cal_torso_to_head_y} ${cal_torso_to_head_z}"
+            rpy="${cal_torso_to_head_roll} ${cal_torso_to_head_pitch} ${cal_torso_to_head_yaw}"/>
   </velma_head>
 
 

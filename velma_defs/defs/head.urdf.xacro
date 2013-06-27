@@ -19,7 +19,7 @@
       <parent link="head_frame"/>
       <child link="head_pan_link"/>
       
-      <limit effort="100" velocity="100"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
     </joint>
     
     <link name="head_pan_link">
@@ -28,11 +28,11 @@
     
     <!-- tilt -->
     <joint name="head_tilt_joint" type="revolute">
-      <origin xyz="0 0 0.05" rpy="-1.57 0.0 0" />
+      <origin xyz="0 0 0.0" rpy="-1.57 0.0 0" />
       <axis xyz="0 0 1"/>
       <parent link="head_pan_link"/>
       <child link="head_tilt_link"/>
-      <limit effort="100" velocity="100"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
     </joint>
     
     <link name="head_tilt_link"/>
@@ -40,23 +40,32 @@
     <!-- sensors -->
     
     <head_camera parent="head_tilt_link" name="stereo_left">
-      <origin xyz="0.074819 -0.19424 0.039144" rpy="1.572 -0.0046408 0.0147"/>
+      <!--<origin xyz="0.074819 -0.19424 0.039144" rpy="1.572 -0.0046408 0.0147"/> -->
+      <!-- <origin xyz="0.072474    -0.21002    0.043726" rpy="1.5767  -0.0094749   0.0058925"/> -->
+      <origin xyz="${cal_head_to_stereo_left_x} ${cal_head_to_stereo_left_y} ${cal_head_to_stereo_left_z}"
+              rpy="${cal_head_to_stereo_left_roll} ${cal_head_to_stereo_left_pitch} ${cal_head_to_stereo_left_yaw}"/>
     </head_camera>
     
     <head_camera parent="stereo_left_link" name="stereo_right">
       <origin xyz="0.0 -0.09 0.0" rpy="0 0 0"/>
     </head_camera>
     
-    <head_camera parent="stereo_left_link" name="kinect_left_rgb">
-      <origin xyz="0.013309 -0.010124 -0.06841" rpy="1.5634 -0.022662 0.37293"/>
+    <head_camera parent="head_tilt_link" name="kinect_left_rgb">
+      <!--<origin xyz="0.013309 -0.010124 -0.06841" rpy="1.5634 -0.022662 0.37293"/> -->
+      <!--<origin xyz="0.019408   -0.010485   -0.088064" rpy="1.5637  -0.0097296     0.36447"/>-->
+      <origin xyz="${cal_stereo_left_to_kinect_left_x} ${cal_stereo_left_to_kinect_left_y} ${cal_stereo_left_to_kinect_left_z}"
+              rpy="${cal_stereo_left_to_kinect_left_roll} ${cal_stereo_left_to_kinect_left_pitch} ${cal_stereo_left_to_kinect_left_yaw}"/>
     </head_camera>
     
     <head_camera parent="kinect_left_rgb_link" name="kinect_left_ir">
       <origin xyz="0.0 0.03 0.0" rpy="0 0 0"/>
     </head_camera>
     
-    <head_camera parent="stereo_left_link" name="kinect_right_rgb">
-      <origin xyz="0.00045739 -0.071104 -0.074766" rpy="1.5892 -0.035955 -0.34978"/>
+    <head_camera parent="head_tilt_link" name="kinect_right_rgb">
+      <!--<origin xyz="0.00045739 -0.071104 -0.074766" rpy="1.5892 -0.035955 -0.34978"/> -->
+      <!--<origin xyz="-0.034936    -0.05614   -0.084153" rpy="1.588   -0.024981    -0.37211"/>-->
+      <origin xyz="${cal_stereo_left_to_kinect_right_x} ${cal_stereo_left_to_kinect_right_y} ${cal_stereo_left_to_kinect_right_z}"
+              rpy="${cal_stereo_left_to_kinect_right_roll} ${cal_stereo_left_to_kinect_right_pitch} ${cal_stereo_left_to_kinect_right_yaw}"/>
     </head_camera>
     
     <head_camera parent="kinect_right_rgb_link" name="kinect_right_ir">
