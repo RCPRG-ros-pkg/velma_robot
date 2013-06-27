@@ -17,11 +17,13 @@
     </rosparam>
   </node>
   
-  
+  <!-- Load hand controller -->
+  <node ns="/right_hand" name="left_hand" pkg="barrett_hand_controller" type="hand" output="screen">
+    <rosparam>
+      serial_port: can0
+    </rosparam>
+  </node>
   <!-- load controllers -->
-<!--  <node name="lwr_controller" pkg="ocl" type="deployer-gnulinux" launch-prefix="lxterm -e" args="-s $(find two_lwr_bringup)/cfg/two_lwr_arm_controller.xml -linfo" machine="lwr_controller"/>
-  -->
-  <!--  <node name="hand_controller" pkg="ocl" type="cdeployer-gnulinux" launch-prefix="" args="-s $(find two_lwr_bringup)/cfg/hand_controller.xml " machine="lwr_controller"/> -->
-  
+  <node name="lwr_controller" pkg="ocl" type="rttlua" launch-prefix="lxterm -hold -e" args="-i $(find velma_bringup)/cfg/deploy.lua --"/>
 </launch>
 
