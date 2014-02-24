@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <name>velma_description</name>
+  <version>0.1.0</version>
+  <description>The velma_description package</description>
+  <maintainer email="konradb3@gmail.com">Konrad Banachowicz</maintainer>
+  <license>BSD</license>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  
+</package>
