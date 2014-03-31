@@ -2,7 +2,4 @@
 <launch>
   <!-- send two_lwr.urdf.xml to param server -->
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find velma_description)/robots/velma.urdf.xacro'" />
-  
-  <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher"/>
-<!--  <node pkg="rviz" type="rviz" name="$(anon rviz)" respawn="false" output="screen" /> -->
 </launch>

@@ -5,24 +5,31 @@
 	<arg name="pc1" default="lwr-controller"/>
 	<arg name="pc2" default="lwr-sensors"/>
 
-	<!--  <include file="$(find velma_machine)/$(env ROBOT).machine" /> -->
-
 	<!-- upload robot description -->
-	<include file="$(find velma_defs)/launch/upload_robot.launch" />
+	<include file="$(find velma_description)/launch/upload_robot.launch" />
 
 	<group>
-		<machine name="pc1" address="$(arg pc1)" env-loader="$(find velma_machine)/velma_env.sh" default="true" />
+<!--		<machine name="pc1" address="$(arg pc1)" env-loader="$(find velma_machine)/velma_env.sh" default="true" />-->
 		<!-- start robot_state_publisher -->
 		<node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher"/>
 
 		<!-- startup hardware -->
-		<include file="$(find velma_bringup)/launch/components/controller.launch" />
+		<include file="$(find velma_controller)/launch/velma_controler.launch" />
+		<include file="$(find barrett_hand_controller)/launch/single_hand.launch" >
+                    <arg name="PREFIX" value="left"/>
+                    <arg name="DEVICE" value="rtcan1"/>
+                </include>
+		<include file="$(find barrett_hand_controller)/launch/single_hand.launch" >
+                    <arg name="PREFIX" value="right"/>
+                    <arg name="DEVICE" value="rtcan2"/>
+                </include>
 	</group>
 
-	<group>
-		<machine name="pc2" address="$(arg pc2)" env-loader="$(find velma_machine)/velma_env.sh" default="true" />
+<!--	<group>
+		<machine name="pc2" address="$(arg pc2)" env-loader="$(find velma_machine)/velma_env.sh" default="true" />-->
 		<!-- start sensors -->
-		<include file="$(find velma_bringup)/launch/components/head_sensors.launch" />
-	</group>
+<!--		<include file="$(find velma_bringup)/launch/components/head_sensors.launch" />
+	</group>-->
 
 </launch>
+

@@ -8,8 +8,8 @@
   <include filename="$(find velma_description)/calibration/default_cal.xml"/>
   <include filename="$(find lwr_defs)/defs/kuka_lwr_arm_defs.xml"/>
   <include filename="$(find lwr_defs)/defs/materials.xml"/>
-  <!--
-  <include filename="$(find barret_hand_defs)/defs/barret_hand.urdf.xacro"/>
+  <include filename="$(find barrett_hand_defs)/defs/barret_hand.urdf.xacro"/>
+<!--
   <include filename="$(find velma_defs)/defs/kinect_camera.urdf.xacro" />
   <include filename="$(find velma_defs)/defs/head.urdf.xacro" /> -->
   
@@ -67,7 +67,15 @@
   <kuka_lwr_arm parent="torso_link2" name="left" right="1">
     <origin xyz="0 0.1641 -0.07943" rpy="${-5*M_PI/6} 0 0"/>
   </kuka_lwr_arm>
-  
+
+  <xacro:barret_hand prefix="right" parent="right_arm_7_link">
+    <origin xyz="0.115 0.0 -0.055" rpy="0 ${M_PI/2} 0"/>
+  </xacro:barret_hand>
+
+  <xacro:barret_hand prefix="left" parent="left_arm_7_link">
+    <origin xyz="-0.115 0.0 -0.055" rpy="0 ${-M_PI/2} 0"/>
+  </xacro:barret_hand>
+
 <!--
   <joint name="torso_right_arm_joint" type="fixed">
     <origin xyz="0 0.0941 0.07943" rpy="${-M_PI/6} 0 0"/>
