@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot>
-  <include filename="$(find velma_defs)/defs/camera.urdf.xacro" />
+  <include filename="$(find velma_description)/defs/camera.urdf.xacro" />
   <macro name="velma_head" params="parent *origin">
     <joint name="head_frame_joint" type="fixed">
       <insert_block name="origin" />

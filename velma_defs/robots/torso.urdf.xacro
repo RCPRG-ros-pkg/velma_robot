@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<robot xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+                        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+                        xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+                        xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+	 name="torso">
+
+  <include filename="$(find velma_description)/calibration/default_cal.xml"/>
+<!--
+  <include filename="$(find velma_defs)/defs/kinect_camera.urdf.xacro" />
+  -->
+  <include filename="$(find velma_description)/defs/head.urdf.xacro" />
+  
+<property name="M_PI" value="3.1415926535897931" />
+  
+<link name="world" />
+
+  <joint name="arm_world_joint" type="fixed">
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="torso_base"/>
+  </joint>
+
+  <link name="torso_base">
+  </link>
+
+  <joint name="torso_0_joint" type="revolute">
+    <origin xyz="0 0 0.0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
+    <parent link="torso_base"/>
+    <child link="torso_link0"/>
+  </joint>
+  
+  <link name="torso_link0">
+  </link>
+
+  <joint name="torso_1_joint" type="revolute">
+    <origin xyz="0 0 0.80" rpy="${M_PI/2} 0 0"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="${M_PI/4}" upper="${105 * M_PI/180}" effort="100" velocity="100"/>
+    <parent link="torso_link0"/>
+    <child link="torso_link1"/>
+  </joint>
+
+  <link name="torso_link1">
+  </link>
+
+  <joint name="torso_2_joint" type="revolute">
+    <origin xyz="0.375 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
+    <mimic joint="torso_1_joint" multiplier="-1"/>
+    <parent link="torso_link1"/>
+    <child link="torso_link2"/>
+  </joint>
+
+  <link name="torso_link2">
+  </link>
+
+  <velma_head parent="torso_link2">
+    <origin xyz="0 0.1641 0" rpy="${3*M_PI/2} 0 0"/>
+  </velma_head>
+
+</robot>
