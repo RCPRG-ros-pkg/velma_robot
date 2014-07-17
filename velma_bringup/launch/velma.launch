@@ -23,6 +23,18 @@
                     <arg name="PREFIX" value="right"/>
                     <arg name="DEVICE" value="rtcan2"/>
                 </include>
+
+                <node
+                  name="right_arm_markers"
+                  pkg="velma_controller" type="arm_markers.py"
+                  args="right --">
+                </node>
+
+                <node
+                  name="left_arm_markers"
+                  pkg="velma_controller" type="arm_markers.py"
+                  args="left --">
+                </node>
 	</group>
 
 <!--	<group>
