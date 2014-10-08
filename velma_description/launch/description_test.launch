@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- upload robot description -->
+	<include file="$(find velma_description)/launch/upload_robot.launch" />
+	
+	<node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher" />
+	
+	<node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+	  <param name="use_gui" value="true"/>
+	</node>
+	
+  <node pkg="rviz" type="rviz" name="rviz" />
+	
+</launch>
+

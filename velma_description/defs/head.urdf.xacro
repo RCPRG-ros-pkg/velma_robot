@@ -1,41 +1,84 @@
 <?xml version="1.0"?>
 <robot>
-  <include filename="$(find velma_description)/defs/camera.urdf.xacro" />
   <macro name="velma_head" params="parent *origin">
-    <joint name="head_frame_joint" type="fixed">
+    <joint name="head_base_joint" type="fixed">
       <insert_block name="origin" />
       <parent link="${parent}"/>
-      <child link="head_frame"/>
+      <child link="head_base"/>
     </joint>
     
-    <link name="head_frame">
+    <link name="head_base">
+       <visual>
+        <origin xyz="0 0 0.0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/head_base.STL" />
+        </geometry>
+        <material name="torso_gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+        </material>
+      </visual>
+    </link>
     
+    <joint name="head_pan_motor_joint" type="fixed">
+      <origin xyz="0 0 0.025" rpy="0 0 0" />
+      <parent link="head_base"/>
+      <child link="head_pan_motor"/>
+    </joint>
+    
+    <link name="head_pan_motor">
+       <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/head_pan.STL" />
+        </geometry>
+        <material name="torso_gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+        </material>
+      </visual>
     </link>
     
     <!-- pan -->
     <joint name="head_pan_joint" type="revolute">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0.062" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
-      <parent link="head_frame"/>
+      <parent link="head_pan_motor"/>
       <child link="head_pan_link"/>
       
-      <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="1.57"/>
     </joint>
     
     <link name="head_pan_link">
-    
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/head_tilt.STL" />
+        </geometry>
+        <material name="torso_gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+        </material>
+      </visual>
     </link>
     
     <!-- tilt -->
     <joint name="head_tilt_joint" type="revolute">
-      <origin xyz="0 0 0.0" rpy="-1.57 0.0 0" />
+      <origin xyz="0 0 0.048" rpy="1.57 0.0 0" />
       <axis xyz="0 0 1"/>
       <parent link="head_pan_link"/>
       <child link="head_tilt_link"/>
       <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
     </joint>
     
-    <link name="head_tilt_link"/>
+    <link name="head_tilt_link">
+      <visual>
+        <origin xyz="0 0 0.04219" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/head_top.STL" />
+        </geometry>
+        <material name="torso_gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+        </material>
+      </visual>
+    </link>
     
     <!-- sensors -->
     

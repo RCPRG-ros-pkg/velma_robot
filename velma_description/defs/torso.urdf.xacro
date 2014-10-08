@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<robot>
+  <macro name="velma_torso" params="parent *origin">
+  
+    <joint name="torso_base_joint" type="fixed">
+      <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="torso_base"/>
+    </joint>
+  
+    <link name="torso_base">
+      <visual>
+        <origin xyz="0 0 0.05" rpy="0.0 0 0" />
+        <geometry>
+          <box size="0.7 0.82 0.1" />
+        </geometry>
+        <material name="torso_base">
+          <color rgba="0.1 0.1 0.1 1"/>
+        </material>
+      </visual>
+      <visual>
+        <origin xyz="0 0 0.16" rpy="0.0 0 0" />
+        <geometry>
+          <box size="0.41 0.41 0.12" />
+        </geometry>
+        <material name="torso_base">
+          <color rgba="0.5 0.5 0.5 1"/>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="torso_0_joint" type="revolute">
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
+      <parent link="torso_base"/>
+      <child link="torso_link0"/>
+    </joint>
+  
+    <link name="torso_link0">
+      <visual>
+        <origin xyz="0 0 0.219" rpy="0.0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/base_asm.STL" />
+        </geometry>
+        <material name="torso_base">
+          <color rgba="0.5 0.5 0.5 1"/>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="torso_1_joint" type="revolute">
+      <origin xyz="0 0 0.80" rpy="${M_PI/2} 0 0"/>
+      <axis xyz="0 0 -1"/>
+      <limit lower="${-105 * M_PI/180}" upper="${-M_PI/4}" effort="100" velocity="100"/>
+      <parent link="torso_link0"/>
+      <child link="torso_link1"/>
+    </joint>
+
+    <link name="torso_link1">
+    </link>
+  
+    <joint name="torso_1_joint_viz1" type="revolute">
+      <origin xyz="0.09 0 0.80" rpy="${M_PI/2} 0 0"/>
+      <axis xyz="0 0 -1"/>
+      <limit lower="${-105 * M_PI/180}" upper="${-M_PI/4}" effort="100" velocity="100"/>
+      <mimic joint="torso_1_joint" multiplier="1"/>
+      <parent link="torso_link0"/>
+      <child link="torso_link1_viz1"/>
+    </joint>
+  
+    <link name="torso_link1_viz1">
+      <visual>
+        <origin xyz="0 0 -0.09875" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/connector.STL" />
+        </geometry>
+        <material name="torso_gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="torso_1_joint_viz2" type="revolute">
+      <origin xyz="-0.13 0 0.80" rpy="${M_PI/2} 0 0"/>
+      <axis xyz="0 0 -1"/>
+      <limit lower="${-105 * M_PI/180}" upper="${-M_PI/4}" effort="100" velocity="100"/>
+      <mimic joint="torso_1_joint" multiplier="1"/>
+      <parent link="torso_link0"/>
+      <child link="torso_link1_viz2"/>
+    </joint>
+
+    <link name="torso_link1_viz2">
+      <visual>
+        <origin xyz="0 0 -0.09875" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/connector.STL" />
+        </geometry>
+        <material name="torso_gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="torso_2_joint" type="revolute">
+      <origin xyz="0.375 0 0" rpy="0 0 0"/>
+      <axis xyz="0 0 -1"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
+      <mimic joint="torso_1_joint" multiplier="-1"/>
+      <parent link="torso_link1"/>
+      <child link="torso_link2"/>
+    </joint>
+
+    <link name="torso_link2">
+      <visual>
+        <origin xyz="0 0.0 0" rpy="${-M_PI/2.0} 0 0.0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/top_base_asm.STL" />
+        </geometry>
+        <material name="Orange"/>
+      </visual>
+    </link>
+  </macro>
+</robot>
+
