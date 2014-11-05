@@ -27,6 +27,14 @@
           <color rgba="0.5 0.5 0.5 1"/>
         </material>
       </visual>
+
+      <self_collision_checking>
+        <origin xyz="-0.2 0.0 0.6" rpy="1.57075 0 0"/>
+        <geometry>
+          <capsule radius="0.20" length="0.9"/>
+        </geometry>
+      </self_collision_checking>
+
     </link>
 
     <joint name="torso_0_joint" type="revolute">

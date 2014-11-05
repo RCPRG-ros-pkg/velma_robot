@@ -16,6 +16,7 @@
     <disable_collisions link1="calib_left_arm_base_link" link2="right_arm_3_link" reason="Never" />
     <disable_collisions link1="calib_left_arm_base_link" link2="right_arm_4_link" reason="Never" />
     <disable_collisions link1="calib_left_arm_base_link" link2="torso_base" reason="Adjacent" />
+    <disable_collisions link1="calib_left_arm_base_link" link2="torso_link0" reason="Adjacent" />
     <disable_collisions link1="calib_right_arm_base_link" link2="left_arm_1_link" reason="Never" />
     <disable_collisions link1="calib_right_arm_base_link" link2="left_arm_2_link" reason="Never" />
     <disable_collisions link1="calib_right_arm_base_link" link2="left_arm_3_link" reason="Never" />
@@ -27,6 +28,7 @@
     <disable_collisions link1="calib_right_arm_base_link" link2="right_arm_6_link" reason="Never" />
     <disable_collisions link1="calib_right_arm_base_link" link2="right_arm_7_link" reason="Never" />
     <disable_collisions link1="calib_right_arm_base_link" link2="torso_base" reason="Adjacent" />
+    <disable_collisions link1="calib_right_arm_base_link" link2="torso_link0" reason="Adjacent" />
     <disable_collisions link1="left_HandFingerOneKnuckleOneLink" link2="left_HandFingerOneKnuckleThreeLink" reason="Never" />
     <disable_collisions link1="left_HandFingerOneKnuckleOneLink" link2="left_HandFingerOneKnuckleTwoLink" reason="Adjacent" />
     <disable_collisions link1="left_HandFingerOneKnuckleOneLink" link2="left_HandFingerThreeKnuckleThreeLink" reason="Never" />
@@ -95,11 +97,20 @@
     <disable_collisions link1="left_HandFingerTwoKnuckleTwoLink" link2="left_arm_7_link" reason="Never" />
     <disable_collisions link1="left_HandFingerTwoKnuckleTwoLink" link2="right_HandFingerTwoKnuckleThreeLink" reason="Never" />
     <disable_collisions link1="left_HandFingerTwoKnuckleTwoLink" link2="torso_base" reason="Never" />
-    <disable_collisions link1="left_HandPalmLink" link2="left_arm_2_link" reason="Never" />
+<!--    <disable_collisions link1="left_HandPalmLink" link2="left_arm_2_link" reason="Never" />-->
     <disable_collisions link1="left_HandPalmLink" link2="left_arm_3_link" reason="Never" />
+    <disable_collisions link1="left_HandPalmLink" link2="left_arm_4_link" reason="Never" />
+    <disable_collisions link1="left_HandPalmLink" link2="left_arm_5_link" reason="Never" />
     <disable_collisions link1="left_HandPalmLink" link2="left_arm_6_link" reason="Never" />
     <disable_collisions link1="left_HandPalmLink" link2="left_arm_7_link" reason="Adjacent" />
-    <disable_collisions link1="left_HandPalmLink" link2="torso_base" reason="Never" />
+    <disable_collisions link1="left_gripper_mount_link" link2="left_HandPalmLink" reason="Never" />
+    <disable_collisions link1="left_gripper_mount_link" link2="left_arm_2_link" reason="Never" />
+    <disable_collisions link1="left_gripper_mount_link" link2="left_arm_3_link" reason="Never" />
+    <disable_collisions link1="left_gripper_mount_link" link2="left_arm_4_link" reason="Never" />
+    <disable_collisions link1="left_gripper_mount_link" link2="left_arm_5_link" reason="Never" />
+    <disable_collisions link1="left_gripper_mount_link" link2="left_arm_6_link" reason="Never" />
+    <disable_collisions link1="left_gripper_mount_link" link2="left_arm_7_link" reason="Adjacent" />
+    <disable_collisions link1="left_gripper_mount_link" link2="torso_base" reason="Never" />
     <disable_collisions link1="left_arm_1_link" link2="left_arm_2_link" reason="Adjacent" />
     <disable_collisions link1="left_arm_1_link" link2="left_arm_3_link" reason="Never" />
     <disable_collisions link1="left_arm_1_link" link2="left_arm_4_link" reason="Never" />
@@ -111,6 +122,7 @@
     <disable_collisions link1="left_arm_1_link" link2="right_arm_3_link" reason="Never" />
     <disable_collisions link1="left_arm_1_link" link2="right_arm_4_link" reason="Never" />
     <disable_collisions link1="left_arm_1_link" link2="torso_base" reason="Never" />
+    <disable_collisions link1="left_arm_1_link" link2="torso_link0" reason="Never" />
     <disable_collisions link1="left_arm_2_link" link2="left_arm_3_link" reason="Adjacent" />
     <disable_collisions link1="left_arm_2_link" link2="left_arm_4_link" reason="Never" />
     <disable_collisions link1="left_arm_2_link" link2="left_arm_5_link" reason="Never" />
@@ -120,6 +132,7 @@
     <disable_collisions link1="left_arm_2_link" link2="right_arm_2_link" reason="Never" />
     <disable_collisions link1="left_arm_2_link" link2="right_arm_3_link" reason="Never" />
     <disable_collisions link1="left_arm_2_link" link2="torso_base" reason="Never" />
+    <disable_collisions link1="left_arm_2_link" link2="torso_link0" reason="Never" />
     <disable_collisions link1="left_arm_3_link" link2="left_arm_4_link" reason="Adjacent" />
     <disable_collisions link1="left_arm_3_link" link2="left_arm_5_link" reason="Never" />
     <disable_collisions link1="left_arm_3_link" link2="left_arm_6_link" reason="Never" />
@@ -127,6 +140,7 @@
     <disable_collisions link1="left_arm_3_link" link2="right_arm_1_link" reason="Never" />
     <disable_collisions link1="left_arm_3_link" link2="right_arm_2_link" reason="Never" />
     <disable_collisions link1="left_arm_3_link" link2="torso_base" reason="Never" />
+    <disable_collisions link1="left_arm_3_link" link2="torso_link0" reason="Never" />
     <disable_collisions link1="left_arm_4_link" link2="left_arm_5_link" reason="Adjacent" />
     <disable_collisions link1="left_arm_4_link" link2="left_arm_6_link" reason="Never" />
     <disable_collisions link1="left_arm_4_link" link2="left_arm_7_link" reason="Never" />
@@ -134,10 +148,7 @@
     <disable_collisions link1="left_arm_4_link" link2="torso_base" reason="Never" />
     <disable_collisions link1="left_arm_5_link" link2="left_arm_6_link" reason="Adjacent" />
     <disable_collisions link1="left_arm_5_link" link2="left_arm_7_link" reason="Default" />
-    <disable_collisions link1="left_arm_5_link" link2="torso_base" reason="Never" />
     <disable_collisions link1="left_arm_6_link" link2="left_arm_7_link" reason="Adjacent" />
-    <disable_collisions link1="left_arm_6_link" link2="torso_base" reason="Never" />
-    <disable_collisions link1="left_arm_7_link" link2="torso_base" reason="Never" />
     <disable_collisions link1="right_HandFingerOneKnuckleOneLink" link2="right_HandFingerOneKnuckleThreeLink" reason="Never" />
     <disable_collisions link1="right_HandFingerOneKnuckleOneLink" link2="right_HandFingerOneKnuckleTwoLink" reason="Adjacent" />
     <disable_collisions link1="right_HandFingerOneKnuckleOneLink" link2="right_HandFingerThreeKnuckleThreeLink" reason="Never" />
@@ -198,11 +209,20 @@
     <disable_collisions link1="right_HandFingerTwoKnuckleTwoLink" link2="right_arm_6_link" reason="Never" />
     <disable_collisions link1="right_HandFingerTwoKnuckleTwoLink" link2="right_arm_7_link" reason="Never" />
     <disable_collisions link1="right_HandFingerTwoKnuckleTwoLink" link2="torso_base" reason="Never" />
-    <disable_collisions link1="right_HandPalmLink" link2="right_arm_2_link" reason="Never" />
+<!--    <disable_collisions link1="right_HandPalmLink" link2="right_arm_2_link" reason="Never" />-->
     <disable_collisions link1="right_HandPalmLink" link2="right_arm_3_link" reason="Never" />
+    <disable_collisions link1="right_HandPalmLink" link2="right_arm_4_link" reason="Never" />
+    <disable_collisions link1="right_HandPalmLink" link2="right_arm_5_link" reason="Never" />
     <disable_collisions link1="right_HandPalmLink" link2="right_arm_6_link" reason="Never" />
     <disable_collisions link1="right_HandPalmLink" link2="right_arm_7_link" reason="Adjacent" />
-    <disable_collisions link1="right_HandPalmLink" link2="torso_base" reason="Never" />
+    <disable_collisions link1="right_gripper_mount_link" link2="right_HandPalmLink" reason="Never" />
+    <disable_collisions link1="right_gripper_mount_link" link2="right_arm_2_link" reason="Never" />
+    <disable_collisions link1="right_gripper_mount_link" link2="right_arm_3_link" reason="Never" />
+    <disable_collisions link1="right_gripper_mount_link" link2="right_arm_4_link" reason="Never" />
+    <disable_collisions link1="right_gripper_mount_link" link2="right_arm_5_link" reason="Never" />
+    <disable_collisions link1="right_gripper_mount_link" link2="right_arm_6_link" reason="Never" />
+    <disable_collisions link1="right_gripper_mount_link" link2="right_arm_7_link" reason="Adjacent" />
+    <disable_collisions link1="right_gripper_mount_link" link2="torso_base" reason="Never" />
     <disable_collisions link1="right_arm_1_link" link2="right_arm_2_link" reason="Adjacent" />
     <disable_collisions link1="right_arm_1_link" link2="right_arm_3_link" reason="Never" />
     <disable_collisions link1="right_arm_1_link" link2="right_arm_4_link" reason="Never" />
@@ -210,25 +230,41 @@
     <disable_collisions link1="right_arm_1_link" link2="right_arm_6_link" reason="Never" />
     <disable_collisions link1="right_arm_1_link" link2="right_arm_7_link" reason="Never" />
     <disable_collisions link1="right_arm_1_link" link2="torso_base" reason="Never" />
+    <disable_collisions link1="right_arm_1_link" link2="torso_link0" reason="Never" />
     <disable_collisions link1="right_arm_2_link" link2="right_arm_3_link" reason="Adjacent" />
     <disable_collisions link1="right_arm_2_link" link2="right_arm_4_link" reason="Never" />
     <disable_collisions link1="right_arm_2_link" link2="right_arm_5_link" reason="Never" />
     <disable_collisions link1="right_arm_2_link" link2="right_arm_6_link" reason="Never" />
     <disable_collisions link1="right_arm_2_link" link2="right_arm_7_link" reason="Never" />
     <disable_collisions link1="right_arm_2_link" link2="torso_base" reason="Never" />
+    <disable_collisions link1="right_arm_2_link" link2="torso_link0" reason="Never" />
     <disable_collisions link1="right_arm_3_link" link2="right_arm_4_link" reason="Adjacent" />
     <disable_collisions link1="right_arm_3_link" link2="right_arm_5_link" reason="Never" />
     <disable_collisions link1="right_arm_3_link" link2="right_arm_6_link" reason="Never" />
     <disable_collisions link1="right_arm_3_link" link2="right_arm_7_link" reason="Never" />
     <disable_collisions link1="right_arm_3_link" link2="torso_base" reason="Never" />
+    <disable_collisions link1="right_arm_3_link" link2="torso_link0" reason="Never" />
     <disable_collisions link1="right_arm_4_link" link2="right_arm_5_link" reason="Adjacent" />
     <disable_collisions link1="right_arm_4_link" link2="right_arm_6_link" reason="Never" />
     <disable_collisions link1="right_arm_4_link" link2="right_arm_7_link" reason="Never" />
     <disable_collisions link1="right_arm_4_link" link2="torso_base" reason="Never" />
     <disable_collisions link1="right_arm_5_link" link2="right_arm_6_link" reason="Adjacent" />
     <disable_collisions link1="right_arm_5_link" link2="right_arm_7_link" reason="Default" />
-    <disable_collisions link1="right_arm_5_link" link2="torso_base" reason="Never" />
     <disable_collisions link1="right_arm_6_link" link2="right_arm_7_link" reason="Adjacent" />
-    <disable_collisions link1="right_arm_6_link" link2="torso_base" reason="Never" />
-    <disable_collisions link1="right_arm_7_link" link2="torso_base" reason="Never" />
+    <disable_collisions link1="torso_base" link2="torso_link0" reason="Never" />
+    <disable_collisions link1="head_tilt_link" link2="torso_base" reason="Never" />
+    <disable_collisions link1="head_tilt_link" link2="torso_link0" reason="Never" />
+    <disable_collisions link1="head_tilt_link" link2="calib_left_arm_base_link" reason="Never" />
+    <disable_collisions link1="head_tilt_link" link2="calib_right_arm_base_link" reason="Never" />
+    <disable_collisions link1="head_tilt_link" link2="left_arm_1_link" reason="Never" />
+    <disable_collisions link1="head_tilt_link" link2="left_arm_2_link" reason="Never" />
+    <disable_collisions link1="head_tilt_link" link2="right_arm_1_link" reason="Never" />
+    <disable_collisions link1="head_tilt_link" link2="right_arm_2_link" reason="Never" />
+    <disable_collisions link1="head_pan_motor" link2="torso_base" reason="Never" />
+    <disable_collisions link1="head_pan_motor" link2="torso_link0" reason="Never" />
+    <disable_collisions link1="head_pan_motor" link2="calib_left_arm_base_link" reason="Never" />
+    <disable_collisions link1="head_pan_motor" link2="calib_right_arm_base_link" reason="Never" />
+    <disable_collisions link1="head_pan_motor" link2="left_arm_1_link" reason="Never" />
+    <disable_collisions link1="head_pan_motor" link2="right_arm_1_link" reason="Never" />
+    <disable_collisions link1="head_pan_motor" link2="head_tilt_link" reason="Never" />
 </robot>
