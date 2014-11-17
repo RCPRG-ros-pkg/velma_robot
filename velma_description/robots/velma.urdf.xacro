@@ -67,9 +67,27 @@
     <origin xyz="0.115 0.0 -0.078" rpy="0 ${M_PI/2} 0"/>
   </xacro:barret_hand>
 
+  <joint name="right_gripper_calib_joint" type="fixed">
+    <origin xyz="0 0.0445 0.031" rpy="0 0 0"/>
+    <parent link="right_HandPalmLink"/>
+    <child link="right_gripper_calib_link"/>
+  </joint>
+
+  <link name="right_gripper_calib_link">
+  </link>
+
   <xacro:barret_hand prefix="left" parent="left_arm_7_link">
     <origin xyz="-0.115 0.0 -0.078" rpy="0 ${-M_PI/2} 0"/>
   </xacro:barret_hand>
+  
+  <joint name="left_gripper_calib_joint" type="fixed">
+    <origin xyz="0 0.0445 0.031" rpy="0 0 0"/>
+    <parent link="left_HandPalmLink"/>
+    <child link="left_gripper_calib_link"/>
+  </joint>
+
+  <link name="left_gripper_calib_link">
+  </link>
   
   <velma_head parent="torso_link2">
     <origin xyz="0 0.253 0.0" rpy="${-M_PI/2} 0 0"/>
