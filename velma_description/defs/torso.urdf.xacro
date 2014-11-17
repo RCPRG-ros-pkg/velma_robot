@@ -27,6 +27,14 @@
           <color rgba="0.5 0.5 0.5 1"/>
         </material>
       </visual>
+
+      <self_collision_checking>
+        <origin xyz="-0.2 0.0 0.6" rpy="1.57075 0 0"/>
+        <geometry>
+          <capsule radius="0.20" length="0.9"/>
+        </geometry>
+      </self_collision_checking>
+
     </link>
 
     <joint name="torso_0_joint" type="revolute">
@@ -47,6 +55,34 @@
           <color rgba="0.5 0.5 0.5 1"/>
         </material>
       </visual>
+
+      <self_collision_checking>
+        <origin xyz="0 0.0 0.4" rpy="0 0 0"/>
+        <geometry>
+          <capsule radius="0.20" length="0.8"/>
+        </geometry>
+      </self_collision_checking>
+      <self_collision_checking>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <convex>
+            <point xyz="0.15 0.14 0.8" frame="torso_link0"/>
+            <point xyz="-0.15 0.14 0.8" frame="torso_link0"/>
+            <point xyz="-0.15 -0.14 0.8" frame="torso_link0"/>
+            <point xyz="0.15 -0.14 0.8" frame="torso_link0"/>
+
+            <point xyz="0.15 0.08 0.14" frame="torso_link2"/>
+            <point xyz="-0.15 0.08 0.14" frame="torso_link2"/>
+            <point xyz="-0.15 0.08 -0.14" frame="torso_link2"/>
+            <point xyz="0.15 0.08 -0.14" frame="torso_link2"/>
+
+            <point xyz="0.15 0.3 0" frame="torso_link2"/>
+            <point xyz="-0.15 0.3 0" frame="torso_link2"/>
+
+          </convex>
+        </geometry>
+      </self_collision_checking>
+
     </link>
 
     <joint name="torso_1_joint" type="revolute">
