@@ -26,25 +26,11 @@
 <property name="cal_torso_to_head_pitch" value="0.014781" />
 <property name="cal_torso_to_head_yaw" value="0.017183" />
 <!-- head -> stereo_left -->
-<property name="cal_head_to_stereo_left_x" value="0.089936" />
-<property name="cal_head_to_stereo_left_y" value="-0.20423" />
-<property name="cal_head_to_stereo_left_z" value="0.045989" />
-<property name="cal_head_to_stereo_left_roll" value="1.5742" />
-<property name="cal_head_to_stereo_left_pitch" value="-0.015968" />
-<property name="cal_head_to_stereo_left_yaw" value="-0.0028037" />
-<!-- stereo_left -> kinect_left -->
-<property name="cal_stereo_left_to_kinect_left_x" value="0.09408" />
-<property name="cal_stereo_left_to_kinect_left_y" value="-0.11932" />
-<property name="cal_stereo_left_to_kinect_left_z" value="0.037141" />
-<property name="cal_stereo_left_to_kinect_left_roll" value="-3.14" />
-<property name="cal_stereo_left_to_kinect_left_pitch" value="-0.3742" />
-<property name="cal_stereo_left_to_kinect_left_yaw" value="-0.00078952" />
-<!-- stereo_left -> kinect_right -->
-<property name="cal_stereo_left_to_kinect_right_x" value="0.12656" />
-<property name="cal_stereo_left_to_kinect_right_y" value="-0.11517" />
-<property name="cal_stereo_left_to_kinect_right_z" value="-0.052204" />
-<property name="cal_stereo_left_to_kinect_right_roll" value="-3.1354" />
-<property name="cal_stereo_left_to_kinect_right_pitch" value="0.313" />
-<property name="cal_stereo_left_to_kinect_right_yaw" value="-0.0078464" />
+<property name="cal_head_to_stereo_left_x" value="0.05" />
+<property name="cal_head_to_stereo_left_y" value="0.23021" />
+<property name="cal_head_to_stereo_left_z" value="-0.045" />
+<property name="cal_head_to_stereo_left_roll" value="-1.5742" />
+<property name="cal_head_to_stereo_left_pitch" value="0.0" />
+<property name="cal_head_to_stereo_left_yaw" value="0.0" />
 
 </root>
