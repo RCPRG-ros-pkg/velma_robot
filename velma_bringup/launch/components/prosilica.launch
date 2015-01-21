@@ -1,0 +1,27 @@
+<launch>
+
+  <!-- Namespace to publish in -->
+  <arg name="camera" default="left_hand_camera" />
+
+  <!-- The camera node -->
+  <node name="$(arg camera)_driver" pkg="prosilica_camera" type="prosilica_node" output="screen">
+    <remap from="camera" to="$(arg camera)" />
+
+    <param name="ip_address" type="str" value="192.168.1.2" />
+    <param name="trigger_mode" value="streaming" />
+    <param name="frame_id" value="/left_hand_camera_optical_frame" />
+    <param name="auto_exposure" value="false" />
+    <param name="exposure" value="0.05" />
+    <param name="auto_gain" value="false" />
+    <param name="gain" value="2" />
+    <param name="auto_whitebalance" value="false" />
+  </node>
+
+  <!-- If running in polled mode, change ns to match your service call argument. -->
+  <group ns="$(arg camera)">
+
+    <node pkg="image_proc" type="image_proc" respawn="false" name="prosilica_image_proc" />
+
+  </group>
+
+</launch>
