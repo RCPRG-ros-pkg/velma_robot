@@ -1,21 +1,41 @@
 <?xml version="1.0"?>
 <launch>
-  <group ns="stereo">
-    <group ns="left">
-		  <include file="$(find velma_bringup)/launch/components/pgr_camera.launch" >
-        <arg name="camera_serial" value="13201068"/>
-        <arg name="frame_id" value="stereo_left_optical_frame"/>
-      </include>
-    </group>
-      
-    <group ns="right">        
-      <include file="$(find velma_bringup)/launch/components/pgr_camera.launch" >
-        <arg name="camera_serial" value="13201080"/>
-        <arg name="frame_id" value="stereo_left_optical_frame"/>
-      </include>
-    </group>
+  <group ns="right_camera">
+    <include file="$(find velma_bringup)/launch/components/pgr_camera.launch" >
+      <arg name="name" value="pgr_right"/>
+      <arg name="camera_serial" value="13201080"/>
+      <arg name="frame_id" value="stereo_left_optical_frame"/>
+    </include>
     
-    <node pkg="stereo_image_proc" type="stereo_image_proc" name="stereo_image_proc" />
+    <node pkg="velma_controller" type="image_stamper_node" name="stereo_right_stamper">
+      <remap from="image" to="image_raw"/>
+      <remap from="image_out" to="/stereo/right/image_raw"/>
+      <remap from="trigger" to="/camera_trigger_stamp"/>
+    </node>
   </group>
+
+  <group ns="left_camera">
+    <include file="$(find velma_bringup)/launch/components/pgr_camera.launch" >
+      <arg name="name" value="pgr_left"/>
+      <arg name="camera_serial" value="13201068"/>
+      <arg name="frame_id" value="stereo_left_optical_frame"/>
+    </include>
+    
+    <node pkg="velma_controller" type="image_stamper_node" name="stereo_left_stamper">
+      <remap from="image" to="image_raw"/>
+      <remap from="image_out" to="/stereo/left/image_raw"/>
+      <remap from="trigger" to="/camera_trigger_stamp"/>
+    </node>
+  </group>
+
+  <group ns="stereo">
+    <node pkg="stereo_image_proc" type="stereo_image_proc" name="stereo_image_proc" >
+    </node>
+  </group>
+  
+  <include file="$(find freenect_launch)/launch/freenect.launch">
+    <arg name="camera" default="head_kinect" />
+    <arg name="publish_tf" default="false" />
+  </include>
 </launch>
 
