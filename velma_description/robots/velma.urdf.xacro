@@ -88,6 +88,24 @@
   <link name="right_gripper_calib_link">
   </link>
 
+  <joint name="right_gripper_calib_joint1" type="fixed">
+    <origin xyz="${cal_right_gripper_calib_link1_x} ${cal_right_gripper_calib_link1_y} ${cal_right_gripper_calib_link1_z}" rpy="${cal_right_gripper_calib_link1_roll} ${cal_right_gripper_calib_link1_pitch} ${cal_right_gripper_calib_link1_yaw}"/>
+    <parent link="right_arm_7_link"/>
+    <child link="right_gripper_calib_link1"/>
+  </joint>
+
+  <link name="right_gripper_calib_link1">
+  </link>
+
+  <joint name="right_gripper_calib_joint2" type="fixed">
+    <origin xyz="${cal_right_gripper_calib_link2_x} ${cal_right_gripper_calib_link2_y} ${cal_right_gripper_calib_link2_z}" rpy="${cal_right_gripper_calib_link2_roll} ${cal_right_gripper_calib_link2_pitch} ${cal_right_gripper_calib_link2_yaw}"/>
+    <parent link="right_arm_7_link"/>
+    <child link="right_gripper_calib_link2"/>
+  </joint>
+
+  <link name="right_gripper_calib_link2">
+  </link>
+
   <xacro:barret_hand prefix="left" parent="left_arm_7_link">
     <origin xyz="-0.115 0.0 -0.078" rpy="0 ${-M_PI/2} 0"/>
   </xacro:barret_hand>
@@ -99,6 +117,24 @@
   </joint>
 
   <link name="left_gripper_calib_link">
+  </link>
+  
+  <joint name="left_gripper_calib_joint1" type="fixed">
+    <origin xyz="${cal_left_gripper_calib_link1_x} ${cal_left_gripper_calib_link1_y} ${cal_left_gripper_calib_link1_z}" rpy="${cal_left_gripper_calib_link1_roll} ${cal_left_gripper_calib_link1_pitch} ${cal_left_gripper_calib_link1_yaw}"/>
+    <parent link="left_arm_7_link"/>
+    <child link="left_gripper_calib_link1"/>
+  </joint>
+
+  <link name="left_gripper_calib_link1">
+  </link>
+  
+  <joint name="left_gripper_calib_joint2" type="fixed">
+    <origin xyz="${cal_left_gripper_calib_link2_x} ${cal_left_gripper_calib_link2_y} ${cal_left_gripper_calib_link2_z}" rpy="${cal_left_gripper_calib_link2_roll} ${cal_left_gripper_calib_link2_pitch} ${cal_left_gripper_calib_link2_yaw}"/>
+    <parent link="left_arm_7_link"/>
+    <child link="left_gripper_calib_link2"/>
+  </joint>
+
+  <link name="left_gripper_calib_link2">
   </link>
   
   <head_camera parent="left_arm_7_link" name="left_hand_camera">

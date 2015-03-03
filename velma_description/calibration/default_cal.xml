@@ -2,33 +2,47 @@
 
 <root>
 <!-- stereo_left_joint -->
-<property name="cal_stereo_left_joint_x" value="0.024313" />
-<property name="cal_stereo_left_joint_y" value="0.22861" />
-<property name="cal_stereo_left_joint_z" value="-0.045041" />
-<property name="cal_stereo_left_joint_roll" value="-1.5735" />
-<property name="cal_stereo_left_joint_pitch" value="-0.00096252" />
-<property name="cal_stereo_left_joint_yaw" value="0.010249" />
+<property name="cal_stereo_left_joint_x" value="0.017781" />
+<property name="cal_stereo_left_joint_y" value="0.22644" />
+<property name="cal_stereo_left_joint_z" value="-0.046829" />
+<property name="cal_stereo_left_joint_roll" value="-1.5716" />
+<property name="cal_stereo_left_joint_pitch" value="0.021055" />
+<property name="cal_stereo_left_joint_yaw" value="0.01458" />
 <!-- torso_link2_left_arm_base_joint -->
-<property name="cal_torso_link2_left_arm_base_joint_x" value="-0.0004309" />
-<property name="cal_torso_link2_left_arm_base_joint_y" value="0.16457" />
-<property name="cal_torso_link2_left_arm_base_joint_z" value="-0.079688" />
-<property name="cal_torso_link2_left_arm_base_joint_roll" value="-2.6161" />
-<property name="cal_torso_link2_left_arm_base_joint_pitch" value="0.0042975" />
-<property name="cal_torso_link2_left_arm_base_joint_yaw" value="-0.0076352" />
+<property name="cal_torso_link2_left_arm_base_joint_x" value="-0.00090904" />
+<property name="cal_torso_link2_left_arm_base_joint_y" value="0.16581" />
+<property name="cal_torso_link2_left_arm_base_joint_z" value="-0.080484" />
+<property name="cal_torso_link2_left_arm_base_joint_roll" value="-2.6169" />
+<property name="cal_torso_link2_left_arm_base_joint_pitch" value="0.0035593" />
+<property name="cal_torso_link2_left_arm_base_joint_yaw" value="-0.0089243" />
 <!-- head_base_joint -->
-<property name="cal_head_base_joint_x" value="0.010369" />
-<property name="cal_head_base_joint_y" value="0.2562" />
-<property name="cal_head_base_joint_z" value="5.7389e-05" />
-<property name="cal_head_base_joint_roll" value="-1.5693" />
-<property name="cal_head_base_joint_pitch" value="0.014719" />
-<property name="cal_head_base_joint_yaw" value="0.0012063" />
+<property name="cal_head_base_joint_x" value="0.011677" />
+<property name="cal_head_base_joint_y" value="0.25851" />
+<property name="cal_head_base_joint_z" value="-0.00026192" />
+<property name="cal_head_base_joint_roll" value="-1.5696" />
+<property name="cal_head_base_joint_pitch" value="0.016495" />
+<property name="cal_head_base_joint_yaw" value="0.00085755" />
 <!-- head_kinect_rgb_joint -->
-<property name="cal_head_kinect_rgb_joint_x" value="0.045997" />
-<property name="cal_head_kinect_rgb_joint_y" value="0.19797" />
-<property name="cal_head_kinect_rgb_joint_z" value="0.018232" />
-<property name="cal_head_kinect_rgb_joint_roll" value="-1.5623" />
-<property name="cal_head_kinect_rgb_joint_pitch" value="0.022166" />
-<property name="cal_head_kinect_rgb_joint_yaw" value="-0.030016" />
+<property name="cal_head_kinect_rgb_joint_x" value="0.048615" />
+<property name="cal_head_kinect_rgb_joint_y" value="0.19713" />
+<property name="cal_head_kinect_rgb_joint_z" value="0.016718" />
+<property name="cal_head_kinect_rgb_joint_roll" value="-1.5595" />
+<property name="cal_head_kinect_rgb_joint_pitch" value="0.013503" />
+<property name="cal_head_kinect_rgb_joint_yaw" value="-0.022315" />
+<!-- right_gripper_calib_link -->
+<property name="cal_right_gripper_calib_link_x" value="0.14415" />
+<property name="cal_right_gripper_calib_link_y" value="0.043751" />
+<property name="cal_right_gripper_calib_link_z" value="-0.076946" />
+<property name="cal_right_gripper_calib_link_roll" value="0" />
+<property name="cal_right_gripper_calib_link_pitch" value="0" />
+<property name="cal_right_gripper_calib_link_yaw" value="0" />
+<!-- left_gripper_calib_link -->
+<property name="cal_left_gripper_calib_link_x" value="-0.14278" />
+<property name="cal_left_gripper_calib_link_y" value="0.042723" />
+<property name="cal_left_gripper_calib_link_z" value="-0.077021" />
+<property name="cal_left_gripper_calib_link_roll" value="0" />
+<property name="cal_left_gripper_calib_link_pitch" value="0" />
+<property name="cal_left_gripper_calib_link_yaw" value="0" />
 <!-- left_hand_camera_joint -->
 <property name="cal_left_hand_camera_joint_x" value="-0.13202" />
 <property name="cal_left_hand_camera_joint_y" value="-0.0028977" />
@@ -36,20 +50,34 @@
 <property name="cal_left_hand_camera_joint_roll" value="3.1349" />
 <property name="cal_left_hand_camera_joint_pitch" value="0.051433" />
 <property name="cal_left_hand_camera_joint_yaw" value="-3.1382" />
-<!-- right_gripper_calib_link -->
-<property name="cal_right_gripper_calib_link_x" value="0.14362" />
-<property name="cal_right_gripper_calib_link_y" value="0.04322" />
-<property name="cal_right_gripper_calib_link_z" value="-0.077174" />
-<property name="cal_right_gripper_calib_link_roll" value="0" />
-<property name="cal_right_gripper_calib_link_pitch" value="0" />
-<property name="cal_right_gripper_calib_link_yaw" value="0" />
-<!-- left_gripper_calib_link -->
-<property name="cal_left_gripper_calib_link_x" value="-0.14248" />
-<property name="cal_left_gripper_calib_link_y" value="0.043151" />
-<property name="cal_left_gripper_calib_link_z" value="-0.077694" />
-<property name="cal_left_gripper_calib_link_roll" value="0" />
-<property name="cal_left_gripper_calib_link_pitch" value="0" />
-<property name="cal_left_gripper_calib_link_yaw" value="0" />
+<!-- right_gripper_calib_link1 -->
+<property name="cal_right_gripper_calib_link1_x" value="0.14415" />
+<property name="cal_right_gripper_calib_link1_y" value="0.027" />
+<property name="cal_right_gripper_calib_link1_z" value="-0.043" />
+<property name="cal_right_gripper_calib_link1_roll" value="-0.8" />
+<property name="cal_right_gripper_calib_link1_pitch" value="0" />
+<property name="cal_right_gripper_calib_link1_yaw" value="0" />
+<!-- right_gripper_calib_link2 -->
+<property name="cal_right_gripper_calib_link2_x" value="0.14215" />
+<property name="cal_right_gripper_calib_link2_y" value="0.026" />
+<property name="cal_right_gripper_calib_link2_z" value="-0.116" />
+<property name="cal_right_gripper_calib_link2_roll" value="-2.5" />
+<property name="cal_right_gripper_calib_link2_pitch" value="0" />
+<property name="cal_right_gripper_calib_link2_yaw" value="0" />
+<!-- left_gripper_calib_link1 -->
+<property name="cal_left_gripper_calib_link1_x" value="-0.14278" />
+<property name="cal_left_gripper_calib_link1_y" value="0.027" />
+<property name="cal_left_gripper_calib_link1_z" value="-0.043" />
+<property name="cal_left_gripper_calib_link1_roll" value="-0.8" />
+<property name="cal_left_gripper_calib_link1_pitch" value="0" />
+<property name="cal_left_gripper_calib_link1_yaw" value="0" />
+<!-- left_gripper_calib_link2 -->
+<property name="cal_left_gripper_calib_link2_x" value="-0.14278" />
+<property name="cal_left_gripper_calib_link2_y" value="0.026" />
+<property name="cal_left_gripper_calib_link2_z" value="-0.116" />
+<property name="cal_left_gripper_calib_link2_roll" value="-2.5" />
+<property name="cal_left_gripper_calib_link2_pitch" value="0" />
+<property name="cal_left_gripper_calib_link2_yaw" value="0" />
 </root>
 
 <!-- -0.0030
