@@ -4,7 +4,7 @@
     <include file="$(find velma_bringup)/launch/components/pgr_camera.launch" >
       <arg name="name" value="pgr_right"/>
       <arg name="camera_serial" value="13201080"/>
-      <arg name="frame_id" value="stereo_left_optical_frame"/>
+      <arg name="frame_id" value="stereo_right_optical_frame"/>
     </include>
     
     <node pkg="velma_controller" type="image_stamper_node" name="stereo_right_stamper">
@@ -37,6 +37,8 @@
     <arg name="camera" default="head_kinect" />
     <arg name="publish_tf" default="false" />
     <arg name="rgb_frame_id" default="head_kinect_rgb_optical_frame" />
+    <arg name="data_skip" default="2" />
+    <arg name="depth_registration" default="true" />
   </include>
 </launch>
 

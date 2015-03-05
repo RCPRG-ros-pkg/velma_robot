@@ -4,7 +4,6 @@
   <arg name="name" default="camera"/>
   <arg name="camera_serial" default="0" />
   <arg name="frame_id" default="camera" />
-  <arg name="calibrated" default="0" />
 
     <node pkg="pointgrey_camera_driver" type="camera_node" name="$(arg name)" >
       <param name="frame_id" value="$(arg frame_id)" />
@@ -21,6 +20,7 @@
       <param name="auto_packet_size" value="false" />
       <param name="packet_size" value="9000" />
       <param name="packet_delay" value="100" />
+      <param name="camera_info_url" value="file://$(find velma_description)/calibration/$(arg name).yaml" />
     </node>
 
 </launch>

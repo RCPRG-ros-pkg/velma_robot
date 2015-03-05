@@ -112,7 +112,8 @@
     </head_camera>
     
     <head_camera parent="stereo_left_link" name="stereo_right">
-      <origin xyz="0.0 -0.09 0.0" rpy="0 0 0"/>
+      <origin xyz="${cal_stereo_right_joint_x} ${cal_stereo_right_joint_y} ${cal_stereo_right_joint_z}"
+              rpy="${cal_stereo_right_joint_roll} ${cal_stereo_right_joint_pitch} ${cal_stereo_right_joint_yaw}"/>
     </head_camera>
     
     <head_camera parent="head_tilt_link" name="head_kinect_rgb">
