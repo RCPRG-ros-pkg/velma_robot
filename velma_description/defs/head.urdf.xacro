@@ -23,6 +23,12 @@
           <color rgba="0.5 0.5 0.5 1"/>
         </material>
       </visual>
+      <collision>
+        <origin xyz="0 0 0.0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/collision/head_base_collision.STL" />
+        </geometry>
+      </collision>
     </link>
     
     <joint name="head_pan_motor_joint" type="fixed">
@@ -41,6 +47,12 @@
           <color rgba="0.5 0.5 0.5 1"/>
         </material>
       </visual>
+      <collision>
+        <origin xyz="0 0 0.0308" rpy="0 0 0" />
+        <geometry>
+          <box size="0.14 0.09 0.06" />
+        </geometry>
+      </collision>
       <self_collision_checking>
         <origin xyz="0.0 0 0.04" rpy="0 0 0"/>
         <geometry>
@@ -69,6 +81,12 @@
           <color rgba="0.5 0.5 0.5 1"/>
         </material>
       </visual>
+      <collision>
+        <origin xyz="0 -0.00921 0.04463" rpy="0 0 0" />
+        <geometry>
+          <box size="0.08 0.08 0.08" />
+        </geometry>
+      </collision>
     </link>
     
     <!-- tilt -->
@@ -90,6 +108,12 @@
           <color rgba="0.5 0.5 0.5 1"/>
         </material>
       </visual>
+      <collision>
+        <origin xyz="0 0 0.04219" rpy="0 0 0 " />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/collision/head_top_collision.STL" />
+        </geometry>
+      </collision>
       <self_collision_checking>
         <origin xyz="0.0 0.12 0.0" rpy="-1.57075 0 0"/>
         <geometry>

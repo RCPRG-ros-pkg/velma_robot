@@ -6,66 +6,22 @@
 	 name="velma">
 
   <xacro:include filename="$(find velma_description)/calibration/default_cal.xml"/>
+  <xacro:include filename="$(find velma_description)/defs/torso_export.urdf.xacro"/>
+  <xacro:include filename="$(find velma_description)/defs/head_export.urdf.xacro" />
   <xacro:include filename="$(find lwr_defs)/defs/kuka_lwr_arm_defs_export.xml"/>
   <xacro:include filename="$(find lwr_defs)/defs/materials.xml"/>
   <xacro:include filename="$(find barrett_hand_defs)/defs/barret_hand_export.urdf.xacro"/>
 <!--
   <include filename="$(find velma_defs)/defs/kinect_camera.urdf.xacro" />
-  <include filename="$(find velma_defs)/defs/head.urdf.xacro" /> -->
+   -->
   
   <property name="M_PI" value="3.1415926535897931" />
   
   <link name="world" />
 
-  <joint name="arm_world_joint" type="fixed">
+  <velma_torso parent="world" >
     <origin xyz="0 0 0.1" rpy="0 0 0"/>
-    <parent link="world"/>
-    <child link="torso_base"/>
-  </joint>
-
-  <link name="torso_base">
-  </link>
-
-  <joint name="torso_0_joint" type="revolute">
-    <origin xyz="0 0 0.0" rpy="0 0 0"/>
-    <axis xyz="0 0 1"/>
-    <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
-    <parent link="torso_base"/>
-    <child link="torso_link0"/>
-  </joint>
-  
-  <link name="torso_link0">
-  </link>
-
-  <joint name="torso_1_joint" type="revolute">
-    <origin xyz="0 0 0.80" rpy="${M_PI/2} 0 0"/>
-    <axis xyz="0 0 -1"/>
-    <limit lower="-${M_PI/2}" upper="${105 * M_PI/180}" effort="100" velocity="100"/>
-    <parent link="torso_link0"/>
-    <child link="torso_link1"/>
-  </joint>
-
-  <link name="torso_link1">
-  </link>
-
-  <joint name="torso_2_joint" type="revolute">
-    <origin xyz="0.375 0 0" rpy="0 0 0"/>
-    <axis xyz="0 0 -1"/>
-    <limit lower="-1.57" upper="${M_PI/2}" effort="100" velocity="100"/>
-    <mimic joint="torso_1_joint" multiplier="-1"/>
-    <parent link="torso_link1"/>
-    <child link="torso_link2"/>
-  </joint>
-
-  <link name="torso_link2">
-    <visual>
-      <origin xyz="0 0.04 0" rpy="${-M_PI/2.0} 0 0.0" />
-      <!--origin xyz="-0.03 -0.07 0" rpy="0 0 -1.57"-->
-      <geometry>
-        <mesh filename="package://velma_description/meshes/arm_base_export.STL" />
-      </geometry>
-    </visual>
-  </link>
+  </velma_torso>
 
   <kuka_lwr_arm parent="torso_link2" name="right" right="1">
     <origin xyz="0 0.1641 0.07943" rpy="${-M_PI/6} 0 0"/>
@@ -87,7 +43,14 @@
       <geometry>
         <mesh filename="package://velma_description/meshes/gripper_mount_export.STL" />
       </geometry>
+      <material name="Orange"/>
     </visual>
+    <self_collision_checking>
+      <origin xyz="0.05 0.0 -0.03" rpy="0 -0.81 0"/>
+      <geometry>
+        <capsule radius="0.055" length="0.14"/>
+      </geometry>
+    </self_collision_checking>
   </link>
 
   <joint name="left_gripper_mount_joint" type="fixed">
@@ -102,15 +65,44 @@
       <geometry>
         <mesh filename="package://velma_description/meshes/gripper_mount_export.STL" />
       </geometry>
+      <material name="Orange"/>
     </visual>
+    <self_collision_checking>
+      <origin xyz="0.05 0.0 -0.03" rpy="0 -0.81 0"/>
+      <geometry>
+        <capsule radius="0.055" length="0.14"/>
+      </geometry>
+    </self_collision_checking>
   </link>
 
   <xacro:barret_hand prefix="right" parent="right_arm_7_link">
     <origin xyz="0.115 0.0 -0.078" rpy="0 ${M_PI/2} 0"/>
   </xacro:barret_hand>
 
+  <joint name="right_gripper_calib_joint" type="fixed">
+    <origin xyz="0 0.0445 0.031" rpy="0 0 0"/>
+    <parent link="right_HandPalmLink"/>
+    <child link="right_gripper_calib_link"/>
+  </joint>
+
+  <link name="right_gripper_calib_link">
+  </link>
+
   <xacro:barret_hand prefix="left" parent="left_arm_7_link">
     <origin xyz="-0.115 0.0 -0.078" rpy="0 ${-M_PI/2} 0"/>
   </xacro:barret_hand>
+  
+  <joint name="left_gripper_calib_joint" type="fixed">
+    <origin xyz="0 0.0445 0.031" rpy="0 0 0"/>
+    <parent link="left_HandPalmLink"/>
+    <child link="left_gripper_calib_link"/>
+  </joint>
+
+  <link name="left_gripper_calib_link">
+  </link>
+  
+  <velma_head parent="torso_link2">
+    <origin xyz="0 0.253 0.0" rpy="${-M_PI/2} 0 0"/>
+  </velma_head>
 
 </robot>
