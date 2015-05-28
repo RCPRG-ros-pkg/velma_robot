@@ -20,6 +20,13 @@
         </material>
       </visual>
 
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://velma_description/meshes/collision/torso_base_collision.STL" />
+        </geometry>
+      </collision>
+
       <self_collision_checking>
         <origin xyz="-0.2 0.0 0.6" rpy="1.57075 0 0"/>
         <geometry>
