@@ -10,23 +10,9 @@
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
     <group name="right_arm">
-        <joint name="right_arm_0_joint" />
-        <joint name="right_arm_1_joint" />
-        <joint name="right_arm_2_joint" />
-        <joint name="right_arm_3_joint" />
-        <joint name="right_arm_4_joint" />
-        <joint name="right_arm_5_joint" />
-        <joint name="right_arm_6_joint" />
         <chain base_link="torso_link2" tip_link="right_arm_7_link" />
     </group>
     <group name="left_arm">
-        <joint name="left_arm_0_joint" />
-        <joint name="left_arm_1_joint" />
-        <joint name="left_arm_2_joint" />
-        <joint name="left_arm_3_joint" />
-        <joint name="left_arm_4_joint" />
-        <joint name="left_arm_5_joint" />
-        <joint name="left_arm_6_joint" />
         <chain base_link="torso_link2" tip_link="left_arm_7_link" />
     </group>
     <group name="right_hand">
@@ -68,8 +54,8 @@
         <joint name="left_HandFingerTwoKnuckleThreeJoint" />
     </group>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="right_hand" parent_link="right_arm_7_link" group="right_hand" parent_group="right_arm" />
-    <end_effector name="left_hand" parent_link="left_arm_7_link" group="left_hand" parent_group="left_arm" />
+    <end_effector name="right_hand" parent_link="right_HandPalmLink" group="right_hand" parent_group="right_arm" />
+    <end_effector name="left_hand" parent_link="left_HandPalmLink" group="left_hand" parent_group="left_arm" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="calib_left_arm_base_link" link2="calib_right_arm_base_link" reason="Never" />
     <disable_collisions link1="calib_left_arm_base_link" link2="head_base" reason="Never" />
