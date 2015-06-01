@@ -19,6 +19,14 @@
   
   <link name="world" />
 
+  <!-- static connection between the world frame and the map frame -->
+  <link name="map" />
+  <joint name="world_map_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="map"/>
+  </joint>
+
   <velma_torso parent="world" >
     <origin xyz="0 0 0.1" rpy="0 0 0"/>
   </velma_torso>
