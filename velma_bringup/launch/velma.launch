@@ -14,7 +14,9 @@
 		<node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher"/>
 
 		<!-- startup hardware -->
-		<include file="$(find velma_controller)/launch/velma_controler.launch" />
+		<include file="$(find velma_controller)/launch/velma_controler.launch" >
+                    <arg name="HEAD_JOY" value="true" />
+                </include>
 		<include file="$(find barrett_hand_controller)/launch/single_hand.launch" >
                     <arg name="PREFIX" value="left"/>
                     <arg name="DEVICE" value="rtcan1"/>
@@ -23,18 +25,6 @@
                     <arg name="PREFIX" value="right"/>
                     <arg name="DEVICE" value="rtcan2"/>
                 </include>
-
-                <node
-                  name="right_arm_markers"
-                  pkg="velma_controller" type="arm_markers.py"
-                  args="right --">
-                </node>
-
-                <node
-                  name="left_arm_markers"
-                  pkg="velma_controller" type="arm_markers.py"
-                  args="left --">
-                </node>
 	</group>
 
 <!--	<group>
