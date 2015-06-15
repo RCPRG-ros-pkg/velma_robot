@@ -5,6 +5,11 @@
                         xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
 	 name="velma">
 
+  <xacro:arg name="collision_model_full" default="true"/>
+  <xacro:arg name="collision_model_simplified" default="false"/>
+  <xacro:arg name="collision_model_enlargement" default="0.0"/>
+  <xacro:arg name="collision_model_no_hands" default="false"/>
+
   <xacro:include filename="$(find velma_description)/calibration/default_cal.xml"/>
   <xacro:include filename="$(find velma_description)/defs/torso.urdf.xacro"/>
   <xacro:include filename="$(find velma_description)/defs/head.urdf.xacro" />
@@ -53,12 +58,16 @@
       </geometry>
       <material name="Orange"/>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <mesh filename="package://velma_description/meshes/collision/gripper_mount_collision.STL"/>
-      </geometry>
-    </collision>
+
+    <xacro:unless value="$(arg collision_model_no_hands)">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://velma_description/meshes/collision/gripper_mount_collision.STL"/>
+        </geometry>
+      </collision>
+    </xacro:unless>
+
     <self_collision_checking>
       <origin xyz="0.05 0.0 -0.03" rpy="0 -0.81 0"/>
       <geometry>
@@ -81,12 +90,16 @@
       </geometry>
       <material name="Orange"/>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <mesh filename="package://velma_description/meshes/collision/gripper_mount_collision.STL"/>
-      </geometry>
-    </collision>
+
+    <xacro:unless value="$(arg collision_model_no_hands)">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://velma_description/meshes/collision/gripper_mount_collision.STL"/>
+        </geometry>
+      </collision>
+    </xacro:unless>
+
     <self_collision_checking>
       <origin xyz="0.05 0.0 -0.03" rpy="0 -0.81 0"/>
       <geometry>
