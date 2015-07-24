@@ -10,6 +10,6 @@ catkin_package(
 #  DEPENDS system_lib
 )
 
-install(DIRECTORY urdf robots meshes
+install(DIRECTORY calibration defs launch robots meshes
  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
