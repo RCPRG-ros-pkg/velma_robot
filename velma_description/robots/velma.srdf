@@ -103,6 +103,7 @@
     <disable_collisions link1="head_base" link2="torso_link1_viz1" reason="Never" />
     <disable_collisions link1="head_base" link2="torso_link1_viz2" reason="Never" />
     <disable_collisions link1="head_base" link2="torso_link2" reason="Adjacent" />
+    <disable_collisions link1="head_tilt_link" link2="head_pan_motor" reason="Adjacent" />
     <disable_collisions link1="head_pan_link" link2="head_pan_motor" reason="Adjacent" />
     <disable_collisions link1="head_pan_link" link2="head_tilt_link" reason="Adjacent" />
     <disable_collisions link1="head_pan_link" link2="left_arm_1_link" reason="Never" />
