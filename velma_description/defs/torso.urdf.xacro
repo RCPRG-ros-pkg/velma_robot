@@ -62,11 +62,12 @@
       </collision>
 
       <self_collision_checking>
-        <origin xyz="0 0.0 0.4" rpy="0 0 0"/>
+        <origin xyz="0 0.0 0.8" rpy="0 0 0"/>
         <geometry>
-          <capsule radius="0.20" length="0.8"/>
+          <capsule radius="0.20" length="1.0"/>
         </geometry>
       </self_collision_checking>
+<!--
       <self_collision_checking>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -87,7 +88,7 @@
           </convex>
         </geometry>
       </self_collision_checking>
-
+-->
     </link>
 
     <joint name="torso_1_joint" type="revolute">
