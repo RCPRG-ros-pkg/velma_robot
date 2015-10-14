@@ -36,11 +36,11 @@
     <origin xyz="0 0 0.1" rpy="0 0 0"/>
   </velma_torso>
 
-  <kuka_lwr_arm parent="torso_link2" name="right" right="1">
-    <origin xyz="0 0.1641 0.07943" rpy="${-M_PI/6} 0 0"/>
+  <kuka_lwr_arm parent="torso_link0" name="right" right="1">
+    <origin xyz="0 -0.000188676 1.17335" rpy="0 ${-M_PI/3} ${M_PI/2}"/>
   </kuka_lwr_arm>
   
-  <kuka_lwr_arm parent="torso_link2" name="left" right="1">
+  <kuka_lwr_arm parent="torso_link0" name="left" right="1">
     <origin xyz="${cal_torso_link2_left_arm_base_joint_x} ${cal_torso_link2_left_arm_base_joint_y} ${cal_torso_link2_left_arm_base_joint_z}" rpy="${cal_torso_link2_left_arm_base_joint_roll} ${cal_torso_link2_left_arm_base_joint_pitch} ${cal_torso_link2_left_arm_base_joint_yaw}"/>
   </kuka_lwr_arm>
 
@@ -177,7 +177,7 @@
               rpy="${cal_left_hand_camera_joint_roll} ${cal_left_hand_camera_joint_pitch} ${cal_left_hand_camera_joint_yaw}"/>
   </head_camera>
   
-  <velma_head parent="torso_link2">
+  <velma_head parent="torso_link0">
     <origin xyz="${cal_head_base_joint_x} ${cal_head_base_joint_y} ${cal_head_base_joint_z}" rpy="${cal_head_base_joint_roll} ${cal_head_base_joint_pitch} ${cal_head_base_joint_yaw}"/>
   </velma_head>
 

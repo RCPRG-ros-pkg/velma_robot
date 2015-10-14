@@ -16,19 +16,19 @@
 <property name="cal_stereo_right_joint_pitch" value="0.016076" />
 <property name="cal_stereo_right_joint_yaw" value="0.0072743" />
 <!-- torso_link2_left_arm_base_joint -->
-<property name="cal_torso_link2_left_arm_base_joint_x" value="-0.0011204" />
-<property name="cal_torso_link2_left_arm_base_joint_y" value="0.16386" />
-<property name="cal_torso_link2_left_arm_base_joint_z" value="-0.08027" />
-<property name="cal_torso_link2_left_arm_base_joint_roll" value="-2.6156" />
-<property name="cal_torso_link2_left_arm_base_joint_pitch" value="0.0051289" />
-<property name="cal_torso_link2_left_arm_base_joint_yaw" value="-0.0063119" />
+<property name="cal_torso_link2_left_arm_base_joint_x" value="0.0" />
+<property name="cal_torso_link2_left_arm_base_joint_y" value="0.000188676" />
+<property name="cal_torso_link2_left_arm_base_joint_z" value="1.17335" />
+<property name="cal_torso_link2_left_arm_base_joint_roll" value="0" />
+<property name="cal_torso_link2_left_arm_base_joint_pitch" value="${M_PI/3}" />
+<property name="cal_torso_link2_left_arm_base_joint_yaw" value="${M_PI/2}" />
 <!-- head_base_joint -->
 <property name="cal_head_base_joint_x" value="0.010265" />
-<property name="cal_head_base_joint_y" value="0.25628" />
-<property name="cal_head_base_joint_z" value="-0.0005145" />
-<property name="cal_head_base_joint_roll" value="-1.5695" />
-<property name="cal_head_base_joint_pitch" value="0.014187" />
-<property name="cal_head_base_joint_yaw" value="0.00042843" />
+<property name="cal_head_base_joint_y" value="0.0" />
+<property name="cal_head_base_joint_z" value="1.3112" />
+<property name="cal_head_base_joint_roll" value="0.0" />
+<property name="cal_head_base_joint_pitch" value="0.0" />
+<property name="cal_head_base_joint_yaw" value="0.0" />
 <!-- head_kinect_rgb_joint -->
 <property name="cal_head_kinect_rgb_joint_x" value="0.048898" />
 <property name="cal_head_kinect_rgb_joint_y" value="0.19993" />
