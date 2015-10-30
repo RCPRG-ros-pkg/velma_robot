@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <launch>
+<!--
   <group ns="right_camera">
     <include file="$(find velma_bringup)/launch/components/pgr_camera.launch" >
       <arg name="name" value="pgr_right"/>
@@ -32,7 +33,7 @@
     <node pkg="stereo_image_proc" type="stereo_image_proc" name="stereo_image_proc" >
     </node>
   </group>
-
+-->
   <include file="$(find freenect_launch)/launch/freenect.launch">
     <arg name="camera" default="head_kinect" />
     <arg name="publish_tf" default="false" />

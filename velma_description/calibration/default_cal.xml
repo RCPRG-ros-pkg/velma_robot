@@ -1,6 +1,36 @@
 <?xml version="1.0"?>
 
 <root>
+<!-- head_base_joint -->
+<property name="cal_head_base_joint_x" value="0.020988" />
+<property name="cal_head_base_joint_y" value="-0.00041436" />
+<property name="cal_head_base_joint_z" value="1.3117" />
+<property name="cal_head_base_joint_roll" value="0.00040339" />
+<property name="cal_head_base_joint_pitch" value="-0.0062724" />
+<property name="cal_head_base_joint_yaw" value="-0.048944" />
+<!-- head_kinect_rgb_joint -->
+<property name="cal_head_kinect_rgb_joint_x" value="0.062644" />
+<property name="cal_head_kinect_rgb_joint_y" value="0.19458" />
+<property name="cal_head_kinect_rgb_joint_z" value="0.017223" />
+<property name="cal_head_kinect_rgb_joint_roll" value="-1.5527" />
+<property name="cal_head_kinect_rgb_joint_pitch" value="0.015593" />
+<property name="cal_head_kinect_rgb_joint_yaw" value="-0.094166" />
+<!-- right_gripper_calib_link1 -->
+<property name="cal_right_gripper_calib_link1_x" value="0.14271" />
+<property name="cal_right_gripper_calib_link1_y" value="0.029958" />
+<property name="cal_right_gripper_calib_link1_z" value="-0.046211" />
+<property name="cal_right_gripper_calib_link1_roll" value="0" />
+<property name="cal_right_gripper_calib_link1_pitch" value="0" />
+<property name="cal_right_gripper_calib_link1_yaw" value="0" />
+<!-- left_gripper_calib_link1 -->
+<property name="cal_left_gripper_calib_link1_x" value="-0.1422" />
+<property name="cal_left_gripper_calib_link1_y" value="0.036903" />
+<property name="cal_left_gripper_calib_link1_z" value="-0.051417" />
+<property name="cal_left_gripper_calib_link1_roll" value="0" />
+<property name="cal_left_gripper_calib_link1_pitch" value="0" />
+<property name="cal_left_gripper_calib_link1_yaw" value="0" />
+
+
 <!-- stereo_left_joint -->
 <property name="cal_stereo_left_joint_x" value="0.013633" />
 <property name="cal_stereo_left_joint_y" value="0.22937" />
@@ -22,20 +52,6 @@
 <property name="cal_torso_link2_left_arm_base_joint_roll" value="0" />
 <property name="cal_torso_link2_left_arm_base_joint_pitch" value="${M_PI/3}" />
 <property name="cal_torso_link2_left_arm_base_joint_yaw" value="${M_PI/2}" />
-<!-- head_base_joint -->
-<property name="cal_head_base_joint_x" value="0.010265" />
-<property name="cal_head_base_joint_y" value="0.0" />
-<property name="cal_head_base_joint_z" value="1.3112" />
-<property name="cal_head_base_joint_roll" value="0.0" />
-<property name="cal_head_base_joint_pitch" value="0.0" />
-<property name="cal_head_base_joint_yaw" value="0.0" />
-<!-- head_kinect_rgb_joint -->
-<property name="cal_head_kinect_rgb_joint_x" value="0.048898" />
-<property name="cal_head_kinect_rgb_joint_y" value="0.19993" />
-<property name="cal_head_kinect_rgb_joint_z" value="0.019835" />
-<property name="cal_head_kinect_rgb_joint_roll" value="-1.5621" />
-<property name="cal_head_kinect_rgb_joint_pitch" value="0.023892" />
-<property name="cal_head_kinect_rgb_joint_yaw" value="-0.025144" />
 <!-- left_hand_camera_joint -->
 <property name="cal_left_hand_camera_joint_x" value="-0.12137" />
 <property name="cal_left_hand_camera_joint_y" value="-0.0026114" />
@@ -43,20 +59,11 @@
 <property name="cal_left_hand_camera_joint_roll" value="3.1346" />
 <property name="cal_left_hand_camera_joint_pitch" value="0.030088" />
 <property name="cal_left_hand_camera_joint_yaw" value="3.1339" />
-<!-- right_gripper_calib_link1 -->
-<property name="cal_right_gripper_calib_link1_x" value="0.14254" />
-<property name="cal_right_gripper_calib_link1_y" value="0.026773" />
-<property name="cal_right_gripper_calib_link1_z" value="-0.042307" />
 
 <!-- right_gripper_calib_link2 -->
 <property name="cal_right_gripper_calib_link2_x" value="0.14019" />
 <property name="cal_right_gripper_calib_link2_y" value="0.026731" />
 <property name="cal_right_gripper_calib_link2_z" value="-0.11236" />
-
-<!-- left_gripper_calib_link1 -->
-<property name="cal_left_gripper_calib_link1_x" value="-0.14296" />
-<property name="cal_left_gripper_calib_link1_y" value="0.024821" />
-<property name="cal_left_gripper_calib_link1_z" value="-0.041817" />
 
 <!-- left_gripper_calib_link2 -->
 <property name="cal_left_gripper_calib_link2_x" value="-0.14349" />
