@@ -130,10 +130,16 @@
     <disable_collisions link1="left_HandFingerOneKnuckleOneLink" link2="left_gripper_mount_link" reason="Never" />
     <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_HandFingerOneKnuckleTwoLink" reason="Adjacent" />
     <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_HandFingerTwoKnuckleOneLink" reason="Never" />
+    <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_HandFingerTwoKnuckleTwoLink" reason="Never" />
+    <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_HandFingerTwoKnuckleThreeLink" reason="Never" />
+    <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_HandFingerThreeKnuckleTwoLink" reason="Never" />
+    <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_HandFingerThreeKnuckleThreeLink" reason="Never" />
     <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_arm_6_link" reason="Never" />
     <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_arm_7_link" reason="Never" />
     <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_gripper_mount_link" reason="Never" />
+    <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_HandPalmLink" reason="Never" />
     <disable_collisions link1="left_HandFingerOneKnuckleTwoLink" link2="left_HandFingerThreeKnuckleThreeLink" reason="Never" />
+    <disable_collisions link1="left_HandFingerOneKnuckleTwoLink" link2="left_HandFingerTwoKnuckleThreeLink" reason="Never" />
     <disable_collisions link1="left_HandFingerOneKnuckleTwoLink" link2="left_HandFingerThreeKnuckleTwoLink" reason="Never" />
     <disable_collisions link1="left_HandFingerOneKnuckleTwoLink" link2="left_HandFingerTwoKnuckleOneLink" reason="Never" />
     <disable_collisions link1="left_HandFingerOneKnuckleTwoLink" link2="left_HandFingerTwoKnuckleTwoLink" reason="Never" />
@@ -163,10 +169,13 @@
     <disable_collisions link1="left_HandFingerTwoKnuckleOneLink" link2="left_arm_6_link" reason="Never" />
     <disable_collisions link1="left_HandFingerTwoKnuckleOneLink" link2="left_arm_7_link" reason="Never" />
     <disable_collisions link1="left_HandFingerTwoKnuckleOneLink" link2="left_gripper_mount_link" reason="Never" />
+    <disable_collisions link1="left_HandFingerTwoKnuckleThreeLink" link2="left_HandFingerThreeKnuckleTwoLink" reason="Adjacent" />
+    <disable_collisions link1="left_HandFingerTwoKnuckleThreeLink" link2="left_HandFingerThreeKnuckleThreeLink" reason="Adjacent" />
     <disable_collisions link1="left_HandFingerTwoKnuckleThreeLink" link2="left_HandFingerTwoKnuckleTwoLink" reason="Adjacent" />
     <disable_collisions link1="left_HandFingerTwoKnuckleThreeLink" link2="left_arm_6_link" reason="Never" />
     <disable_collisions link1="left_HandFingerTwoKnuckleThreeLink" link2="left_arm_7_link" reason="Never" />
     <disable_collisions link1="left_HandFingerTwoKnuckleThreeLink" link2="left_gripper_mount_link" reason="Never" />
+    <disable_collisions link1="left_HandFingerTwoKnuckleThreeLink" link2="left_HandPalmLink" reason="Never" />
     <disable_collisions link1="left_HandFingerTwoKnuckleTwoLink" link2="left_HandPalmLink" reason="Never" />
     <disable_collisions link1="left_HandFingerTwoKnuckleTwoLink" link2="left_arm_6_link" reason="Never" />
     <disable_collisions link1="left_HandFingerTwoKnuckleTwoLink" link2="left_arm_7_link" reason="Never" />
@@ -239,9 +248,16 @@
     <disable_collisions link1="right_HandFingerOneKnuckleOneLink" link2="right_gripper_mount_link" reason="Never" />
     <disable_collisions link1="right_HandFingerOneKnuckleThreeLink" link2="right_HandFingerOneKnuckleTwoLink" reason="Adjacent" />
     <disable_collisions link1="right_HandFingerOneKnuckleThreeLink" link2="right_HandFingerTwoKnuckleOneLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleThreeLink" link2="right_HandFingerTwoKnuckleTwoLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleThreeLink" link2="right_HandFingerTwoKnuckleThreeLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleThreeLink" link2="right_HandFingerThreeKnuckleTwoLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleThreeLink" link2="right_HandFingerThreeKnuckleThreeLink" reason="Never" />
     <disable_collisions link1="right_HandFingerOneKnuckleThreeLink" link2="right_arm_6_link" reason="Never" />
     <disable_collisions link1="right_HandFingerOneKnuckleThreeLink" link2="right_arm_7_link" reason="Never" />
     <disable_collisions link1="right_HandFingerOneKnuckleThreeLink" link2="right_gripper_mount_link" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleThreeLink" link2="right_HandPalmLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleTwoLink" link2="right_HandFingerThreeKnuckleThreeLink" reason="Never" />
+    <disable_collisions link1="right_HandFingerOneKnuckleTwoLink" link2="right_HandFingerTwoKnuckleThreeLink" reason="Never" />
     <disable_collisions link1="right_HandFingerOneKnuckleTwoLink" link2="right_HandFingerThreeKnuckleTwoLink" reason="Never" />
     <disable_collisions link1="right_HandFingerOneKnuckleTwoLink" link2="right_HandFingerTwoKnuckleOneLink" reason="Never" />
     <disable_collisions link1="right_HandFingerOneKnuckleTwoLink" link2="right_HandFingerTwoKnuckleTwoLink" reason="Never" />
@@ -271,10 +287,13 @@
     <disable_collisions link1="right_HandFingerTwoKnuckleOneLink" link2="right_arm_6_link" reason="Never" />
     <disable_collisions link1="right_HandFingerTwoKnuckleOneLink" link2="right_arm_7_link" reason="Never" />
     <disable_collisions link1="right_HandFingerTwoKnuckleOneLink" link2="right_gripper_mount_link" reason="Never" />
+    <disable_collisions link1="right_HandFingerTwoKnuckleThreeLink" link2="right_HandFingerThreeKnuckleTwoLink" reason="Adjacent" />
+    <disable_collisions link1="right_HandFingerTwoKnuckleThreeLink" link2="right_HandFingerThreeKnuckleThreeLink" reason="Adjacent" />
     <disable_collisions link1="right_HandFingerTwoKnuckleThreeLink" link2="right_HandFingerTwoKnuckleTwoLink" reason="Adjacent" />
     <disable_collisions link1="right_HandFingerTwoKnuckleThreeLink" link2="right_arm_6_link" reason="Never" />
     <disable_collisions link1="right_HandFingerTwoKnuckleThreeLink" link2="right_arm_7_link" reason="Never" />
     <disable_collisions link1="right_HandFingerTwoKnuckleThreeLink" link2="right_gripper_mount_link" reason="Never" />
+    <disable_collisions link1="right_HandFingerTwoKnuckleThreeLink" link2="right_HandPalmLink" reason="Never" />
     <disable_collisions link1="right_HandFingerTwoKnuckleTwoLink" link2="right_HandPalmLink" reason="Never" />
     <disable_collisions link1="right_HandFingerTwoKnuckleTwoLink" link2="right_arm_6_link" reason="Never" />
     <disable_collisions link1="right_HandFingerTwoKnuckleTwoLink" link2="right_arm_7_link" reason="Never" />
