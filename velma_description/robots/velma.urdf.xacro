@@ -33,7 +33,7 @@
   </joint>
 
   <velma_torso parent="world" >
-    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
   </velma_torso>
 
   <kuka_lwr_arm parent="torso_link0" name="right" right="1">
