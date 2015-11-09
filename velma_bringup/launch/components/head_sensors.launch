@@ -40,6 +40,7 @@
     <arg name="rgb_frame_id" default="head_kinect_rgb_optical_frame" />
     <arg name="data_skip" default="2" />
     <arg name="depth_registration" default="true" />
+    <arg name="rgb_camera_info_url" default="file://$(find velma_description)/calibration/head_kinect_rgb.yaml" />
   </include>
 </launch>
 
