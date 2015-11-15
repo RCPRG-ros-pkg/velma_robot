@@ -11,7 +11,7 @@
     <link name="torso_base">
 
       <visual>
-        <origin xyz="0 0 0" rpy="0.0 0 0" />
+        <origin xyz="0 0 0.1" rpy="0.0 0 0" />
         <geometry>
           <mesh filename="package://velma_description/meshes/torso_base.STL" />
         </geometry>
@@ -21,7 +21,7 @@
       </visual>
 
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0 0 0.1" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://velma_description/meshes/collision/torso_base_collision.STL" />
         </geometry>
@@ -49,6 +49,16 @@
         <origin xyz="0 0 0.219" rpy="0.0 0 0" />
         <geometry>
           <mesh filename="package://velma_description/meshes/base_asm.STL" />
+        </geometry>
+        <material name="torso_base">
+          <color rgba="0.5 0.5 0.5 1"/>
+        </material>
+      </visual>
+
+      <visual>
+        <origin xyz="-0.01 0 0.93" rpy="0.0 0 0" />
+        <geometry>
+          <box size="0.28 0.24 0.32" />
         </geometry>
         <material name="torso_base">
           <color rgba="0.5 0.5 0.5 1"/>
