@@ -25,7 +25,8 @@
   <link name="world" />
 
   <!-- static connection between the world frame and the map frame -->
-  <link name="map" />
+  <link name="map"/>
+
   <joint name="world_map_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="world"/>
@@ -75,6 +76,11 @@
       </geometry>
     </self_collision_checking>
 
+    <inertial>
+      <mass value="0.2"/>
+      <origin rpy="0 0 0" xyz="0 0 0.0625"/>
+      <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+    </inertial>
   </link>
 
   <joint name="left_gripper_mount_joint" type="fixed">
@@ -108,6 +114,11 @@
       </geometry>
     </self_collision_checking>
 
+    <inertial>
+      <mass value="0.2"/>
+      <origin rpy="0 0 0" xyz="0 0 0.0625"/>
+      <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+    </inertial>
   </link>
 
   <xacro:barret_hand prefix="right" parent="right_arm_7_link">
@@ -120,8 +131,7 @@
     <child link="right_gripper_calib_link"/>
   </joint>
 
-  <link name="right_gripper_calib_link">
-  </link>
+  <link name="right_gripper_calib_link"/>
 
   <joint name="right_gripper_calib_joint1" type="fixed">
     <origin xyz="${cal_right_gripper_calib_link1_x} ${cal_right_gripper_calib_link1_y} ${cal_right_gripper_calib_link1_z}" rpy="${cal_right_gripper_calib_link1_roll} ${cal_right_gripper_calib_link1_pitch} ${cal_right_gripper_calib_link1_yaw}"/>
@@ -129,8 +139,7 @@
     <child link="right_gripper_calib_link1"/>
   </joint>
 
-  <link name="right_gripper_calib_link1">
-  </link>
+  <link name="right_gripper_calib_link1"/>
 
   <joint name="right_gripper_calib_joint2" type="fixed">
     <origin xyz="${cal_right_gripper_calib_link2_x} ${cal_right_gripper_calib_link2_y} ${cal_right_gripper_calib_link2_z}" rpy="${cal_right_gripper_calib_link2_roll} ${cal_right_gripper_calib_link2_pitch} ${cal_right_gripper_calib_link2_yaw}"/>
@@ -138,8 +147,7 @@
     <child link="right_gripper_calib_link2"/>
   </joint>
 
-  <link name="right_gripper_calib_link2">
-  </link>
+  <link name="right_gripper_calib_link2"/>
 
   <xacro:barret_hand prefix="left" parent="left_arm_7_link">
     <origin xyz="-0.115 0.0 -0.078" rpy="0 ${-M_PI/2} 0"/>
@@ -151,8 +159,7 @@
     <child link="left_gripper_calib_link"/>
   </joint>
 
-  <link name="left_gripper_calib_link">
-  </link>
+  <link name="left_gripper_calib_link"/>
   
   <joint name="left_gripper_calib_joint1" type="fixed">
     <origin xyz="${cal_left_gripper_calib_link1_x} ${cal_left_gripper_calib_link1_y} ${cal_left_gripper_calib_link1_z}" rpy="${cal_left_gripper_calib_link1_roll} ${cal_left_gripper_calib_link1_pitch} ${cal_left_gripper_calib_link1_yaw}"/>
@@ -160,8 +167,7 @@
     <child link="left_gripper_calib_link1"/>
   </joint>
 
-  <link name="left_gripper_calib_link1">
-  </link>
+  <link name="left_gripper_calib_link1"/>
   
   <joint name="left_gripper_calib_joint2" type="fixed">
     <origin xyz="${cal_left_gripper_calib_link2_x} ${cal_left_gripper_calib_link2_y} ${cal_left_gripper_calib_link2_z}" rpy="${cal_left_gripper_calib_link2_roll} ${cal_left_gripper_calib_link2_pitch} ${cal_left_gripper_calib_link2_yaw}"/>
@@ -169,8 +175,7 @@
     <child link="left_gripper_calib_link2"/>
   </joint>
 
-  <link name="left_gripper_calib_link2">
-  </link>
+  <link name="left_gripper_calib_link2"/>
   
   <head_camera parent="left_arm_7_link" name="left_hand_camera">
       <origin xyz="${cal_left_hand_camera_joint_x} ${cal_left_hand_camera_joint_y} ${cal_left_hand_camera_joint_z}"

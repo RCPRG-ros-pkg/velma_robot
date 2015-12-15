@@ -29,6 +29,11 @@
           <mesh filename="package://velma_description/meshes/collision/head_base_collision.STL" />
         </geometry>
       </collision>
+      <inertial>
+        <mass value="0.2"/>
+        <origin rpy="0 0 0" xyz="0 0 0.0625"/>
+        <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+      </inertial>
     </link>
     
     <joint name="head_pan_motor_joint" type="fixed">
@@ -59,6 +64,11 @@
           <capsule radius="0.07" length="0.08"/>
         </geometry>
       </self_collision_checking>
+      <inertial>
+        <mass value="0.2"/>
+        <origin rpy="0 0 0" xyz="0 0 0.0625"/>
+        <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+      </inertial>
     </link>
     
     <!-- pan -->
@@ -87,6 +97,11 @@
           <box size="0.08 0.08 0.08" />
         </geometry>
       </collision>
+      <inertial>
+        <mass value="0.2"/>
+        <origin rpy="0 0 0" xyz="0 0 0.0625"/>
+        <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+      </inertial>
     </link>
     
     <!-- tilt -->
@@ -139,6 +154,11 @@
           <capsule radius="0.07" length="0.23"/>
         </geometry>
       </self_collision_checking>
+      <inertial>
+        <mass value="0.2"/>
+        <origin rpy="0 0 0" xyz="0 0 0.0625"/>
+        <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+      </inertial>
     </link>
     
     <!-- sensors -->
