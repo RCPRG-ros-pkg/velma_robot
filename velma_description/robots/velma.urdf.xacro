@@ -16,9 +16,21 @@
   <xacro:include filename="$(find lwr_defs)/defs/kuka_lwr_arm_defs.xml"/>
   <xacro:include filename="$(find lwr_defs)/defs/materials.xml"/>
   <xacro:include filename="$(find barrett_hand_defs)/defs/barret_hand.urdf.xacro"/>
+
 <!--
   <include filename="$(find velma_defs)/defs/kinect_camera.urdf.xacro" />
    -->
+
+  <!-- Gazebo Plugin -->
+  <gazebo>
+    <plugin name="rtt_gazebo" filename="librtt_gazebo_deployer.so">
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>VelmaGazebo</type>
+        <name>VelmaSim</name>
+      </component>
+    </plugin>
+  </gazebo>
   
   <property name="M_PI" value="3.1415926535897931" />
   
