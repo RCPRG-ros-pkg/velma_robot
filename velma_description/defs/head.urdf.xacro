@@ -77,8 +77,8 @@
       <axis xyz="0 0 1"/>
       <parent link="head_pan_motor"/>
       <child link="head_pan_link"/>
-      
       <limit lower="-1.57" upper="1.57" effort="100" velocity="1.57"/>
+      <dynamics damping="0.1"/>
     </joint>
     
     <link name="head_pan_link">
@@ -111,6 +111,7 @@
       <parent link="head_pan_link"/>
       <child link="head_tilt_link"/>
       <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
+      <dynamics damping="0.1"/>
     </joint>
     
     <link name="head_tilt_link">
