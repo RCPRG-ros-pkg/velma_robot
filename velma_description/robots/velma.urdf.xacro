@@ -10,6 +10,9 @@
   <xacro:arg name="collision_model_enlargement" default="0.0"/>
   <xacro:arg name="collision_model_no_hands" default="false"/>
 
+  <xacro:arg name="gazebo_script" default="false"/>
+  <xacro:arg name="gazebo_ops_file"/>
+
   <xacro:include filename="$(find velma_description)/calibration/default_cal.xml"/>
   <xacro:include filename="$(find velma_description)/defs/torso.urdf.xacro"/>
   <xacro:include filename="$(find velma_description)/defs/head.urdf.xacro" />
@@ -29,6 +32,11 @@
         <type>VelmaGazebo</type>
         <name>VelmaSim</name>
       </component>
+      <xacro:if value="$(arg gazebo_script)">
+        <orocosScript>
+          <filename>$(arg gazebo_ops_file)</filename>
+        </orocosScript>
+      </xacro:if>
     </plugin>
   </gazebo>
   
