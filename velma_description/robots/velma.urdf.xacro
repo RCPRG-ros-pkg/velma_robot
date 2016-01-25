@@ -141,7 +141,7 @@
     </inertial>
   </link>
 
-  <xacro:barret_hand prefix="right" parent="right_arm_7_link">
+  <xacro:barret_hand prefix="right" parent="right_arm_7_link" with_optoforce="false">
     <origin xyz="0.115 0.0 -0.078" rpy="0 ${M_PI/2} 0"/>
   </xacro:barret_hand>
 
@@ -169,7 +169,7 @@
 
   <link name="right_gripper_calib_link2"/>
 
-  <xacro:barret_hand prefix="left" parent="left_arm_7_link">
+  <xacro:barret_hand prefix="left" parent="left_arm_7_link" with_optoforce="true">
     <origin xyz="-0.115 0.0 -0.078" rpy="0 ${-M_PI/2} 0"/>
   </xacro:barret_hand>
   
