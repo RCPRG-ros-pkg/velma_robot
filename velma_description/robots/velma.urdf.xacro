@@ -44,6 +44,16 @@
         <type>VelmaGazeboTactile</type>
         <name>VelmaGazeboRightHandTactile</name>
       </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>BarrettHandGazebo</type>
+        <name>RightHand</name>
+      </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>BarrettHandGazebo</type>
+        <name>LeftHand</name>
+      </component>
     </plugin>
   </gazebo>
 <!--
