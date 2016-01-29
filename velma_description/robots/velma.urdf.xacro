@@ -41,11 +41,6 @@
       </xacro:if>
       <component>
         <package>velma_sim_gazebo</package>
-        <type>VelmaGazeboTactile</type>
-        <name>VelmaGazeboRightHandTactile</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
         <type>BarrettHandGazebo</type>
         <name>RightHand</name>
       </component>
@@ -53,6 +48,16 @@
         <package>velma_sim_gazebo</package>
         <type>BarrettHandGazebo</type>
         <name>LeftHand</name>
+      </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>BarrettTactileGazebo</type>
+        <name>RightHandTactile</name>
+      </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>OptoforceGazebo</type>
+        <name>LeftHandOptoforce</name>
       </component>
     </plugin>
   </gazebo>
