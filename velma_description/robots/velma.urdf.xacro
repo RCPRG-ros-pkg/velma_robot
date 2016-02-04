@@ -59,6 +59,16 @@
         <type>OptoforceGazebo</type>
         <name>LeftHandOptoforce</name>
       </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>FtSensorGazebo</type>
+        <name>LeftFtSensor</name>
+      </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>FtSensorGazebo</type>
+        <name>RightFtSensor</name>
+      </component>
     </plugin>
   </gazebo>
 <!--
