@@ -181,6 +181,10 @@
     </inertial>
   </link>
 
+  <gazebo reference="right_gripper_mount_link">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
   <joint name="left_gripper_mount_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 ${M_PI}"/>
     <parent link="left_arm_7_link"/>
@@ -218,6 +222,10 @@
       <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
     </inertial>
   </link>
+
+  <gazebo reference="left_gripper_mount_link">
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
 
   <xacro:barret_hand prefix="right" parent="right_arm_7_link" with_optoforce="false">
     <origin xyz="0.115 0.0 -0.078" rpy="0 ${M_PI/2} 0"/>
