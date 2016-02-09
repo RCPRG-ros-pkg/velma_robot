@@ -175,9 +175,9 @@
     </self_collision_checking>
 
     <inertial>
-      <mass value="0.2"/>
+      <mass value="0.002"/>
       <origin rpy="0 0 0" xyz="0 0 0.0625"/>
-      <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+      <inertia ixx="0.00000520833333333" ixy="0" ixz="0" iyy="0.00000520833333333" iyz="0" izz="0.00000520833333333"/>
     </inertial>
   </link>
 
@@ -217,9 +217,9 @@
     </self_collision_checking>
 
     <inertial>
-      <mass value="0.2"/>
+      <mass value="0.002"/>
       <origin rpy="0 0 0" xyz="0 0 0.0625"/>
-      <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+      <inertia ixx="0.00000520833333333" ixy="0" ixz="0" iyy="0.00000520833333333" iyz="0" izz="0.00000520833333333"/>
     </inertial>
   </link>
 
