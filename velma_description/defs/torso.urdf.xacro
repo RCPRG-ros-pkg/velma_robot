@@ -78,11 +78,11 @@
         </geometry>
         <material name="Orange"/>
       </visual>
-      
+
       <collision>
-        <origin xyz="-0.03338 0 0.519" rpy="0 0 0"/>
+        <origin xyz="0 0 0.52" rpy="0 0 0"/>
         <geometry>
-          <box size="0.34 0.3 0.6"/>
+          <mesh filename="package://velma_description/meshes/collision/torso0_collision.stl" />
         </geometry>
       </collision>
 
