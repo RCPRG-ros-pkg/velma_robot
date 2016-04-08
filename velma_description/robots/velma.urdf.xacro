@@ -2,7 +2,7 @@
 <robot xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
                         xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
                         xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-                        xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+                        xmlns:xacro="http://www.ros.org/wiki/xacro"
 	 name="velma">
 
   <xacro:arg name="collision_model_full" default="true"/>
@@ -11,7 +11,7 @@
   <xacro:arg name="collision_model_no_hands" default="false"/>
 
   <xacro:arg name="gazebo_script" default="false"/>
-  <xacro:arg name="gazebo_ops_file"/>
+  <xacro:arg name="gazebo_ops_file" default=""/>
   <xacro:arg name="use_gazebo_kinect" default="false"/>
 
   <xacro:include filename="$(find velma_description)/calibration/default_cal.xml"/>
@@ -22,10 +22,10 @@
   <xacro:include filename="$(find barrett_hand_defs)/defs/barret_hand.urdf.xacro"/>
 
 <!--
-  <include filename="$(find velma_defs)/defs/kinect_camera.urdf.xacro" />
+  <xacro:include filename="$(find velma_defs)/defs/kinect_camera.urdf.xacro" />
    -->
 
-  <property name="camera_name" value="head_kinect" />
+  <xacro:property name="camera_name" value="head_kinect" />
 
   <!-- Gazebo Plugin -->
   <gazebo>
@@ -118,7 +118,7 @@
       </sensor>
     </gazebo>
   </xacro:if>
-  <property name="M_PI" value="3.1415926535897931" />
+  <xacro:property name="M_PI" value="3.1415926535897931" />
   
   <link name="world" />
 

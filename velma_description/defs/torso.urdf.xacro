@@ -1,9 +1,12 @@
 <?xml version="1.0"?>
-<robot>
-  <macro name="velma_torso" params="parent *origin">
+<robot xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+                        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+                        xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+                        xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="velma_torso" params="parent *origin">
   
     <joint name="torso_base_joint" type="fixed">
-      <insert_block name="origin" />
+      <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
       <child link="torso_base"/>
     </joint>
@@ -99,5 +102,5 @@
         <inertia ixx="3.175" ixy="0" ixz="0" iyy="3.175" iyz="0" izz="1.35"/>
       </inertial>
     </link>
-  </macro>
+  </xacro:macro>
 </robot>
