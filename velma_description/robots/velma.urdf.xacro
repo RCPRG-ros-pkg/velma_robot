@@ -70,6 +70,7 @@
         <type>FtSensorGazebo</type>
         <name>RightFtSensor</name>
       </component>
+
     </plugin>
   </gazebo>
   <xacro:if value="$(arg use_gazebo_kinect)">
@@ -119,7 +120,7 @@
     </gazebo>
   </xacro:if>
   <xacro:property name="M_PI" value="3.1415926535897931" />
-  
+
   <link name="world" />
 
   <!-- static connection between the world frame and the map frame -->
@@ -142,6 +143,7 @@
   <kuka_lwr_arm parent="torso_link0" name="left" right="1">
     <origin xyz="${cal_torso_link2_left_arm_base_joint_x} ${cal_torso_link2_left_arm_base_joint_y} ${cal_torso_link2_left_arm_base_joint_z}" rpy="${cal_torso_link2_left_arm_base_joint_roll} ${cal_torso_link2_left_arm_base_joint_pitch} ${cal_torso_link2_left_arm_base_joint_yaw}"/>
   </kuka_lwr_arm>
+
 
   <joint name="right_gripper_mount_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -183,6 +185,7 @@
 
   <gazebo reference="right_gripper_mount_link">
     <turnGravityOff>false</turnGravityOff>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <joint name="left_gripper_mount_joint" type="fixed">
@@ -225,12 +228,17 @@
 
   <gazebo reference="left_gripper_mount_link">
     <turnGravityOff>false</turnGravityOff>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <xacro:barret_hand prefix="right" parent="right_arm_7_link" with_optoforce="false">
     <origin xyz="0.115 0.0 -0.078" rpy="0 ${M_PI/2} 0"/>
   </xacro:barret_hand>
+  <xacro:barret_hand prefix="left" parent="left_arm_7_link" with_optoforce="true">
+    <origin xyz="-0.115 0.0 -0.078" rpy="0 ${-M_PI/2} 0"/>
+  </xacro:barret_hand>
 
+<!--
   <joint name="right_gripper_calib_joint" type="fixed">
     <origin xyz="${cal_right_gripper_calib_link_x} ${cal_right_gripper_calib_link_y} ${cal_right_gripper_calib_link_z}" rpy="0 0 0"/>
     <parent link="right_arm_7_link"/>
@@ -254,11 +262,8 @@
   </joint>
 
   <link name="right_gripper_calib_link2"/>
-
-  <xacro:barret_hand prefix="left" parent="left_arm_7_link" with_optoforce="true">
-    <origin xyz="-0.115 0.0 -0.078" rpy="0 ${-M_PI/2} 0"/>
-  </xacro:barret_hand>
-  
+-->
+<!--
   <joint name="left_gripper_calib_joint" type="fixed">
     <origin xyz="${cal_left_gripper_calib_link_x} ${cal_left_gripper_calib_link_y} ${cal_left_gripper_calib_link_z}" rpy="0 0 0"/>
     <parent link="left_arm_7_link"/>
@@ -287,7 +292,7 @@
       <origin xyz="${cal_left_hand_camera_joint_x} ${cal_left_hand_camera_joint_y} ${cal_left_hand_camera_joint_z}"
               rpy="${cal_left_hand_camera_joint_roll} ${cal_left_hand_camera_joint_pitch} ${cal_left_hand_camera_joint_yaw}"/>
   </head_camera>
-  
+  -->
   <velma_head parent="torso_link0">
     <origin xyz="${cal_head_base_joint_x} ${cal_head_base_joint_y} ${cal_head_base_joint_z}" rpy="${cal_head_base_joint_roll} ${cal_head_base_joint_pitch} ${cal_head_base_joint_yaw}"/>
   </velma_head>

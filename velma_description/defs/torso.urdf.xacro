@@ -3,6 +3,7 @@
                         xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
                         xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
                         xmlns:xacro="http://www.ros.org/wiki/xacro">
+
   <xacro:macro name="velma_torso" params="parent *origin">
   
     <joint name="torso_base_joint" type="fixed">
@@ -22,13 +23,14 @@
           <color rgba="0.3 0.3 0.3 1"/>
         </material>
       </visual>
-
+<!--
       <collision>
         <origin xyz="0 0 0.1" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://velma_description/meshes/collision/torso_base_collision.STL" />
         </geometry>
       </collision>
+-->
 <!--
       <self_collision_checking>
         <origin xyz="-0.2 0.0 0.6" rpy="1.57075 0 0"/>
@@ -43,6 +45,11 @@
         <inertia ixx="0.9" ixy="0" ixz="0" iyy="0.9" iyz="0" izz="1.35"/>
       </inertial>
     </link>
+
+    <gazebo reference="torso_base">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
 
     <joint name="torso_0_joint" type="revolute">
       <origin xyz="0 0 0.1" rpy="0 0 0"/>
@@ -102,5 +109,11 @@
         <inertia ixx="3.175" ixy="0" ixz="0" iyy="3.175" iyz="0" izz="1.35"/>
       </inertial>
     </link>
+
+    <gazebo reference="torso_link0">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
   </xacro:macro>
 </robot>

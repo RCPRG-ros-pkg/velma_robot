@@ -103,7 +103,12 @@
         <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
       </inertial>
     </link>
-    
+
+    <gazebo reference="head_pan_link">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
     <!-- tilt -->
     <joint name="head_tilt_joint" type="revolute">
       <origin xyz="0 0 0.048" rpy="1.57 0.0 0" />
@@ -161,7 +166,12 @@
         <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
       </inertial>
     </link>
-    
+
+    <gazebo reference="head_tilt_link">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
     <!-- sensors -->
     
     <head_camera parent="head_tilt_link" name="stereo_left">
