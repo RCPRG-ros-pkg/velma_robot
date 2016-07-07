@@ -32,8 +32,18 @@
     <plugin name="rtt_gazebo" filename="librtt_gazebo_deployer.so">
       <component>
         <package>velma_sim_gazebo</package>
-        <type>VelmaGazebo</type>
-        <name>VelmaSim</name>
+        <type>TorsoGazebo</type>
+        <name>TorsoSim</name>
+      </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>LWRGazebo</type>
+        <name>LWRrSim</name>
+      </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>LWRGazebo</type>
+        <name>LWRlSim</name>
       </component>
       <xacro:if value="$(arg gazebo_script)">
         <orocosScript>
