@@ -241,11 +241,64 @@
     <selfCollide>true</selfCollide>
   </gazebo>
 
-  <xacro:barret_hand prefix="right" parent="right_arm_7_link" with_optoforce="false">
+  <link name="right_FtSensorLink">
+    <inertial>
+      <mass value="0.002"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.00000520833333333" ixy="0" ixz="0" iyy="0.00000520833333333" iyz="0" izz="0.00000520833333333"/>
+    </inertial>
+  </link>
+  <gazebo reference="right_FtSensorLink">
+    <turnGravityOff>false</turnGravityOff>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <joint name="rightFtSensorJoint" type="revolute">
+    <parent link="right_gripper_mount_link"/>
+    <child link="right_FtSensorLink"/>
+                                  <!-- 39.56 degrees -->
     <origin xyz="0.115 0.0 -0.078" rpy="0 ${M_PI/2} 0"/>
+    <axis xyz="0 0 1"/>
+                          <!-- measured max angle is 94.  so upper limit is 94 - start orientation (42 degrees)-->
+    <limit effort="10" lower="0" upper="0" velocity="3.27"/>
+    <dynamics damping="0.05"/>
+  </joint>
+  <gazebo reference="rightFtSensorJoint">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+
+  <xacro:barret_hand prefix="right" parent="right_FtSensorLink" with_optoforce="false">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
   </xacro:barret_hand>
-  <xacro:barret_hand prefix="left" parent="left_arm_7_link" with_optoforce="true">
-    <origin xyz="-0.115 0.0 -0.078" rpy="0 ${-M_PI/2} 0"/>
+
+  <link name="left_FtSensorLink">
+    <inertial>
+      <mass value="0.002"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.00000520833333333" ixy="0" ixz="0" iyy="0.00000520833333333" iyz="0" izz="0.00000520833333333"/>
+    </inertial>
+  </link>
+  <gazebo reference="left_FtSensorLink">
+    <turnGravityOff>false</turnGravityOff>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <joint name="leftFtSensorJoint" type="revolute">
+    <parent link="left_gripper_mount_link"/>
+    <child link="left_FtSensorLink"/>
+                                  <!-- 39.56 degrees -->
+    <origin xyz="0.115 0.0 -0.078" rpy="0 ${M_PI/2} 0"/>
+    <axis xyz="0 0 1"/>
+                          <!-- measured max angle is 94.  so upper limit is 94 - start orientation (42 degrees)-->
+    <limit effort="10" lower="0" upper="0" velocity="3.27"/>
+    <dynamics damping="0.05"/>
+  </joint>
+  <gazebo reference="leftFtSensorJoint">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+
+  <xacro:barret_hand prefix="left" parent="left_FtSensorLink" with_optoforce="true">
+    <origin xyz="0 0 0" rpy="0 0 ${M_PI}"/>
   </xacro:barret_hand>
 
 <!--
