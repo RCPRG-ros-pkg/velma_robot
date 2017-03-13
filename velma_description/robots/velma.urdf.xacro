@@ -10,8 +10,10 @@
   <xacro:arg name="collision_model_enlargement" default="0.0"/>
   <xacro:arg name="collision_model_no_hands" default="false"/>
 
-  <xacro:arg name="gazebo_script" default="false"/>
-  <xacro:arg name="gazebo_ops_file" default=""/>
+  <xacro:arg name="gazebo_scripts" default="false"/>
+  <xacro:arg name="gazebo_ops_file_re_body" default=""/>
+  <xacro:arg name="gazebo_ops_file_re_right_hand" default=""/>
+  <xacro:arg name="gazebo_ops_file_re_left_hand" default=""/>
   <xacro:arg name="use_gazebo_kinect" default="false"/>
 
   <xacro:include filename="$(find velma_description)/calibration/default_cal.xml"/>
@@ -30,6 +32,15 @@
   <!-- Gazebo Plugin -->
   <gazebo>
     <plugin name="rtt_gazebo" filename="librtt_gazebo_deployer.so">
+      <isolated/>
+      <xacro:if value="$(arg gazebo_scripts)">
+        <orocosScript>
+          <filename>$(arg gazebo_ops_file_re_body)</filename>
+        </orocosScript>
+      </xacro:if>
+      <master_service>
+        <name>velma_core_ve_body</name>
+      </master_service>
       <component>
         <package>velma_sim_gazebo</package>
         <type>TorsoGazebo</type>
@@ -45,31 +56,6 @@
         <type>LWRGazebo</type>
         <name>LWRlSim</name>
       </component>
-      <xacro:if value="$(arg gazebo_script)">
-        <orocosScript>
-          <filename>$(arg gazebo_ops_file)</filename>
-        </orocosScript>
-      </xacro:if>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>BarrettHandGazebo</type>
-        <name>RightHand</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>BarrettHandGazebo</type>
-        <name>LeftHand</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>BarrettTactileGazebo</type>
-        <name>RightHandTactile</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>OptoforceGazebo</type>
-        <name>LeftHandOptoforce</name>
-      </component>
       <component>
         <package>velma_sim_gazebo</package>
         <type>FtSensorGazebo</type>
@@ -80,8 +66,54 @@
         <type>FtSensorGazebo</type>
         <name>RightFtSensor</name>
       </component>
-
     </plugin>
+
+    <plugin name="rtt_gazebo" filename="librtt_gazebo_deployer.so">
+      <isolated/>
+      <xacro:if value="$(arg gazebo_scripts)">
+        <orocosScript>
+          <filename>$(arg gazebo_ops_file_re_right_hand)</filename>
+        </orocosScript>
+      </xacro:if>
+      <master_service>
+        <name>velma_core_ve_hand</name>
+        <subname>right</subname>
+      </master_service>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>BarrettHandGazebo</type>
+        <name>RightHand</name>
+      </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>BarrettTactileGazebo</type>
+        <name>RightHandTactile</name>
+      </component>
+    </plugin>
+
+    <plugin name="rtt_gazebo" filename="librtt_gazebo_deployer.so">
+      <isolated/>
+      <xacro:if value="$(arg gazebo_scripts)">
+        <orocosScript>
+          <filename>$(arg gazebo_ops_file_re_left_hand)</filename>
+        </orocosScript>
+      </xacro:if>
+      <master_service>
+        <name>velma_core_ve_hand</name>
+        <subname>left</subname>
+      </master_service>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>BarrettHandGazebo</type>
+        <name>LeftHand</name>
+      </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>OptoforceGazebo</type>
+        <name>LeftHandOptoforce</name>
+      </component>
+    </plugin>
+
   </gazebo>
   <xacro:if value="$(arg use_gazebo_kinect)">
     <gazebo reference="head_kinect_rgb_link">
