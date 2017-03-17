@@ -79,8 +79,37 @@
         <type>FtSensorGazebo</type>
         <name>RightFtSensor</name>
       </component>
-    </plugin>
 
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>BarrettHandGazebo</type>
+        <name>RightHand</name>
+      </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>BarrettTactileGazebo</type>
+        <name>RightHandTactile</name>
+      </component>
+
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>BarrettHandGazebo</type>
+        <name>LeftHand</name>
+      </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>OptoforceGazebo</type>
+        <name>LeftHandOptoforce</name>
+      </component>
+
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>HeadGazebo</type>
+        <name>Head</name>
+      </component>
+
+    </plugin>
+<!--
     <plugin name="rtt_gazebo" filename="librtt_gazebo_deployer.so">
       <isolated/>
       <xacro:if value="$(arg gazebo_scripts)">
@@ -158,7 +187,7 @@
         <name>Head</name>
       </component>
     </plugin>
-
+-->
   </gazebo>
   <xacro:if value="$(arg use_gazebo_kinect)">
     <gazebo reference="head_kinect_rgb_link">
