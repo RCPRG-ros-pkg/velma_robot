@@ -101,13 +101,13 @@
         <type>OptoforceGazebo</type>
         <name>LeftHandOptoforce</name>
       </component>
-
+<!--
       <component>
         <package>velma_sim_gazebo</package>
         <type>HeadGazebo</type>
         <name>Head</name>
       </component>
-
+-->
     </plugin>
 <!--
     <plugin name="rtt_gazebo" filename="librtt_gazebo_deployer.so">
