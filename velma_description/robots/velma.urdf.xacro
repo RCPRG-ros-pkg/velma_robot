@@ -280,7 +280,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://velma_description/meshes/collision/gripper_mount_collision.STL"/>
+          <mesh filename="package://velma_description/meshes/collision/gripper_mount_collision2.STL"/>
         </geometry>
       </collision>
     </xacro:unless>
@@ -323,7 +323,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://velma_description/meshes/collision/gripper_mount_collision.STL"/>
+          <mesh filename="package://velma_description/meshes/collision/gripper_mount_collision2.STL"/>
         </geometry>
       </collision>
     </xacro:unless>
