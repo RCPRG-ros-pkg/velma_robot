@@ -9,11 +9,16 @@
     <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="impedance_joints">
+        <chain base_link="torso_link0" tip_link="right_HandPalmLink" />
+        <chain base_link="torso_link0" tip_link="left_HandPalmLink" />
+        <chain base_link="torso_base" tip_link="torso_link0" />
+    </group>
     <group name="right_arm">
-        <chain base_link="torso_link0" tip_link="right_arm_7_link" />
+        <chain base_link="torso_link0" tip_link="right_HandPalmLink" />
     </group>
     <group name="left_arm">
-        <chain base_link="torso_link0" tip_link="left_arm_7_link" />
+        <chain base_link="torso_link0" tip_link="left_HandPalmLink" />
     </group>
     <group name="right_hand">
         <link name="right_HandPalmLink" />
@@ -342,4 +347,14 @@
     <disable_collisions link1="right_arm_6_link" link2="right_gripper_mount_link" reason="Never" />
     <disable_collisions link1="right_arm_7_link" link2="right_gripper_mount_link" reason="Adjacent" />
     <disable_collisions link1="torso_base" link2="torso_link0" reason="Adjacent" />
+    <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_HandFingerOneKnuckleThreeOptoforceBase" reason="Adjacent" />
+    <disable_collisions link1="left_HandFingerTwoKnuckleThreeLink" link2="left_HandFingerTwoKnuckleThreeOptoforceBase" reason="Adjacent" />
+    <disable_collisions link1="left_HandFingerThreeKnuckleThreeLink" link2="left_HandFingerThreeKnuckleThreeOptoforceBase" reason="Adjacent" />
+    <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_HandFingerOneKnuckleThreeOptoforceSensor" reason="Adjacent" />
+    <disable_collisions link1="left_HandFingerTwoKnuckleThreeLink" link2="left_HandFingerTwoKnuckleThreeOptoforceSensor" reason="Adjacent" />
+    <disable_collisions link1="left_HandFingerThreeKnuckleThreeLink" link2="left_HandFingerThreeKnuckleThreeOptoforceSensor" reason="Adjacent" />
+    <disable_collisions link1="left_HandFingerOneKnuckleThreeOptoforceSensor" link2="left_HandFingerOneKnuckleThreeOptoforceBase" reason="Adjacent" />
+    <disable_collisions link1="left_HandFingerTwoKnuckleThreeOptoforceSensor" link2="left_HandFingerTwoKnuckleThreeOptoforceBase" reason="Adjacent" />
+    <disable_collisions link1="left_HandFingerThreeKnuckleThreeOptoforceSensor" link2="left_HandFingerThreeKnuckleThreeOptoforceBase" reason="Adjacent" />
+    <disable_collisions link1="head_base" link2="head_tilt_link" reason="Adjacent" />
 </robot>
