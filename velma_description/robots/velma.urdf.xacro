@@ -293,12 +293,28 @@
     </self_collision_checking>
 
     <inertial>
-      <mass value="0.2"/>
-      <origin rpy="0 0 0" xyz="0 0 0.0625"/>
-      <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+      <mass value="0.2892125"/>
+      <origin rpy="0 0 0" xyz="0.0543534 0.0000315 -0.0313542"/>
+      <inertia ixx="0.0007416" ixy="0" ixz="0.000566225" iyy="0.001365025" iyz="0" izz="0.0009347"/>
     </inertial>
   </link>
-
+<!--
+gripper mount link:
+density: 1
+LOG: 2 Mesh Volume  is 0.000115685
+LOG: 2 Thin shell barycenter   0.546513   0.000319  -0.310379
+LOG: 2 Center of Mass  is 0.0543534 0.0000315 -0.0313542
+LOG: 2 Inertia Tensor is :
+LOG: 2     |  0.00000029664   0.00000000000   0.00000022649 |
+LOG: 2     |  0.00000000000   0.00000054601  -0.00000000000 |
+LOG: 2     |  0.00000022649  -0.00000000000   0.00000037388 |
+LOG: 2 Principal axes are :
+LOG: 2     |  0.764229   0.000001   0.644945 |
+LOG: 2     | -0.000000   1.000000  -0.000001 |
+LOG: 2     | -0.644945   0.000001   0.764229 |
+LOG: 2 axis momenta are :
+LOG: 2     |  0.010550   0.054601   0.056502 |
+-->
   <gazebo reference="right_gripper_mount_link">
     <turnGravityOff>false</turnGravityOff>
     <selfCollide>true</selfCollide>
@@ -336,9 +352,9 @@
     </self_collision_checking>
 
     <inertial>
-      <mass value="0.2"/>
-      <origin rpy="0 0 0" xyz="0 0 0.0625"/>
-      <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+      <mass value="0.2892125"/>
+      <origin rpy="0 0 0" xyz="0.0543534 0.0000315 -0.0313542"/>
+      <inertia ixx="0.0007416" ixy="0" ixz="0.000566225" iyy="0.001365025" iyz="0" izz="0.0009347"/>
     </inertial>
   </link>
 
