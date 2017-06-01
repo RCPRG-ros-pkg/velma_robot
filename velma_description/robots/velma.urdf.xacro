@@ -52,7 +52,7 @@
         </subsystem_xml>
       </xacro:if>
       <master_service>
-        <name>velma_core_ve_body</name>
+        <name>velma_sim_gazebo</name>
       </master_service>
       <component>
         <package>velma_sim_gazebo</package>
