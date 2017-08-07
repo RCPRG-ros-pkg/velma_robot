@@ -3,4 +3,5 @@
   <!-- send two_lwr.urdf.xml to param server -->
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find velma_description)/robots/velma.urdf.xacro'" />
   <param name="robot_semantic_description" command="$(find xacro)/xacro.py '$(find velma_description)/robots/velma.srdf'" />
+  <param name="use_tf_static" value="false"/>
 </launch>

@@ -86,7 +86,9 @@
         <geometry>
           <mesh filename="package://velma_description/meshes/top_base_asm.STL" />
         </geometry>
-        <material name="Orange"/>
+        <material name="torso_asm">
+          <color rgba="1.0 0.487 0 1.0"/>
+        </material>
       </visual>
 
       <collision>

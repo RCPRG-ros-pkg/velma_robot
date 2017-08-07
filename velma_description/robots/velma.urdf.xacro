@@ -24,11 +24,11 @@
 
   <xacro:arg name="use_gazebo_kinect" default="false"/>
 
+  <xacro:include filename="$(find lwr_defs)/defs/materials.xml"/>
   <xacro:include filename="$(find velma_description)/calibration/default_cal.xml"/>
   <xacro:include filename="$(find velma_description)/defs/torso.urdf.xacro"/>
   <xacro:include filename="$(find velma_description)/defs/head.urdf.xacro" />
   <xacro:include filename="$(find lwr_defs)/defs/kuka_lwr_arm_defs.xml"/>
-  <xacro:include filename="$(find lwr_defs)/defs/materials.xml"/>
   <xacro:include filename="$(find barrett_hand_defs)/defs/barret_hand.urdf.xacro"/>
 
 <!--
@@ -197,8 +197,8 @@
         <camera>
           <horizontal_fov>1.047</horizontal_fov>  
           <image>
-            <width>640</width>
-            <height>480</height>
+            <width>800</width>
+            <height>600</height>
             <format>B8G8R8</format>
           </image>
           <depth_camera>
@@ -272,6 +272,14 @@
       <origin xyz="0 0 0" rpy="0.0 0 0" />
       <geometry>
         <mesh filename="package://velma_description/meshes/gripper_mount.STL" />
+      </geometry>
+      <material name="Orange"/>
+    </visual>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0.0 0 0" />
+      <geometry>
+        <mesh filename="package://velma_description/meshes/imu_case_right.stl" />
       </geometry>
       <material name="Orange"/>
     </visual>
