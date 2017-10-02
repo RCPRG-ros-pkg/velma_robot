@@ -11,6 +11,7 @@
 	
 	<node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
 	  <param name="use_gui" value="true"/>
+	  <param name="num_rows" value="12"/>
 	</node>
 	
   <node pkg="rviz" type="rviz" name="rviz" />
