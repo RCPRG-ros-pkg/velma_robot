@@ -294,7 +294,7 @@
     </xacro:unless>
 
     <self_collision_checking>
-      <origin xyz="0.02 0.0 0.0" rpy="0 ${M_PI/2.0} 0"/>
+      <origin xyz="0.02 0.0 0.01" rpy="0 ${M_PI/2.0} 0"/>
       <geometry>
         <capsule radius="0.055" length="0.08"/>
       </geometry>
@@ -353,7 +353,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     </xacro:unless>
 
     <self_collision_checking>
-      <origin xyz="0.02 0.0 -0.03" rpy="0 ${M_PI/2.0} 0"/>
+      <origin xyz="0.02 0.0 -0.01" rpy="0 ${M_PI/2.0} 0"/>
       <geometry>
         <capsule radius="0.055" length="0.08"/>
       </geometry>
