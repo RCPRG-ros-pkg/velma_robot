@@ -161,6 +161,7 @@
     <disable_collisions link1="left_HandFingerThreeKnuckleThreeLink" link2="left_gripper_mount_link" reason="Never" />
     <disable_collisions link1="left_HandFingerThreeKnuckleTwoLink" link2="left_HandFingerTwoKnuckleOneLink" reason="Never" />
     <disable_collisions link1="left_HandFingerThreeKnuckleTwoLink" link2="left_HandFingerTwoKnuckleTwoLink" reason="Never" />
+    <disable_collisions link1="left_HandFingerThreeKnuckleThreeLink" link2="left_HandFingerTwoKnuckleTwoLink" reason="Never" />
     <disable_collisions link1="left_HandFingerThreeKnuckleTwoLink" link2="left_HandPalmLink" reason="Adjacent" />
     <disable_collisions link1="left_HandFingerThreeKnuckleTwoLink" link2="left_arm_3_link" reason="Never" />
     <disable_collisions link1="left_HandFingerThreeKnuckleTwoLink" link2="left_arm_6_link" reason="Never" />
