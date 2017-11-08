@@ -270,7 +270,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0.0 0 0" />
       <geometry>
-        <mesh filename="package://velma_description/meshes/gripper_mount_simplified.STL" />
+        <mesh filename="package://velma_description/meshes/gripper_mount_simplified.stl" />
       </geometry>
       <material name="Orange"/>
     </visual>
@@ -337,7 +337,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     <visual>
       <origin xyz="0 0 0" rpy="0.0 0 0" />
       <geometry>
-        <mesh filename="package://velma_description/meshes/gripper_mount_simplified.STL" />
+        <mesh filename="package://velma_description/meshes/gripper_mount_simplified.stl" />
       </geometry>
       <material name="Orange"/>
     </visual>
