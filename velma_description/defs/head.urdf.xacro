@@ -17,7 +17,7 @@
        <visual>
         <origin xyz="0 0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://velma_description/meshes/head_base.STL" />
+          <mesh filename="package://velma_description/meshes/head_base_simplified.STL" />
         </geometry>
         <material name="torso_gray">
           <color rgba="0.5 0.5 0.5 1"/>
@@ -46,7 +46,7 @@
        <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://velma_description/meshes/head_pan.STL" />
+          <mesh filename="package://velma_description/meshes/head_pan_simplified.STL" />
         </geometry>
         <material name="torso_gray">
           <color rgba="0.5 0.5 0.5 1"/>
@@ -85,7 +85,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://velma_description/meshes/head_tilt.STL" />
+          <mesh filename="package://velma_description/meshes/head_tilt_simplified.STL" />
         </geometry>
         <material name="torso_gray">
           <color rgba="0.5 0.5 0.5 1"/>
@@ -123,7 +123,7 @@
       <visual>
         <origin xyz="0 0 0.04219" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://velma_description/meshes/head_top.STL" />
+          <mesh filename="package://velma_description/meshes/head_top_simplified.STL" />
         </geometry>
         <material name="torso_gray">
           <color rgba="0.5 0.5 0.5 1"/>

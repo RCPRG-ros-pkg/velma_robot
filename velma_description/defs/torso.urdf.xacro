@@ -61,6 +61,7 @@
     </joint>
   
     <link name="torso_link0">
+<!--
       <visual>
         <origin xyz="0 0 0.219" rpy="0.0 0 0" />
         <geometry>
@@ -88,6 +89,16 @@
         </geometry>
         <material name="torso_asm">
           <color rgba="1.0 0.487 0 1.0"/>
+        </material>
+      </visual>
+-->
+      <visual>
+        <origin xyz="0 0 0.52" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://velma_description/meshes/collision/torso0_collision.stl" />
+        </geometry>
+        <material name="torso_base">
+          <color rgba="0.7 0.7 0.7 1"/>
         </material>
       </visual>
 
