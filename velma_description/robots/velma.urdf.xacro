@@ -10,19 +10,11 @@
   <xacro:arg name="collision_model_enlargement" default="0.0"/>
   <xacro:arg name="collision_model_no_hands" default="false"/>
 
-  <xacro:arg name="gazebo_scripts" default="false"/>
-  <xacro:arg name="gazebo_ops_file_re_body" default=""/>
-  <xacro:arg name="gazebo_ops_file_re_right_hand" default=""/>
-  <xacro:arg name="gazebo_ops_file_re_left_hand" default=""/>
-  <xacro:arg name="gazebo_ops_file_re_head" default=""/>
-
   <xacro:arg name="subsystem_xml" default="false"/>
   <xacro:arg name="xml_file_re_body" default=""/>
-  <xacro:arg name="xml_file_re_right_hand" default=""/>
-  <xacro:arg name="xml_file_re_left_hand" default=""/>
-  <xacro:arg name="xml_file_re_head" default=""/>
 
   <xacro:arg name="use_gazebo_kinect" default="false"/>
+  <xacro:arg name="use_stereo_pair" default="false"/>
 
   <xacro:include filename="$(find lwr_defs)/defs/materials.xml"/>
   <xacro:include filename="$(find velma_description)/calibration/default_cal.xml"/>
@@ -36,16 +28,12 @@
    -->
 
   <xacro:property name="camera_name" value="head_kinect" />
+  <xacro:property name="stereo_name" value="head_stereo" />
 
   <!-- Gazebo Plugin -->
   <gazebo>
     <plugin name="rtt_gazebo" filename="librtt_gazebo_deployer.so">
       <isolated/>
-      <xacro:if value="$(arg gazebo_scripts)">
-        <orocosScript>
-          <filename>$(arg gazebo_ops_file_re_body)</filename>
-        </orocosScript>
-      </xacro:if>
       <xacro:if value="$(arg subsystem_xml)">
         <subsystem_xml>
           <filename>$(arg xml_file_re_body)</filename>
@@ -101,93 +89,7 @@
         <type>OptoforceGazebo</type>
         <name>LeftHandOptoforce</name>
       </component>
-<!--
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>HeadGazebo</type>
-        <name>Head</name>
-      </component>
--->
     </plugin>
-<!--
-    <plugin name="rtt_gazebo" filename="librtt_gazebo_deployer.so">
-      <isolated/>
-      <xacro:if value="$(arg gazebo_scripts)">
-        <orocosScript>
-          <filename>$(arg gazebo_ops_file_re_right_hand)</filename>
-        </orocosScript>
-      </xacro:if>
-      <xacro:if value="$(arg subsystem_xml)">
-        <subsystem_xml>
-          <filename>$(arg xml_file_re_right_hand)</filename>
-        </subsystem_xml>
-      </xacro:if>
-      <master_service>
-        <name>velma_core_ve_hand</name>
-        <subname>right</subname>
-      </master_service>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>BarrettHandGazebo</type>
-        <name>RightHand</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>BarrettTactileGazebo</type>
-        <name>RightHandTactile</name>
-      </component>
-    </plugin>
-
-    <plugin name="rtt_gazebo" filename="librtt_gazebo_deployer.so">
-      <isolated/>
-      <xacro:if value="$(arg gazebo_scripts)">
-        <orocosScript>
-          <filename>$(arg gazebo_ops_file_re_left_hand)</filename>
-        </orocosScript>
-      </xacro:if>
-      <xacro:if value="$(arg subsystem_xml)">
-        <subsystem_xml>
-          <filename>$(arg xml_file_re_left_hand)</filename>
-        </subsystem_xml>
-      </xacro:if>
-      <master_service>
-        <name>velma_core_ve_hand</name>
-        <subname>left</subname>
-      </master_service>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>BarrettHandGazebo</type>
-        <name>LeftHand</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>OptoforceGazebo</type>
-        <name>LeftHandOptoforce</name>
-      </component>
-    </plugin>
-
-    <plugin name="rtt_gazebo" filename="librtt_gazebo_deployer.so">
-      <isolated/>
-      <xacro:if value="$(arg gazebo_scripts)">
-        <orocosScript>
-          <filename>$(arg gazebo_ops_file_re_head)</filename>
-        </orocosScript>
-      </xacro:if>
-      <xacro:if value="$(arg subsystem_xml)">
-        <subsystem_xml>
-          <filename>$(arg xml_file_re_head)</filename>
-        </subsystem_xml>
-      </xacro:if>
-      <master_service>
-        <name>velma_core_ve_head</name>
-      </master_service>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>HeadGazebo</type>
-        <name>Head</name>
-      </component>
-    </plugin>
--->
   </gazebo>
   <xacro:if value="$(arg use_gazebo_kinect)">
     <gazebo reference="head_kinect_rgb_link">
@@ -198,8 +100,8 @@
         <camera>
           <horizontal_fov>1.047</horizontal_fov>  
           <image>
-            <width>400</width>
-            <height>300</height>
+            <width>800</width>
+            <height>600</height>
             <format>B8G8R8</format>
           </image>
           <depth_camera>
@@ -234,6 +136,85 @@
       </sensor>
     </gazebo>
   </xacro:if>
+
+  <xacro:if value="$(arg use_stereo_pair)">
+    <gazebo reference="stereo_left_link">
+      <sensor type="camera" name="stereo_left_camera">       
+        <always_on>0</always_on>
+        <update_rate>15.0</update_rate>
+        <visualize>false</visualize>
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>  
+          <image>
+            <width>400</width>
+            <height>300</height>
+            <format>B8G8R8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>10</far>
+          </clip>
+        </camera>
+        <plugin name="camera_left_controller" filename="libgazebo_ros_camera.so">
+          <baseline>0.2</baseline>
+          <cameraName>${stereo_name}_left</cameraName>
+          <imageTopicName>/${stereo_name}_left/image_raw</imageTopicName>
+          <cameraInfoTopicName>/${stereo_name}_left/camera_info</cameraInfoTopicName>
+          <frameName>stereo_left_optical_frame</frameName>
+          <updateRate>15</updateRate>
+          <distortionK1>0.00000001</distortionK1>
+          <distortionK2>0.00000001</distortionK2>
+          <distortionK3>0.00000001</distortionK3>
+          <distortionT1>0.00000001</distortionT1>
+          <distortionT2>0.00000001</distortionT2>
+          <CxPrime>0</CxPrime>
+          <Cx>0</Cx>
+          <Cy>0</Cy>
+          <focalLength>0</focalLength>
+          <hackBaseline>0</hackBaseline>
+        </plugin>
+      </sensor>
+    </gazebo>
+
+    <gazebo reference="stereo_right_link">
+      <sensor type="camera" name="stereo_right_camera">       
+        <always_on>0</always_on>
+        <update_rate>15.0</update_rate>
+        <visualize>false</visualize>
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>  
+          <image>
+            <width>400</width>
+            <height>300</height>
+            <format>B8G8R8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>10</far>
+          </clip>
+        </camera>
+        <plugin name="camera_right_controller" filename="libgazebo_ros_camera.so">
+          <baseline>0.2</baseline>
+          <cameraName>${stereo_name}_right</cameraName>
+          <imageTopicName>/${stereo_name}_right/image_raw</imageTopicName>
+          <cameraInfoTopicName>/${stereo_name}_right/camera_info</cameraInfoTopicName>
+          <frameName>stereo_right_optical_frame</frameName>
+          <updateRate>15</updateRate>
+          <distortionK1>0.00000001</distortionK1>
+          <distortionK2>0.00000001</distortionK2>
+          <distortionK3>0.00000001</distortionK3>
+          <distortionT1>0.00000001</distortionT1>
+          <distortionT2>0.00000001</distortionT2>
+          <CxPrime>0</CxPrime>
+          <Cx>0</Cx>
+          <Cy>0</Cy>
+          <focalLength>0</focalLength>
+          <hackBaseline>0</hackBaseline>
+        </plugin>
+      </sensor>
+    </gazebo>
+  </xacro:if>
+
   <xacro:property name="M_PI" value="3.1415926535897931" />
 
   <link name="world" />
