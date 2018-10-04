@@ -360,7 +360,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
   </link>
   <gazebo reference="right_FtSensorLink">
     <turnGravityOff>false</turnGravityOff>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <joint name="rightFtSensorJoint" type="revolute">
@@ -390,7 +390,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
   </link>
   <gazebo reference="left_FtSensorLink">
     <turnGravityOff>false</turnGravityOff>
-    <selfCollide>false</selfCollide>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <joint name="leftFtSensorJoint" type="revolute">

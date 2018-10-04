@@ -348,14 +348,8 @@
     <disable_collisions link1="right_arm_6_link" link2="right_gripper_mount_link" reason="Never" />
     <disable_collisions link1="right_arm_7_link" link2="right_gripper_mount_link" reason="Adjacent" />
     <disable_collisions link1="torso_base" link2="torso_link0" reason="Adjacent" />
-    <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_HandFingerOneKnuckleThreeOptoforceBase" reason="Adjacent" />
-    <disable_collisions link1="left_HandFingerTwoKnuckleThreeLink" link2="left_HandFingerTwoKnuckleThreeOptoforceBase" reason="Adjacent" />
-    <disable_collisions link1="left_HandFingerThreeKnuckleThreeLink" link2="left_HandFingerThreeKnuckleThreeOptoforceBase" reason="Adjacent" />
     <disable_collisions link1="left_HandFingerOneKnuckleThreeLink" link2="left_HandFingerOneKnuckleThreeOptoforceSensor" reason="Adjacent" />
     <disable_collisions link1="left_HandFingerTwoKnuckleThreeLink" link2="left_HandFingerTwoKnuckleThreeOptoforceSensor" reason="Adjacent" />
     <disable_collisions link1="left_HandFingerThreeKnuckleThreeLink" link2="left_HandFingerThreeKnuckleThreeOptoforceSensor" reason="Adjacent" />
-    <disable_collisions link1="left_HandFingerOneKnuckleThreeOptoforceSensor" link2="left_HandFingerOneKnuckleThreeOptoforceBase" reason="Adjacent" />
-    <disable_collisions link1="left_HandFingerTwoKnuckleThreeOptoforceSensor" link2="left_HandFingerTwoKnuckleThreeOptoforceBase" reason="Adjacent" />
-    <disable_collisions link1="left_HandFingerThreeKnuckleThreeOptoforceSensor" link2="left_HandFingerThreeKnuckleThreeOptoforceBase" reason="Adjacent" />
     <disable_collisions link1="head_base" link2="head_tilt_link" reason="Adjacent" />
 </robot>
