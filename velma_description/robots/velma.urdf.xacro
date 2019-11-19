@@ -22,6 +22,8 @@
   <xacro:include filename="$(find velma_description)/defs/head.urdf.xacro" />
   <xacro:include filename="$(find lwr_defs)/defs/kuka_lwr_arm_defs.xml"/>
   <xacro:include filename="$(find barrett_hand_defs)/defs/barret_hand.urdf.xacro"/>
+  <xacro:include filename="$(find velma_description)/defs/monokl.urdf.xacro"/>
+  <xacro:include filename="$(find velma_description)/defs/wewucho.urdf.xacro" />
 
 <!--
   <xacro:include filename="$(find velma_defs)/defs/kinect_camera.urdf.xacro" />
@@ -215,12 +217,75 @@
     </gazebo>
   </xacro:if>
 
+    <gazebo reference="wewucho">
+      <selfCollide>true</selfCollide>
+      <sensor name="wewucho" type="imu">
+        <visualize>false</visualize>
+        <topic>/wewucho</topic>
+        <plugin name="wewucho" filename="libwewucho.so" />
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+    </gazebo>
+
   <xacro:property name="M_PI" value="3.1415926535897931" />
 
   <link name="world" />
-
   <!-- static connection between the world frame and the map frame -->
   <link name="map"/>
+
 
   <joint name="world_map_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -228,15 +293,29 @@
     <child link="map"/>
   </joint>
 
-  <velma_torso parent="world" >
+  <velma_torso parent="world">
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </velma_torso>
 
+  <monokl name="monokl_l" parent="torso_base">
+    <origin xyz="0 0.3 0.256" rpy="0 0 0" />
+  </monokl>
+
+  <monokl name="monokl_r" parent="torso_base">
+    <origin xyz="0 -0.3 0.256" rpy="0 0 -${M_PI}" />
+  </monokl>
+
+  <wewucho name="wewucho" parent="torso_base">
+    <origin xyz="0 0 0.1225" rpy="0 0 0" />
+  </wewucho>
+
   <kuka_lwr_arm parent="torso_link0" name="right" right="1">
     <origin xyz="0 -0.000188676 1.17335" rpy="0 ${-M_PI/3} ${M_PI/2}"/>
+    <!-- <origin xyz="0 -0.000188676 1.01735" rpy="0 ${-M_PI/3} ${M_PI/2}"/> -->
   </kuka_lwr_arm>
   
   <kuka_lwr_arm parent="torso_link0" name="left" right="1">
+    <!-- <origin xyz="${cal_torso_link2_left_arm_base_joint_x} ${cal_torso_link2_left_arm_base_joint_y} ${cal_torso_link2_left_arm_base_joint_z - 0.1735}" rpy="${cal_torso_link2_left_arm_base_joint_roll} ${cal_torso_link2_left_arm_base_joint_pitch} ${cal_torso_link2_left_arm_base_joint_yaw}"/> -->
     <origin xyz="${cal_torso_link2_left_arm_base_joint_x} ${cal_torso_link2_left_arm_base_joint_y} ${cal_torso_link2_left_arm_base_joint_z}" rpy="${cal_torso_link2_left_arm_base_joint_roll} ${cal_torso_link2_left_arm_base_joint_pitch} ${cal_torso_link2_left_arm_base_joint_yaw}"/>
   </kuka_lwr_arm>
 
@@ -468,6 +547,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
   -->
   <velma_head parent="torso_link0">
     <origin xyz="${cal_head_base_joint_x} ${cal_head_base_joint_y} ${cal_head_base_joint_z}" rpy="${cal_head_base_joint_roll} ${cal_head_base_joint_pitch} ${cal_head_base_joint_yaw}"/>
+    <!-- <origin xyz="${cal_head_base_joint_x} ${cal_head_base_joint_y} ${cal_head_base_joint_z - 0.1735}" rpy="${cal_head_base_joint_roll} ${cal_head_base_joint_pitch} ${cal_head_base_joint_yaw}"/> -->
   </velma_head>
 
 </robot>

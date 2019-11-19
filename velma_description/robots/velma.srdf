@@ -14,6 +14,18 @@
         <chain base_link="torso_link0" tip_link="left_HandPalmLink" />
         <chain base_link="torso_base" tip_link="torso_link0" />
     </group>
+    <group name="omnivelma">
+        <link name="torso_base" />
+        <link name="wheel_fl" />
+        <link name="wheel_fr" />
+        <link name="wheel_rr" />
+        <link name="wheel_rl" />
+        <chain base_link="torso_base" tip_link="wheel_fl" />
+        <joint name="motor_fl" />
+        <joint name="motor_fr" />
+        <joint name="motor_rr" />
+        <joint name="motor_rl" />
+    </group>
     <group name="right_arm">
         <chain base_link="torso_link0" tip_link="right_HandPalmLink" />
     </group>
