@@ -66,7 +66,12 @@
     	<child link="${name}_heart" />
     </joint>
 
+    <gazebo reference="${name}">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
     <gazebo reference="${name}_heart">
+      <selfCollide>true</selfCollide>
       <sensor type="gpu_ray" name="${name}">
       <pose>0 0 0 0 0 0</pose>
       <visualize>true</visualize>
