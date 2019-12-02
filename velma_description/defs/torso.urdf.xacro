@@ -159,9 +159,9 @@
         <y_velocity_i_gain>500.0</y_velocity_i_gain>
         <y_velocity_d_gain>20.0</y_velocity_d_gain>
 
-        <yaw_velocity_p_gain>500.0</yaw_velocity_p_gain>
-        <yaw_velocity_i_gain>8.0</yaw_velocity_i_gain>
-        <yaw_velocity_d_gain>1.0</yaw_velocity_d_gain>
+        <yaw_velocity_p_gain>600.0</yaw_velocity_p_gain>
+        <yaw_velocity_i_gain>4.0</yaw_velocity_i_gain>
+        <yaw_velocity_d_gain>10.0</yaw_velocity_d_gain>
       </plugin>
     </gazebo>
 
