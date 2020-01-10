@@ -10,124 +10,6 @@
       <inertia ixx="${m*(3*r*r+h*h)/12}" ixy="0" ixz="0" iyy="${m*r*r/2}" iyz="0" izz="${m*(3*r*r+h*h)/12}" />
     </xacro:macro>
 
-   <!--  <gazebo>
-      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-        <robotNamespace>/</robotNamespace>
-      </plugin>
-    </gazebo>
-
-    <link name="omnitorso_y">
-      <inertial>
-        <mass value="0.001"/>
-        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
-      </inertial>
-      <collision>
-        <origin xyz="-0.081 0 0.1225" rpy="0.0 0 0" />
-        <geometry>
-          <mesh filename="package://omnivelma/meshes/collider/base.dae" />
-        </geometry>
-      </collision>
-      <visual>
-        <geometry>
-          <box size="0.364 0.32 0.15" />
-        </geometry>
-        <origin xyz="-0.035 0 0.25" rpy="0.0 0 0" />
-        <material name="torso_base">
-          <color rgba="0.3 0.3 0.15 1"/>
-        </material>
-      </visual>
-    </link>
-
-    <link name="omnitorso_x">
-      <inertial>
-        <mass value="0.001"/>
-        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
-      </inertial>
-      <collision>
-        <origin xyz="-0.081 0 0.1225" rpy="0.0 0 0" />
-        <geometry>
-          <mesh filename="package://omnivelma/meshes/collider/base.dae" />
-        </geometry>
-      </collision>
-      <visual>
-        <geometry>
-          <box size="0.364 0.32 0.15" />
-        </geometry>
-        <origin xyz="-0.035 0 0.25" rpy="0.0 0 0" />
-        <material name="torso_base">
-          <color rgba="0.3 0.3 0.15 1"/>
-        </material>
-      </visual>
-    </link>
-  
-    <joint name="torso_base_joint" type="revolute">
-      <xacro:insert_block name="origin" />
-      <limit lower="-20.0" upper="20.0" effort="1000" velocity="1"/>
-      <axis xyz="0 0 1"/>
-      <parent link="${parent}"/>
-      <child link="omnitorso_x"/>
-    </joint>
-
-    <joint name="omni_joint_y" type="prismatic">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <limit lower="-20.0" upper="20.0" effort="1000" velocity="1"/>
-      <axis xyz="0 1 0"/>
-      <parent link="omnitorso_x"/>
-      <child link="omnitorso_y"/>
-    </joint>
-
-    <joint name="omni_joint_x" type="prismatic">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <limit lower="-20.0" upper="20.0" effort="1000" velocity="1"/>
-      <axis xyz="1 0 0"/>
-      <parent link="omnitorso_y"/>
-      <child link="torso_base"/>
-    </joint>
-
-    <transmission name="trans_rot">
-      <type>transmission_interface/SimpleTransmission</type>
-      <actuator name="$torso_base_motor">
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-      <joint name="torso_base_joint">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      </joint>
-    </transmission>
-
-    <transmission name="trans_x">
-      <type>transmission_interface/SimpleTransmission</type>
-      <actuator name="$omni_y_motor">
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-      <joint name="omni_joint_y">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      </joint>
-    </transmission>
-
-    <transmission name="trans_y">
-      <type>transmission_interface/SimpleTransmission</type>
-      <actuator name="$omni_x_motor">
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-      <joint name="omni_joint_x">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      </joint>
-    </transmission>
-
-    <gazebo reference="omnitorso_x">
-      <turnGravityOff>false</turnGravityOff>
-      <selfCollide>true</selfCollide>
-    </gazebo>
-
-    <gazebo reference="omnitorso_y">
-      <turnGravityOff>false</turnGravityOff>
-      <selfCollide>true</selfCollide>
-    </gazebo> -->
-
-<!--     <gazebo>
-      <plugin name="omnivelma" filename="libomnivelma.so"/>
-    </gazebo> -->
-
     <gazebo>
       <plugin name="gazebo_ros_force_based_move" filename="libgazebo_ros_force_based_move.so">
         <odometryRate>30.0</odometryRate>
@@ -159,109 +41,12 @@
         <y_velocity_i_gain>500.0</y_velocity_i_gain>
         <y_velocity_d_gain>20.0</y_velocity_d_gain>
 
-        <yaw_velocity_p_gain>600.0</yaw_velocity_p_gain>
-        <yaw_velocity_i_gain>4.0</yaw_velocity_i_gain>
-        <yaw_velocity_d_gain>10.0</yaw_velocity_d_gain>
+        <yaw_velocity_p_gain>300.0</yaw_velocity_p_gain>
+        <yaw_velocity_i_gain>3.0</yaw_velocity_i_gain>
+        <yaw_velocity_d_gain>3.0</yaw_velocity_d_gain>
       </plugin>
     </gazebo>
 
-
-<!--             <x_velocity_p_gain>140000.0</x_velocity_p_gain>
-        <x_velocity_i_gain>10000.0</x_velocity_i_gain>
-        <x_velocity_d_gain>10.0</x_velocity_d_gain>
-        <y_velocity_p_gain>140000.0</y_velocity_p_gain>
-        <y_velocity_i_gain>10000.0</y_velocity_i_gain>
-        <y_velocity_d_gain>10.0</y_velocity_d_gain>
-        <yaw_velocity_p_gain>6000.0</yaw_velocity_p_gain>
-        <yaw_velocity_i_gain>20.0</yaw_velocity_i_gain>
-        <yaw_velocity_d_gain>1.0</yaw_velocity_d_gain> -->
-
-
-<!--     <link name="omnitorso_y">
-      <inertial>
-        <mass value="20.0"/>
-        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
-      </inertial>
-      <collision>
-        <origin xyz="0 0 0" rpy="0.0 0 0" />
-        <geometry>
-          <box size="1.0 1.0 0.01" />
-        </geometry>
-        <material name="torso_base">
-          <color rgba="0.3 0.3 0.15 1"/>
-        </material>
-      </collision>
-      <visual>
-        <origin xyz="0 0 0" rpy="0.0 0 0" />
-        <geometry>
-          <box size="1.0 1.0 0.01" />
-        </geometry>
-        <material name="torso_base">
-          <color rgba="0.3 0.3 0.15 1"/>
-        </material>
-      </visual>
-    </link>
-
-    <link name="omnitorso_x">
-      <inertial>
-        <mass value="20.0"/>
-        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
-      </inertial>
-      <collision>
-        <origin xyz="0 0 0" rpy="0.0 0 0" />
-        <geometry>
-          <box size="1.0 1.0 0.01" />
-        </geometry>
-        <material name="torso_base">
-          <color rgba="0.3 0.3 0.15 1"/>
-        </material>
-      </collision>
-      <visual>
-        <origin xyz="0 0 0" rpy="0.0 0 0" />
-        <geometry>
-          <box size="1.0 1.0 0.01" />
-        </geometry>
-        <material name="torso_base">
-          <color rgba="0.3 0.3 0.15 1"/>
-        </material>
-      </visual>
-    </link>
-  
-    <joint name="torso_base_joint" type="revolute">
-      <xacro:insert_block name="origin" />
-      <limit lower="-2.0" upper="2.0" effort="100" velocity="1"/>
-      <axis xyz="0 0 1"/>
-      <parent link="${parent}"/>
-      <child link="omnitorso_x"/>
-    </joint>
-
-    <joint name="omni_joint_y" type="prismatic">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <limit lower="-2.0" upper="2.0" effort="100" velocity="1"/>
-      <axis xyz="0 1 0"/>
-      <dynamics damping="10.0"/>
-      <parent link="omnitorso_x"/>
-      <child link="omnitorso_y"/>
-    </joint>
-
-    <joint name="omni_joint_x" type="prismatic">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <limit lower="-2.0" upper="2.0" effort="1000" velocity="1"/>
-      <axis xyz="1 0 0"/>
-      <dynamics damping="10.0"/>
-      <parent link="omnitorso_y"/>
-      <child link="torso_base"/>
-    </joint>
-
-    <gazebo reference="omnitorso_x">
-      <turnGravityOff>false</turnGravityOff>
-      <selfCollide>true</selfCollide>
-    </gazebo>
-
-    <gazebo reference="omnitorso_y">
-      <turnGravityOff>false</turnGravityOff>
-      <selfCollide>true</selfCollide>
-    </gazebo> -->
 
     <joint name="torso_base_joint" type="planar">
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -306,7 +91,6 @@
 
       <inertial>
         <mass value="60.0"/>
-        <!-- <mass value="20.0"/> -->
         <inertia ixx="2.94" ixy="0" ixz="0" iyy="2.72" iyz="0" izz="5.40"/>
       </inertial>
     </link>
@@ -503,7 +287,6 @@
       <inertial>
         <mass value="1.6" />
         <wheel_inertia m="1.6" r="0.1016" h="0.05" />
-        <!-- <inertia ixx="0.004738485" ixy="0" ixz="0" iyy="0.008" iyz="0" izz="0.004738485" /> -->
       </inertial>
       
       <visual name="wheel_fl_middle">
@@ -561,7 +344,6 @@
     <link name="torso_link0">
       <visual>
         <origin xyz="0 0 0.52" rpy="0 0 0"/>
-        <!-- <origin xyz="0 0 0.364" rpy="0 0 0"/> -->
         <geometry>
           <mesh filename="package://velma_description/meshes/collision/torso0_collision.stl" />
         </geometry>
@@ -572,7 +354,6 @@
 
       <collision>
         <origin xyz="0 0 0.52" rpy="0 0 0"/>
-        <!-- <origin xyz="0 0 0.364" rpy="0 0 0"/> -->
         <geometry>
           <mesh filename="package://velma_description/meshes/collision/torso0_collision.stl" />
         </geometry>
