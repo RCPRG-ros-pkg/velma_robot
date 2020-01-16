@@ -74,7 +74,7 @@
       <selfCollide>true</selfCollide>
       <sensor type="gpu_ray" name="${name}">
       <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize>
+      <visualize>true</visualize>
       <update_rate>40</update_rate>
       <ray>
         <scan>

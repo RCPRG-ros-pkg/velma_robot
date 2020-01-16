@@ -44,9 +44,10 @@
         <yaw_velocity_p_gain>300.0</yaw_velocity_p_gain>
         <yaw_velocity_i_gain>3.0</yaw_velocity_i_gain>
         <yaw_velocity_d_gain>3.0</yaw_velocity_d_gain>
+
+        <useRealOdom>true</useRealOdom>
       </plugin>
     </gazebo>
-
 
     <joint name="torso_base_joint" type="planar">
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -76,16 +77,10 @@
       </visual>
 
       <collision>
-        <origin xyz="-0.081 0 0.1225" rpy="0.0 0 0" />
+        <origin xyz="0.01 0 0.1225" rpy="0.0 0 0" />
         <geometry>
-          <mesh filename="package://omnivelma/meshes/collider/base.dae" />
-        </geometry>
-      </collision>
- 
-      <collision>
-        <origin xyz="-0.035 0 0.25" rpy="0.0 0 0" />
-        <geometry>
-          <box size="0.364 0.32 0.15" />
+          <box size="0.907 0.75 0.15" />
+          <!-- <mesh filename="package://omnivelma/meshes/collider/base.dae" /> -->
         </geometry>
       </collision>
 
@@ -132,12 +127,7 @@
           <mesh filename="package://omnivelma/meshes/collider/front.dae" />
         </geometry>
       </visual>
-      <collision>
-        <origin xyz="0.364 0 0.1225" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="package://omnivelma/meshes/collider/front.dae" />
-        </geometry>
-      </collision>
+
       <inertial>
         <mass value="15.0"/>
         <inertia ixx="0.7351" ixy="0" ixz="0" iyy="0.0771" iyz="0" izz="0.7483"/>
@@ -287,6 +277,7 @@
       <inertial>
         <mass value="1.6" />
         <wheel_inertia m="1.6" r="0.1016" h="0.05" />
+        <!-- <inertia ixx="0.004738485" ixy="0" ixz="0" iyy="0.008" iyz="0" izz="0.004738485" /> -->
       </inertial>
       
       <visual name="wheel_fl_middle">
@@ -365,14 +356,14 @@
           <capsule radius="0.20" length="1.0"/>
         </geometry>
       </self_collision_checking>
-
-<!--       <self_collision_checking>
+<!-- 
+      <self_collision_checking>
         <origin xyz="-0.1 0.0 0.45" rpy="0 0 0"/>
         <geometry>
           <capsule radius="0.18" length="0.4"/>
         </geometry>
-      </self_collision_checking>
- -->
+      </self_collision_checking> -->
+
       <inertial>
         <mass value="30.0"/>
         <origin rpy="0 0 0" xyz="0 -0.06 0.130"/>
