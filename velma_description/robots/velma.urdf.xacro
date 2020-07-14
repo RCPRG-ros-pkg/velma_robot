@@ -370,7 +370,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     <origin xyz="0.115 0.0 -0.078" rpy="0 ${M_PI/2} 0"/>
     <axis xyz="0 0 1"/>
                           <!-- measured max angle is 94.  so upper limit is 94 - start orientation (42 degrees)-->
-    <limit effort="10" lower="0" upper="0" velocity="3.27"/>
+    <limit effort="10" lower="0" upper="0.00001" velocity="3.27"/>
     <dynamics damping="0.05"/>
   </joint>
   <gazebo reference="rightFtSensorJoint">
@@ -400,7 +400,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     <origin xyz="0.115 0.0 -0.078" rpy="0 ${M_PI/2} 0"/>
     <axis xyz="0 0 1"/>
                           <!-- measured max angle is 94.  so upper limit is 94 - start orientation (42 degrees)-->
-    <limit effort="10" lower="0" upper="0" velocity="3.27"/>
+    <limit effort="10" lower="0" upper="0.00001" velocity="3.27"/>
     <dynamics damping="0.05"/>
   </joint>
   <gazebo reference="leftFtSensorJoint">
