@@ -41,6 +41,7 @@
       </xacro:if>
       <master_service>
         <name>velma_sim_gazebo</name>
+        <subname>velma_sim_gazebo</subname>
       </master_service>
       <component>
         <package>velma_sim_gazebo</package>
