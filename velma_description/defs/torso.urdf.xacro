@@ -4,16 +4,17 @@
                         xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
                         xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="velma_torso" params="parent *origin">
-  
+  <xacro:macro name="velma_torso" params="*origin">
+
+    <link name="world" />
+
     <joint name="torso_base_joint" type="fixed">
       <xacro:insert_block name="origin" />
-      <parent link="${parent}"/>
+      <parent link="world"/>
       <child link="torso_base"/>
     </joint>
-  
-    <link name="torso_base">
 
+    <link name="torso_base">
       <visual>
         <origin xyz="0 0 0.1" rpy="0.0 0 0" />
         <geometry>

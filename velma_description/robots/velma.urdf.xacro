@@ -16,9 +16,18 @@
   <xacro:arg name="use_gazebo_kinect" default="false"/>
   <xacro:arg name="use_stereo_pair" default="false"/>
 
+  <xacro:arg name="mobile_base" default="false"/>
+
   <xacro:include filename="$(find lwr_defs)/defs/materials.xml"/>
   <xacro:include filename="$(find velma_description)/calibration/default_cal.xml"/>
-  <xacro:include filename="$(find velma_description)/defs/torso.urdf.xacro"/>
+  <xacro:if value="$(arg mobile_base)">
+    <xacro:include filename="$(find velma_description)/defs/torso_mobile.urdf.xacro"/>
+    <xacro:include filename="$(find velma_description)/defs/monokl.urdf.xacro"/>
+    <xacro:include filename="$(find velma_description)/defs/base_imu.urdf.xacro" />
+  </xacro:if>
+  <xacro:unless value="$(arg mobile_base)">
+    <xacro:include filename="$(find velma_description)/defs/torso.urdf.xacro"/>
+  </xacro:unless>
   <xacro:include filename="$(find velma_description)/defs/head.urdf.xacro" />
   <xacro:include filename="$(find lwr_defs)/defs/kuka_lwr_arm_defs.xml"/>
   <xacro:include filename="$(find barrett_hand_defs)/defs/barret_hand.urdf.xacro"/>
@@ -29,6 +38,7 @@
 
   <xacro:property name="camera_name" value="head_kinect" />
   <xacro:property name="stereo_name" value="head_stereo" />
+  <xacro:property name="M_PI" value="3.1415926535897931" />
 
   <!-- Gazebo Plugin -->
   <gazebo>
@@ -216,20 +226,86 @@
     </gazebo>
   </xacro:if>
 
-  <xacro:property name="M_PI" value="3.1415926535897931" />
+  <xacro:if value="$(arg mobile_base)">
+    <gazebo reference="base_imu">
+      <selfCollide>true</selfCollide>
+      <sensor name="base_imu" type="imu">
+        <visualize>false</visualize>
+        <topic>/base_imu</topic>
+        <plugin name="base_imu" filename="libbase_imu.so" />
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+    </gazebo>
 
-  <link name="world" />
 
-  <!-- static connection between the world frame and the map frame -->
-  <link name="map"/>
+    <monokl name="monokl_l" parent="torso_base">
+      <origin xyz="0 0.3 0.256" rpy="0 0 0" />
+    </monokl>
 
-  <joint name="world_map_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <parent link="world"/>
-    <child link="map"/>
-  </joint>
+    <monokl name="monokl_r" parent="torso_base">
+      <origin xyz="0 -0.3 0.256" rpy="0 0 -${M_PI}" />
+    </monokl>
 
-  <velma_torso parent="world" >
+    <base_imu name="base_imu" parent="torso_base">
+      <origin xyz="0 0 0.1225" rpy="0 0 0" />
+    </base_imu>
+
+  </xacro:if>
+
+  <velma_torso>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </velma_torso>
 

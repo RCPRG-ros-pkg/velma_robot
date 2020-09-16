@@ -1,0 +1,380 @@
+<?xml version="1.0"?>
+<robot xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+                        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+                        xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+                        xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="velma_torso" params="*origin">
+
+    <xacro:macro name="wheel_inertia" params="m r h">
+      <inertia ixx="${m*(3*r*r+h*h)/12}" ixy="0" ixz="0" iyy="${m*r*r/2}" iyz="0" izz="${m*(3*r*r+h*h)/12}" />
+    </xacro:macro>
+
+    <gazebo>
+      <plugin name="gazebo_ros_force_based_move" filename="libgazebo_ros_force_based_move.so">
+        <odometryRate>30.0</odometryRate>
+        <robotNamespace>/</robotNamespace>
+
+        <leftFrontJoint>motor_fl</leftFrontJoint>
+        <rightFrontJoint>motor_fr</rightFrontJoint>
+        <leftRearJoint>motor_rl</leftRearJoint>
+        <rightRearJoint>motor_rr</rightRearJoint>
+
+        <wheelSeparation>0.76</wheelSeparation>
+        <wheelDiameter>0.2032</wheelDiameter>
+
+        <robotBaseFrame>torso_base</robotBaseFrame>
+        <commandTopic>/cmd_vel</commandTopic>
+        <publishOdometryTf>true</publishOdometryTf>
+
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+
+        <integralLimit>450.0</integralLimit>
+        <commandLimit>2500.0</commandLimit>
+
+        <x_velocity_p_gain>8000.0</x_velocity_p_gain>
+        <x_velocity_i_gain>500.0</x_velocity_i_gain>
+        <x_velocity_d_gain>20.0</x_velocity_d_gain>
+
+        <y_velocity_p_gain>8000.0</y_velocity_p_gain>
+        <y_velocity_i_gain>500.0</y_velocity_i_gain>
+        <y_velocity_d_gain>20.0</y_velocity_d_gain>
+
+        <yaw_velocity_p_gain>300.0</yaw_velocity_p_gain>
+        <yaw_velocity_i_gain>3.0</yaw_velocity_i_gain>
+        <yaw_velocity_d_gain>3.0</yaw_velocity_d_gain>
+
+        <useRealOdom>true</useRealOdom>
+      </plugin>
+    </gazebo>
+<!--
+    <joint name="torso_base_joint" type="planar">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="${parent}"/>
+      <child link="torso_base"/>
+    </joint>
+-->
+    <link name="torso_base">
+      <visual>
+        <geometry>
+          <mesh filename="package://velma_description/meshes/mobile_base.dae" />
+        </geometry>
+        <origin xyz="-0.081 0 0.1225" rpy="0.0 0 0" />
+        <material name="torso_base">
+          <color rgba="0.35 0.32 0.3 1"/>
+        </material>
+      </visual>
+
+      <visual>
+        <geometry>
+          <box size="0.364 0.32 0.15" />
+        </geometry>
+        <origin xyz="-0.035 0 0.25" rpy="0.0 0 0" />
+        <material name="torso_base">
+          <color rgba="0.3 0.3 0.15 1"/>
+        </material>
+      </visual>
+
+      <collision>
+        <origin xyz="0.01 0 0.1225" rpy="0.0 0 0" />
+        <geometry>
+          <box size="0.907 0.75 0.15" />
+          <!-- <mesh filename="package://omnivelma/meshes/collider/base.dae" /> -->
+        </geometry>
+      </collision>
+
+      <inertial>
+        <mass value="60.0"/>
+        <inertia ixx="2.94" ixy="0" ixz="0" iyy="2.72" iyz="0" izz="5.40"/>
+      </inertial>
+    </link>
+
+    <gazebo reference="torso_base">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+     <gazebo reference="front">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="wheel_rr">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="wheel_fr">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="wheel_fl">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="wheel_rl">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <link name="front">
+      <visual>
+        <origin xyz="0.364 0 0.1225" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://velma_description/meshes/collider/front.dae" />
+        </geometry>
+      </visual>
+
+      <inertial>
+        <mass value="15.0"/>
+        <inertia ixx="0.7351" ixy="0" ixz="0" iyy="0.0771" iyz="0" izz="0.7483"/>
+      </inertial>
+    </link>
+
+    <joint name="middle_joint" type="fixed"> 
+      <parent link="torso_base"/>
+      <child link="front"/>
+      <limit effort="100" velocity="100" />
+    </joint>
+
+    <!-- kola bazy -->
+    <link name="wheel_rr">
+      <collision name="wheel_rr_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <sphere radius="0.1016" />
+        </geometry>
+        <surface>
+          <soft_contact>
+            <dart>
+              <bone_attachment>100000.0</bone_attachment>
+              <stiffness>100000.0</stiffness>
+              <damping>1000.0</damping>
+              <flesh_mass_fraction>0.05</flesh_mass_fraction>
+            </dart>
+          </soft_contact>
+        </surface>
+      </collision>
+
+      <inertial>
+        <mass value="1.6" />
+        <wheel_inertia m="1.6" r="0.1016" h="0.05" />
+      </inertial>
+      
+      <visual name="wheel_rr_middle">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/wheel.dae" />
+        </geometry>
+      </visual>
+      
+      <visual name="wheel_rr_rollers">
+         <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/wheel_l.dae" />
+        </geometry> 
+      </visual>
+    </link>
+
+    <link name="wheel_rl">
+      <collision name="wheel_rl_collision">
+         <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <sphere radius="0.1016" />
+        </geometry>
+        <surface>
+          <soft_contact>
+            <dart>
+              <bone_attachment>100000.0</bone_attachment>
+              <stiffness>100000.0</stiffness>
+              <damping>1000.0</damping>
+              <flesh_mass_fraction>0.05</flesh_mass_fraction>
+            </dart>
+          </soft_contact>
+        </surface>
+      </collision>
+
+      <inertial>
+        <mass value="1.6" />
+        <wheel_inertia m="1.6" r="0.1016" h="0.05" />
+      </inertial>
+      
+      <visual name="wheel_rl_middle">
+         <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/wheel.dae" />
+        </geometry>
+      </visual>
+      
+      <visual name="wheel_rl_rollers">
+         <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/wheel_r.dae" />
+        </geometry> 
+      </visual>
+    </link>
+
+
+    <link name="wheel_fr">
+      <collision name="wheel_fr_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <sphere radius="0.1016" />
+        </geometry>
+        <surface>
+          <soft_contact>
+            <dart>
+              <bone_attachment>100000.0</bone_attachment>
+              <stiffness>100000.0</stiffness>
+              <damping>1000.0</damping>
+              <flesh_mass_fraction>0.05</flesh_mass_fraction>
+            </dart>
+          </soft_contact>
+        </surface>
+      </collision>
+
+      <inertial>
+        <mass value="1.6" />
+        <wheel_inertia m="1.6" r="0.1016" h="0.05" />
+      </inertial>
+      
+      <visual name="wheel_fr_middle">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/wheel.dae" />
+        </geometry>
+      </visual>
+      
+      <visual name="wheel_fr_rollers">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/wheel_r.dae" />
+        </geometry> 
+      </visual>
+    </link>
+
+    <link name="wheel_fl">
+      <collision name="wheel_fl_collision">
+         <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <sphere radius="0.1016" />
+        </geometry>
+        <surface>
+          <soft_contact>
+            <dart>
+              <bone_attachment>100000.0</bone_attachment>
+              <stiffness>100000.0</stiffness>
+              <damping>1000.0</damping>
+              <flesh_mass_fraction>0.05</flesh_mass_fraction>
+            </dart>
+          </soft_contact>
+        </surface>
+      </collision>
+
+      <inertial>
+        <mass value="1.6" />
+        <wheel_inertia m="1.6" r="0.1016" h="0.05" />
+        <!-- <inertia ixx="0.004738485" ixy="0" ixz="0" iyy="0.008" iyz="0" izz="0.004738485" /> -->
+      </inertial>
+      
+      <visual name="wheel_fl_middle">
+         <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/wheel.dae" />
+        </geometry>
+      </visual>
+      
+      <visual name="wheel_fl_rollers">
+         <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/wheel_l.dae" />
+        </geometry> 
+      </visual>
+    </link>
+
+    <joint name="motor_rr" type="fixed">
+      <origin xyz="-0.36 -0.380 0.11" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <parent link="torso_base" />
+      <child link="wheel_rr" />
+    </joint>
+
+    <joint name="motor_rl" type="fixed">
+      <origin xyz="-0.36 0.380 0.11" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <parent link="torso_base" />
+      <child link="wheel_rl" />
+    </joint>
+
+    <joint name="motor_fr" type="fixed">
+      <origin xyz="0.371 -0.380 0.11" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <parent link="front" />
+      <child link="wheel_fr" />
+    </joint>
+
+    <joint name="motor_fl" type="fixed">
+      <origin xyz="0.371 0.380 0.11" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <parent link="front" />
+      <child link="wheel_fl" />>
+    </joint>
+
+    <joint name="torso_0_joint" type="revolute">
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
+      <parent link="torso_base"/>
+      <child link="torso_link0"/>
+      <dynamics damping="10.0"/>
+    </joint>  
+
+    <link name="torso_link0">
+      <visual>
+        <origin xyz="0 0 0.52" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://velma_description/meshes/collision/torso0_mobile_collision.stl" />
+        </geometry>
+        <material name="torso_base">
+          <color rgba="0.7 0.7 0.7 1"/>
+        </material>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0.52" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://velma_description/meshes/collision/torso0_mobile_collision.stl" />
+        </geometry>
+      </collision>
+
+      <self_collision_checking>
+        <origin xyz="0 0.0 0.8" rpy="0 0 0"/>
+        <geometry>
+          <capsule radius="0.20" length="1.0"/>
+        </geometry>
+      </self_collision_checking>
+
+      <self_collision_checking>
+        <origin xyz="-0.1 0.0 0.45" rpy="0 0 0"/>
+        <geometry>
+          <capsule radius="0.18" length="0.4"/>
+        </geometry>
+      </self_collision_checking>
+
+      <inertial>
+        <mass value="30.0"/>
+        <origin rpy="0 0 0" xyz="0 -0.06 0.130"/>
+        <inertia ixx="3.175" ixy="0" ixz="0" iyy="3.175" iyz="0" izz="1.35"/>
+      </inertial>
+    </link>
+
+    <gazebo reference="torso_link0">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+  </xacro:macro>
+</robot>
