@@ -18,6 +18,9 @@
 
   <xacro:arg name="mobile_base" default="false"/>
 
+  <xacro:arg name="use_left_optoforces" default="false"/>
+  <xacro:arg name="use_right_optoforces" default="false"/>
+
   <xacro:include filename="$(find lwr_defs)/defs/materials.xml"/>
   <xacro:include filename="$(find velma_description)/calibration/default_cal.xml"/>
   <xacro:if value="$(arg mobile_base)">
@@ -89,11 +92,21 @@
         <type>BarrettTactileGazebo</type>
         <name>RightHandTactile</name>
       </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>OptoforceGazebo</type>
+        <name>RightHandOptoforce</name>
+      </component>
 
       <component>
         <package>velma_sim_gazebo</package>
         <type>BarrettHandGazebo</type>
         <name>LeftHand</name>
+      </component>
+      <component>
+        <package>velma_sim_gazebo</package>
+        <type>BarrettTactileGazebo</type>
+        <name>LeftHandTactile</name>
       </component>
       <component>
         <package>velma_sim_gazebo</package>
@@ -454,7 +467,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     <provideFeedback>true</provideFeedback>
   </gazebo>
 
-  <xacro:barret_hand prefix="right" parent="right_FtSensorLink" with_optoforce="false">
+  <xacro:barret_hand prefix="right" parent="right_FtSensorLink" with_optoforce="$(arg use_right_optoforces)">
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </xacro:barret_hand>
 
@@ -484,7 +497,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     <provideFeedback>true</provideFeedback>
   </gazebo>
 
-  <xacro:barret_hand prefix="left" parent="left_FtSensorLink" with_optoforce="true">
+  <xacro:barret_hand prefix="left" parent="left_FtSensorLink" with_optoforce="$(arg use_left_optoforces)">
     <origin xyz="0 0 0" rpy="0 0 ${M_PI}"/>
   </xacro:barret_hand>
 
