@@ -8,4 +8,6 @@
   
   <buildtool_depend>catkin</buildtool_depend>
   
+  <run_depend>joint_state_publisher_gui</run_depend>
+
 </package>

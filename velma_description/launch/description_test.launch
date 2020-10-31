@@ -2,19 +2,42 @@
 <launch>
     <param name="/use_sim_time" value="false"/>
 
-	<!-- upload robot description -->
-	<include file="$(find velma_description)/launch/upload_robot.launch" />
-	
-	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" >
-      <param name="use_tf_static" value="false"/>
-    </node>
-	
-	<node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
-	  <param name="use_gui" value="true"/>
-	  <param name="num_rows" value="12"/>
-	</node>
-	
-  <node pkg="rviz" type="rviz" name="rviz" />
-	
-</launch>
+    <!-- upload robot description -->
+    <include file="$(find velma_description)/launch/upload_robot.launch" />
 
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" >
+        <param name="use_tf_static" value="false"/>
+    </node>
+
+    <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher_gui">
+        <param name="num_rows" value="9"/>
+        <rosparam>
+            zeros:
+                right_arm_0_joint : -0.3
+                right_arm_1_joint : -1.8
+                right_arm_2_joint : 1.25
+                right_arm_3_joint : 0.85
+                right_arm_4_joint : 0
+                right_arm_5_joint : -0.5
+                right_arm_6_joint : 0
+                left_arm_0_joint : 0.3
+                left_arm_1_joint : 1.8
+                left_arm_2_joint : -1.25
+                left_arm_3_joint : -0.85
+                left_arm_4_joint : 0
+                left_arm_5_joint : 0.5
+                left_arm_6_joint : 0
+            dependent_joints:
+                left_HandFingerOneKnuckleThreeJoint: {parent: left_HandFingerOneKnuckleTwoJoint, factor: 0.33333 }
+                left_HandFingerTwoKnuckleThreeJoint: {parent: left_HandFingerTwoKnuckleTwoJoint, factor: 0.33333 }
+                left_HandFingerThreeKnuckleThreeJoint: {parent: left_HandFingerThreeKnuckleTwoJoint, factor: 0.33333 }
+                left_HandFingerTwoKnuckleOneJoint: {parent: left_HandFingerOneKnuckleOneJoint, factor: 1.0 }
+                right_HandFingerOneKnuckleThreeJoint: {parent: right_HandFingerOneKnuckleTwoJoint, factor: 0.33333 }
+                right_HandFingerTwoKnuckleThreeJoint: {parent: right_HandFingerTwoKnuckleTwoJoint, factor: 0.33333 }
+                right_HandFingerThreeKnuckleThreeJoint: {parent: right_HandFingerThreeKnuckleTwoJoint, factor: 0.33333 }
+                right_HandFingerTwoKnuckleOneJoint: {parent: right_HandFingerOneKnuckleOneJoint, factor: 1.0 }
+        </rosparam>
+    </node>
+
+    <node pkg="rviz" type="rviz" name="rviz" />
+</launch>
