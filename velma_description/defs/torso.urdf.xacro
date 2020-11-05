@@ -15,6 +15,7 @@
     </joint>
 
     <link name="torso_base">
+      <!--
       <visual>
         <origin xyz="0 0 0.1" rpy="0.0 0 0" />
         <geometry>
@@ -24,6 +25,42 @@
           <color rgba="0.3 0.3 0.3 1"/>
         </material>
       </visual>
+    -->
+
+      <visual>
+        <origin xyz="0 0 0.1" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.7 0.8 0.2" />
+        </geometry>
+        <material name="torso_base">
+          <color rgba="0.3 0.3 0.3 1"/>
+        </material>
+      </visual>
+
+      <visual>
+        <origin xyz="0 0 0.26" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.4 0.4 0.12" />
+        </geometry>
+        <material name="torso_base">
+          <color rgba="0.3 0.3 0.3 1"/>
+        </material>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0.1" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.7 0.8 0.2" />
+        </geometry>
+      </collision>
+
+      <collision>
+        <origin xyz="0 0 0.26" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.4 0.4 0.12" />
+        </geometry>
+      </collision>
+
 <!--
       <collision>
         <origin xyz="0 0 0.1" rpy="0 0 0"/>
