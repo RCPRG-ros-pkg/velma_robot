@@ -4,6 +4,16 @@
                         xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
                         xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <xacro:arg name="use_gpu" default="true"/>
+
+
+  <xacro:if value="$(arg use_gpu)">
+    <xacro:property name="gpu_prefix" value="gpu_" />
+  </xacro:if>
+  <xacro:unless value="$(arg use_gpu)">
+    <xacro:property name="gpu_prefix" value="" />
+  </xacro:unless>
+
   <xacro:macro name="monokl" params="parent name *origin">
 
   	<joint name="${name}_joint" type="fixed">
@@ -72,10 +82,13 @@
 
     <gazebo reference="${name}_heart">
       <selfCollide>true</selfCollide>
-      <sensor type="gpu_ray" name="${name}">
+      <sensor type="${gpu_prefix}ray" name="${name}">
       <pose>0 0 0 0 0 0</pose>
       <visualize>true</visualize>
       <update_rate>40</update_rate>
+      <xacro:unless value="$(arg use_gpu)">
+        <always_on>true</always_on>
+      </xacro:unless>
       <ray>
         <scan>
           <horizontal>
@@ -100,7 +113,7 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_${gpu_prefix}laser.so">
         <topicName>/${name}/scan</topicName>
         <frameName>${name}_heart</frameName>
       </plugin>
