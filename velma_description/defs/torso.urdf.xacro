@@ -87,6 +87,7 @@
     <gazebo reference="torso_base">
       <turnGravityOff>false</turnGravityOff>
       <selfCollide>true</selfCollide>
+      <material>Gazebo/DarkGrey</material>
     </gazebo>
 
     <joint name="torso_0_joint" type="revolute">
@@ -171,6 +172,7 @@
     <gazebo reference="torso_link0">
       <turnGravityOff>false</turnGravityOff>
       <selfCollide>true</selfCollide>
+      <material>Gazebo/DarkGrey</material>
     </gazebo>
 
   </xacro:macro>

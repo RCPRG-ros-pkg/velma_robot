@@ -39,6 +39,29 @@
   <xacro:include filename="$(find velma_defs)/defs/kinect_camera.urdf.xacro" />
    -->
 
+  <xacro:macro name="visual_marker_xy" params="size pos_x pos_y pos_z">
+    <visual name="black_box1">
+      <origin xyz="${pos_x + 0.5*size} ${pos_y + 0.5*size} ${pos_z}" rpy="0 0 0" />
+      <geometry><box size="${size} ${size} 0.005" /></geometry>
+      <material name="Black" ><color rgba="0 0 0 1.0"/></material>
+    </visual>
+    <visual name="black_box2">
+      <origin xyz="${pos_x - 0.5*size} ${pos_y - 0.5*size} ${pos_z}" rpy="0 0 0" />
+      <geometry><box size="${size} ${size} 0.005" /></geometry>
+      <material name="Black" ><color rgba="0 0 0 1.0"/></material>
+    </visual>
+    <visual name="white_box1">
+      <origin xyz="${pos_x + 0.5*size} ${pos_y - 0.5*size} ${pos_z}" rpy="0 0 0" />
+      <geometry><box size="${size} ${size} 0.005" /></geometry>
+      <material name="White" ><color rgba="1 1 1 1.0"/></material>
+    </visual>
+    <visual name="white_box2">
+      <origin xyz="${pos_x - 0.5*size} ${pos_y + 0.5*size} ${pos_z}" rpy="0 0 0" />
+      <geometry><box size="${size} ${size} 0.005" /></geometry>
+      <material name="White" ><color rgba="1 1 1 1.0"/></material>
+    </visual>
+  </xacro:macro>
+
   <xacro:property name="camera_name" value="head_kinect" />
   <xacro:property name="stereo_name" value="head_stereo" />
   <xacro:property name="M_PI" value="3.1415926535897931" />
@@ -375,6 +398,8 @@
       <origin rpy="0 0 0" xyz="0.0543534 0.0000315 -0.0313542"/>
       <inertia ixx="0.0007416" ixy="0" ixz="0.000566225" iyy="0.001365025" iyz="0" izz="0.0009347"/>
     </inertial>
+
+    <visual_marker_xy size="0.02" pos_x="0" pos_y="0" pos_z="0.05" />
   </link>
 <!--
 gripper mount link:
@@ -434,6 +459,8 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
       <origin rpy="0 0 0" xyz="0.0543534 0.0000315 -0.0313542"/>
       <inertia ixx="0.0007416" ixy="0" ixz="0.000566225" iyy="0.001365025" iyz="0" izz="0.0009347"/>
     </inertial>
+
+    <visual_marker_xy size="0.02" pos_x="0" pos_y="0" pos_z="0.02" />
   </link>
 
   <gazebo reference="left_gripper_mount_link">
