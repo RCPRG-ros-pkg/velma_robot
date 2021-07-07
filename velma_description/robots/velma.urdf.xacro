@@ -21,6 +21,8 @@
   <xacro:arg name="use_left_optoforces" default="false"/>
   <xacro:arg name="use_right_optoforces" default="false"/>
 
+  <xacro:arg name="use_dh_compatible_model" default="false"/>
+
   <xacro:include filename="$(find lwr_defs)/defs/materials.xml"/>
   <xacro:include filename="$(find velma_description)/calibration/default_cal.xml"/>
   <xacro:if value="$(arg mobile_base)">
@@ -31,8 +33,21 @@
   <xacro:unless value="$(arg mobile_base)">
     <xacro:include filename="$(find velma_description)/defs/torso.urdf.xacro"/>
   </xacro:unless>
-  <xacro:include filename="$(find velma_description)/defs/head.urdf.xacro" />
-  <xacro:include filename="$(find lwr_defs)/defs/kuka_lwr_arm_defs.xml"/>
+
+  <xacro:if value="$(arg use_dh_compatible_model)">
+    <xacro:include filename="$(find velma_description)/defs/head_dh.urdf.xacro" />
+  </xacro:if>
+  <xacro:unless value="$(arg use_dh_compatible_model)">
+    <xacro:include filename="$(find velma_description)/defs/head.urdf.xacro" />
+  </xacro:unless>
+
+  <xacro:if value="$(arg use_dh_compatible_model)">
+    <xacro:include filename="$(find lwr_defs)/defs/kuka_lwr_arm_defs_dh.xml"/>
+  </xacro:if>
+  <xacro:unless value="$(arg use_dh_compatible_model)">
+    <xacro:include filename="$(find lwr_defs)/defs/kuka_lwr_arm_defs.xml"/>
+  </xacro:unless>
+
   <xacro:include filename="$(find barrett_hand_defs)/defs/barret_hand.urdf.xacro"/>
 
 <!--

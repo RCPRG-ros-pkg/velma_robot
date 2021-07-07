@@ -1,9 +1,14 @@
 <?xml version="1.0"?>
 <launch>
+    <arg name="use_dh_compatible_model" default="false"/>
+
     <param name="/use_sim_time" value="false"/>
 
     <!-- upload robot description -->
-    <include file="$(find velma_description)/launch/upload_robot.launch" />
+    <include file="$(find velma_description)/launch/upload_robot.launch" >
+      <arg name="use_dh_compatible_model" value="$(arg use_dh_compatible_model)" />
+    </include>
+
 
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" >
         <param name="use_tf_static" value="false"/>

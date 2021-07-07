@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<robot xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+                        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+                        xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+                        xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find velma_description)/defs/camera.urdf.xacro" />
+
+  <xacro:macro name="velma_head" params="parent *origin">
+    <joint name="head_base_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="head_base"/>
+    </joint>
+    
+    <link name="head_base">
+       <visual>
+        <origin xyz="0 0 0.0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/head_base_simplified.STL" />
+        </geometry>
+        <material name="torso_gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0.0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/collision/head_base_collision.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.2"/>
+        <origin rpy="0 0 0" xyz="0 0 0.0625"/>
+        <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+      </inertial>
+    </link>
+    
+    <joint name="head_pan_motor_joint" type="fixed">
+      <origin xyz="0 0 0.025" rpy="0 0 0" />
+      <parent link="head_base"/>
+      <child link="head_pan_motor"/>
+    </joint>
+    
+    <link name="head_pan_motor">
+       <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/head_pan_simplified.STL" />
+        </geometry>
+        <material name="torso_gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0.0308" rpy="0 0 0" />
+        <geometry>
+          <box size="0.14 0.09 0.06" />
+        </geometry>
+      </collision>
+      <self_collision_checking>
+        <origin xyz="0.0 0 0.04" rpy="0 0 0"/>
+        <geometry>
+          <capsule radius="0.07" length="0.08"/>
+        </geometry>
+      </self_collision_checking>
+      <inertial>
+        <mass value="0.2"/>
+        <origin rpy="0 0 0" xyz="0 0 0.0625"/>
+        <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+      </inertial>
+    </link>
+    
+    <!-- pan -->
+    <joint name="head_pan_joint" type="revolute">
+      <origin xyz="0 0 0.062" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <parent link="head_pan_motor"/>
+      <child link="head_pan_link"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="1.57"/>
+      <dynamics damping="0.1"/>
+    </joint>
+    
+    <link name="head_pan_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/head_tilt_simplified.STL" />
+        </geometry>
+        <material name="torso_gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 -0.00921 0.04463" rpy="0 0 0" />
+        <geometry>
+          <box size="0.08 0.08 0.08" />
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.2"/>
+        <origin rpy="0 0 0" xyz="0 0 0.0625"/>
+        <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+      </inertial>
+    </link>
+
+    <gazebo reference="head_pan_link">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <!-- tilt -->
+    <joint name="head_tilt_joint" type="revolute">
+      <origin xyz="0 0 0.048" rpy="1.5707963267948966 0 3.141592653589793" />
+      <axis xyz="0 0 1"/>
+      <parent link="head_pan_link"/>
+      <child link="head_tilt_link_dummy"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
+      <dynamics damping="0.1"/>
+    </joint>
+
+    <!-- PATCH: The added dummy joint and link is a bugfix for KDL issue with rotated joints -->
+    <link name="head_tilt_link_dummy"/>
+
+    <joint name="head_tilt_joint_dummy" type="fixed">
+      <origin xyz="0 0 0" rpy="3.1415926535848966 0 -3.141592653589793" />
+      <parent link="head_tilt_link_dummy"/>
+      <child link="head_tilt_link"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
+      <dynamics damping="0.1"/>
+    </joint>
+    <!-- end of PATCH -->
+
+    <link name="head_tilt_link">
+      <visual>
+        <origin xyz="0 0 0.04219" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/head_top_simplified.STL" />
+        </geometry>
+        <material name="torso_gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+        </material>
+      </visual>
+      <visual>
+        <origin xyz="0 0 0.04219" rpy="0 0 0 " />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/collision/head_top_collision.STL" />
+        </geometry>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0.04219" rpy="0 0 0 " />
+        <geometry>
+          <mesh filename="package://velma_description/meshes/collision/head_top_collision.STL" />
+        </geometry>
+      </collision>
+      <self_collision_checking>
+        <origin xyz="0.0 0.12 0.0" rpy="-1.57075 0 0"/>
+        <geometry>
+          <capsule radius="0.07" length="0.24"/>
+        </geometry>
+      </self_collision_checking>
+      <self_collision_checking>
+        <origin xyz="-0.12 0.17 0.0" rpy="-1.57075 0 0"/>
+        <geometry>
+          <capsule radius="0.07" length="0.14"/>
+        </geometry>
+      </self_collision_checking>
+      <self_collision_checking>
+        <origin xyz="0.0 0.20 0.0" rpy="0 0 0"/>
+        <geometry>
+          <capsule radius="0.07" length="0.23"/>
+        </geometry>
+      </self_collision_checking>
+      <inertial>
+        <mass value="0.2"/>
+        <origin rpy="0 0 0" xyz="0 0 0.0625"/>
+        <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
+      </inertial>
+    </link>
+
+    <gazebo reference="head_tilt_link">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <!-- sensors -->
+    
+    <head_camera parent="head_tilt_link" name="stereo_left">
+      <origin xyz="${cal_stereo_left_joint_x} ${cal_stereo_left_joint_y} ${cal_stereo_left_joint_z}"
+              rpy="${cal_stereo_left_joint_roll} ${cal_stereo_left_joint_pitch} ${cal_stereo_left_joint_yaw}"/>
+    </head_camera>
+    
+    <head_camera parent="stereo_left_link" name="stereo_right">
+      <origin xyz="${cal_stereo_right_joint_x} ${cal_stereo_right_joint_y} ${cal_stereo_right_joint_z}"
+              rpy="${cal_stereo_right_joint_roll} ${cal_stereo_right_joint_pitch} ${cal_stereo_right_joint_yaw}"/>
+    </head_camera>
+    
+    <head_camera parent="head_tilt_link" name="head_kinect_rgb">
+      <origin xyz="${cal_head_kinect_rgb_joint_x} ${cal_head_kinect_rgb_joint_y} ${cal_head_kinect_rgb_joint_z}"
+              rpy="${cal_head_kinect_rgb_joint_roll} ${cal_head_kinect_rgb_joint_pitch} ${cal_head_kinect_rgb_joint_yaw}"/>
+    </head_camera>
+  </xacro:macro>
+</robot>
+
