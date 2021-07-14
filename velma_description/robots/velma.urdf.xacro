@@ -509,7 +509,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
   </gazebo>
 
   <xacro:barret_hand prefix="right" parent="right_FtSensorLink" with_optoforce="$(arg use_right_optoforces)">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="0 0 0.005" rpy="0 0 0"/>
   </xacro:barret_hand>
 
   <link name="left_FtSensorLink">
@@ -539,7 +539,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
   </gazebo>
 
   <xacro:barret_hand prefix="left" parent="left_FtSensorLink" with_optoforce="$(arg use_left_optoforces)">
-    <origin xyz="0 0 0" rpy="0 0 ${M_PI}"/>
+    <origin xyz="0 0 0.005" rpy="0 0 ${M_PI}"/>
   </xacro:barret_hand>
 
 <!--
