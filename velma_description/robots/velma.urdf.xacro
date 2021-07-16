@@ -5,10 +5,13 @@
                         xmlns:xacro="http://www.ros.org/wiki/xacro"
 	 name="velma">
 
-  <xacro:arg name="collision_model_full" default="true"/>
-  <xacro:arg name="collision_model_simplified" default="false"/>
+  <xacro:arg name="collision_model_full" default="false"/>
+  <xacro:arg name="collision_model_simplified" default="true"/>
   <xacro:arg name="collision_model_enlargement" default="0.0"/>
   <xacro:arg name="collision_model_no_hands" default="false"/>
+
+  <xacro:arg name="collision_detector" default="fcl"/>
+  <xacro:property name="collision_detector" value="$(arg collision_detector)"/>
 
   <xacro:arg name="subsystem_xml" default="false"/>
   <xacro:arg name="xml_file_re_body" default=""/>
@@ -85,6 +88,7 @@
   <gazebo>
     <plugin name="rtt_gazebo" filename="librtt_gazebo_deployer.so">
       <isolated/>
+      <collision_detector>${collision_detector}</collision_detector>
       <xacro:if value="$(arg subsystem_xml)">
         <subsystem_xml>
           <filename>$(arg xml_file_re_body)</filename>
@@ -392,12 +396,34 @@
     </visual>
 
     <xacro:unless value="$(arg collision_model_no_hands)">
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="package://velma_description/meshes/collision/gripper_mount_collision2.STL"/>
-        </geometry>
-      </collision>
+      <xacro:if value="${collision_detector == 'fcl'}">
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://velma_description/meshes/collision/gripper_mount_collision2.STL"/>
+          </geometry>
+        </collision>
+      </xacro:if>
+      <xacro:if value="${collision_detector == 'dart'}">
+        <collision>
+          <origin xyz="0.00848898105323 0.0 0.0221745967865" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.110316336155 0.0795853585005 0.0497657060623"/>
+          </geometry>
+        </collision>
+        <collision>
+          <origin xyz="0.0838752761483 0 -0.0117062330246" rpy="0 0.822849241182 0"/>
+          <geometry>
+            <box size="0.068020761013 0.0795853585005 0.025487780571"/>
+          </geometry>
+        </collision>
+        <collision>
+          <origin xyz="0.102500602603 0 -0.0791217014194" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.0187338590622 0.0816289409995 0.100000023842"/>
+          </geometry>
+        </collision>
+      </xacro:if>
     </xacro:unless>
 
     <self_collision_checking>
@@ -453,12 +479,34 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     </visual>
 
     <xacro:unless value="$(arg collision_model_no_hands)">
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="package://velma_description/meshes/collision/gripper_mount_collision2.STL"/>
-        </geometry>
-      </collision>
+      <xacro:if value="${collision_detector == 'fcl'}">
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://velma_description/meshes/collision/gripper_mount_collision2.STL"/>
+          </geometry>
+        </collision>
+      </xacro:if>
+      <xacro:if value="${collision_detector == 'dart'}">
+        <collision>
+          <origin xyz="0.00848898105323 0.0 0.0221745967865" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.110316336155 0.0795853585005 0.0497657060623"/>
+          </geometry>
+        </collision>
+        <collision>
+          <origin xyz="0.0838752761483 0 -0.0117062330246" rpy="0 0.822849241182 0"/>
+          <geometry>
+            <box size="0.068020761013 0.0795853585005 0.025487780571"/>
+          </geometry>
+        </collision>
+        <collision>
+          <origin xyz="0.102500602603 0 -0.0791217014194" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.0187338590622 0.0816289409995 0.100000023842"/>
+          </geometry>
+        </collision>
+      </xacro:if>
     </xacro:unless>
 
     <self_collision_checking>

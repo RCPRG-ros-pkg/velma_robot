@@ -1,14 +1,23 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="use_dh_compatible_model" default="false"/>
+    <arg name="collision_detector" default="fcl"/>
+    <arg name="mobile_base" default="false"/>
 
     <param name="/use_sim_time" value="false"/>
 
     <!-- upload robot description -->
     <include file="$(find velma_description)/launch/upload_robot.launch" >
-      <arg name="use_dh_compatible_model" value="$(arg use_dh_compatible_model)" />
+      <arg name="load_velma_sim_gazebo" value="false"/>
+      <arg name="use_dh_compatible_model" value="false"/>
+      <arg name="use_left_optoforces" value="false"/>
+      <arg name="use_right_optoforces" value="false"/>
+      <arg name="mobile_base" value="$(arg mobile_base)"/>
+      <arg name="use_gpu_ray" value="true"/>
+      <arg name="collision_detector" value="$(arg collision_detector)"/>
+      <arg name="use_kinect" value="true"/>
+      <arg name="use_stereo_pair" value="true"/>
     </include>
-
 
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" >
         <param name="use_tf_static" value="false"/>

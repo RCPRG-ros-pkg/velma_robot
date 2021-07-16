@@ -1,17 +1,58 @@
 <?xml version="1.0"?>
 <launch>
+  <arg name="load_velma_sim_gazebo" default="false"/>
   <arg name="use_dh_compatible_model" default="false"/>
+  <arg name="use_left_optoforces" default="false"/>
+  <arg name="use_right_optoforces" default="false"/>
+  <arg name="mobile_base" default="false"/>
+  <arg name="use_gpu_ray" default="true"/>
+  <arg name="collision_detector" default="fcl"/>
+  <arg name="use_kinect" default="true"/>
+  <arg name="use_stereo_pair" default="true"/>
 
-  <!-- send two_lwr.urdf.xml to param server -->
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find velma_description)/robots/velma.urdf.xacro'" />
+  <arg unless="$(arg load_velma_sim_gazebo)" name="__cmd_velma_sim_gazebo" value="subsystem_xml:=false"/>
+  <arg     if="$(arg load_velma_sim_gazebo)" name="__cmd_velma_sim_gazebo" value="xml_file_re_body:='$(find velma_sim_gazebo)/config/velma_core_re.xml' subsystem_xml:=true"/>
+
+  <arg unless="$(arg mobile_base)" name="__srdf_filename" value="velma.srdf"/>
+  <arg     if="$(arg mobile_base)" name="__srdf_filename" value="velma_mobile.srdf"/>
 
   <param
     name="/robot_description"
     command="$(find xacro)/xacro
       '$(find velma_description)/robots/velma.urdf.xacro'
-      use_dh_compatible_model:=$(arg use_dh_compatible_model)"
+      $(arg __cmd_velma_sim_gazebo)
+      mobile_base:=$(arg mobile_base)
+      use_gazebo_kinect:=$(arg use_kinect)
+      use_stereo_pair:=$(arg use_stereo_pair)
+      use_left_optoforces:=$(arg use_left_optoforces)
+      use_right_optoforces:=$(arg use_right_optoforces)
+      use_gpu:=$(arg use_gpu_ray)
+      use_dh_compatible_model:=$(arg use_dh_compatible_model)
+      collision_detector:=$(arg collision_detector)"
   />
 
-  <param name="robot_semantic_description" command="$(find xacro)/xacro.py '$(find velma_description)/robots/velma.srdf'" />
-  <param name="use_tf_static" value="false"/>
+  <param
+    name="/robot_description_semantic"
+    command="$(find xacro)/xacro '$(find velma_description)/robots/$(arg __srdf_filename)'"
+  />
+
+  <param name="/robot_description_semantic_no_hands" command="$(find xacro)/xacro.py '$(find velma_description)/robots/velma_no_hands.srdf'" />
+
+  <group if="$(arg load_velma_sim_gazebo)">
+    <param
+      name="/robot_description_sdf"
+      command="$(find velma_sim_gazebo)/convert_velma_to_sdf
+        '$(find velma_description)/robots/velma.urdf.xacro'
+        $(arg __cmd_velma_sim_gazebo)
+        mobile_base:=$(arg mobile_base)
+        use_gazebo_kinect:=$(arg use_kinect)
+        use_stereo_pair:=$(arg use_stereo_pair)
+        use_left_optoforces:=$(arg use_left_optoforces)
+        use_right_optoforces:=$(arg use_right_optoforces)
+        use_gpu:=$(arg use_gpu_ray)
+        use_dh_compatible_model:=$(arg use_dh_compatible_model)
+        collision_detector:=$(arg collision_detector)"
+    />
+  </group>
+
 </launch>

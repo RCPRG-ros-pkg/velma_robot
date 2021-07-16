@@ -4,6 +4,9 @@
                         xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
                         xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <xacro:arg name="collision_detector" default="fcl"/>
+  <xacro:property name="collision_detector" value="$(arg collision_detector)"/>
+
   <xacro:include filename="$(find velma_description)/defs/camera.urdf.xacro" />
 
   <xacro:macro name="velma_head" params="parent *origin">
@@ -23,12 +26,22 @@
           <color rgba="0.5 0.5 0.5 1"/>
         </material>
       </visual>
-      <collision>
-        <origin xyz="0 0 0.0" rpy="0 0 0" />
-        <geometry>
-          <mesh filename="package://velma_description/meshes/collision/head_base_collision.STL" />
-        </geometry>
-      </collision>
+      <xacro:if value="${collision_detector == 'fcl'}">
+        <collision>
+          <origin xyz="0 0 0.0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://velma_description/meshes/collision/head_base_collision.STL" />
+          </geometry>
+        </collision>
+      </xacro:if>
+      <xacro:if value="${collision_detector == 'dart'}">
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.244826734066 0.069836191833 0.0559380054474"/>
+          </geometry>
+        </collision>
+      </xacro:if>
       <inertial>
         <mass value="0.2"/>
         <origin rpy="0 0 0" xyz="0 0 0.0625"/>
@@ -148,12 +161,28 @@
         </geometry>
       </visual>
 
-      <collision>
-        <origin xyz="0 0 0.04219" rpy="0 0 0 " />
-        <geometry>
-          <mesh filename="package://velma_description/meshes/collision/head_top_collision.STL" />
-        </geometry>
-      </collision>
+      <xacro:if value="${collision_detector == 'fcl'}">
+        <collision>
+          <origin xyz="0 0 0.04219" rpy="0 0 0 " />
+          <geometry>
+            <mesh filename="package://velma_description/meshes/collision/head_top_collision.STL" />
+          </geometry>
+        </collision>
+      </xacro:if>
+      <xacro:if value="${collision_detector == 'dart'}">
+        <collision>
+          <origin xyz="-0.0568619705737 0.1684935987 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.197051048279 0.218739390373 0.121755480766"/>
+          </geometry>
+        </collision>
+        <collision>
+          <origin xyz="0.00178006081842 0.200341254473 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.0787106156349 0.0698484331369 0.306180119514"/>
+          </geometry>
+        </collision>
+      </xacro:if>
       <self_collision_checking>
         <origin xyz="0.0 0.12 0.0" rpy="-1.57075 0 0"/>
         <geometry>
