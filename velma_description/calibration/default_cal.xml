@@ -2,8 +2,8 @@
 
 <root>
 <!-- head_base_joint -->
-<property name="cal_head_base_joint_x" value="0.020988" />
-<property name="cal_head_base_joint_y" value="-0.00041436" />
+<property name="cal_head_base_joint_x" value="0.0105" />
+<property name="cal_head_base_joint_y" value="-0.001" />
 <property name="cal_head_base_joint_z" value="1.3117" />
 <property name="cal_head_base_joint_roll" value="0.00040339" />
 <property name="cal_head_base_joint_pitch" value="-0.0062724" />
