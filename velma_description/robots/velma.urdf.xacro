@@ -441,6 +441,23 @@
 
     <visual_marker_xy size="0.02" pos_x="0" pos_y="0" pos_z="0.05" />
   </link>
+
+  <joint name="right_gripper_mount_joint" type="fixed">
+    <origin xyz="0 0 0.112" rpy="0 0 0"/>
+    <parent link="right_arm_ee_link"/>
+    <child link="right_needle_link"/>
+  </joint>
+  <link name="right_needle_link">
+  </link>
+
+  <joint name="left_gripper_mount_joint" type="fixed">
+    <origin xyz="0 0 0.109" rpy="0 0 0"/>
+    <parent link="left_arm_ee_link"/>
+    <child link="left_needle_link"/>
+  </joint>
+  <link name="left_needle_link">
+  </link>
+
 <!--
 gripper mount link:
 density: 1
