@@ -54,13 +54,41 @@
 <property name="cal_stereo_right_joint_roll" value="-0.0011009" />
 <property name="cal_stereo_right_joint_pitch" value="0.016076" />
 <property name="cal_stereo_right_joint_yaw" value="0.0072743" />
+
 <!-- torso_link2_left_arm_base_joint -->
+<!--
+     These are the old calibration parameters
 <property name="cal_torso_link2_left_arm_base_joint_x" value="0.0" />
 <property name="cal_torso_link2_left_arm_base_joint_y" value="0.000188676" />
 <property name="cal_torso_link2_left_arm_base_joint_z" value="1.17335" />
 <property name="cal_torso_link2_left_arm_base_joint_roll" value="0" />
 <property name="cal_torso_link2_left_arm_base_joint_pitch" value="${M_PI/3}" />
 <property name="cal_torso_link2_left_arm_base_joint_yaw" value="${M_PI/2}" />
+-->
+
+<!-- Calibration procedure performed on 2021.08 by DS, MF, MS -->
+<property name="cal_torso_link2_left_arm_base_joint_x" value="-0.0006" />
+<property name="cal_torso_link2_left_arm_base_joint_y" value="-0.001311324" />
+<property name="cal_torso_link2_left_arm_base_joint_z" value="1.17335" />
+<property name="cal_torso_link2_left_arm_base_joint_roll" value="0.0008701342499668567" />
+<property name="cal_torso_link2_left_arm_base_joint_pitch" value="1.0475048897873576" />
+<property name="cal_torso_link2_left_arm_base_joint_yaw" value="1.5724254826531625" />
+
+<property name="cal_torso_link2_right_arm_base_joint_x" value="-0.0004" />
+<property name="cal_torso_link2_right_arm_base_joint_y" value="-0.000888676" />
+<property name="cal_torso_link2_right_arm_base_joint_z" value="1.17335" />
+<property name="cal_torso_link2_right_arm_base_joint_roll" value="-0.0004493549541723" />
+<property name="cal_torso_link2_right_arm_base_joint_pitch" value="-1.04747154567336" />
+<property name="cal_torso_link2_right_arm_base_joint_yaw" value="1.5704709495574307" />
+
+<property name="cal_right_needle_joint_x" value="0.0011" />
+<property name="cal_right_needle_joint_y" value="-0.0008" />
+<property name="cal_right_needle_joint_z" value="0.1126" />
+
+<property name="cal_left_needle_joint_x" value="-0.001" />
+<property name="cal_left_needle_joint_y" value="0.0008" />
+<property name="cal_left_needle_joint_z" value="0.106" />
+
 <!-- left_hand_camera_joint -->
 <property name="cal_left_hand_camera_joint_x" value="-0.12137" />
 <property name="cal_left_hand_camera_joint_y" value="-0.0026114" />

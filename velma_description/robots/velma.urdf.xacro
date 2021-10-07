@@ -365,7 +365,7 @@
   </velma_torso>
 
   <kuka_lwr_arm parent="torso_link0" name="right" right="1">
-    <origin xyz="0 -0.000188676 1.17335" rpy="0 ${-M_PI/3} ${M_PI/2}"/>
+    <origin xyz="${cal_torso_link2_right_arm_base_joint_x} ${cal_torso_link2_right_arm_base_joint_y} ${cal_torso_link2_right_arm_base_joint_z}" rpy="${cal_torso_link2_right_arm_base_joint_roll} ${cal_torso_link2_right_arm_base_joint_pitch} ${cal_torso_link2_right_arm_base_joint_yaw}"/>
   </kuka_lwr_arm>
   
   <kuka_lwr_arm parent="torso_link0" name="left" right="1">
@@ -443,7 +443,7 @@
   </link>
 
   <joint name="right_needle_joint" type="fixed">
-    <origin xyz="0 0 0.112" rpy="0 0 0"/>
+    <origin xyz="${cal_right_needle_joint_x} ${cal_right_needle_joint_y} ${cal_right_needle_joint_z}" rpy="0 0 0"/>
     <parent link="right_arm_ee_link"/>
     <child link="right_needle_link"/>
   </joint>
@@ -451,7 +451,7 @@
   </link>
 
   <joint name="left_needle_joint" type="fixed">
-    <origin xyz="0 0 0.109" rpy="0 0 0"/>
+    <origin xyz="${cal_left_needle_joint_x} ${cal_left_needle_joint_y} ${cal_left_needle_joint_z}" rpy="0 0 0"/>
     <parent link="left_arm_ee_link"/>
     <child link="left_needle_link"/>
   </joint>
