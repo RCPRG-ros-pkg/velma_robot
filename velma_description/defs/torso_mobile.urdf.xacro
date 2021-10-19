@@ -336,20 +336,41 @@
       <visual>
         <origin xyz="0 0 0.52" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://velma_description/meshes/collision/torso0_mobile_collision.stl" />
+          <mesh filename="package://velma_description/meshes/collision/torso0_collision.stl" />
         </geometry>
         <material name="torso_base">
           <color rgba="0.7 0.7 0.7 1"/>
         </material>
       </visual>
 
-      <collision>
-        <origin xyz="0 0 0.52" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="package://velma_description/meshes/collision/torso0_mobile_collision.stl" />
-        </geometry>
-      </collision>
-
+      <xacro:if value="${collision_detector == 'fcl'}">
+        <collision>
+          <origin xyz="0 0 0.52" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="package://velma_description/meshes/collision/torso0_mobile_collision.stl" />
+          </geometry>
+        </collision>
+      </xacro:if>
+      <xacro:if value="${collision_detector == 'dart'}">
+        <collision>
+          <origin xyz="0 0 0.968570022583" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.30822044611 0.276354163885 0.45334654808"/>
+          </geometry>
+        </collision>
+        <collision>
+          <origin xyz="0 0 1.18425571918" rpy="${M_PI/4} 0 0"/>
+          <geometry>
+            <box size="0.316696882248 0.19 0.19"/>
+          </geometry>
+        </collision>
+        <collision>
+          <origin xyz="-0.0265109799802 0 0.505967736244" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.353161275387 0.255815982819 0.5"/>
+          </geometry>
+        </collision>
+      </xacro:if>
       <self_collision_checking>
         <origin xyz="0 0.0 0.8" rpy="0 0 0"/>
         <geometry>
@@ -374,6 +395,7 @@
     <gazebo reference="torso_link0">
       <turnGravityOff>false</turnGravityOff>
       <selfCollide>true</selfCollide>
+      <material>Gazebo/DarkGrey</material>
     </gazebo>
 
   </xacro:macro>

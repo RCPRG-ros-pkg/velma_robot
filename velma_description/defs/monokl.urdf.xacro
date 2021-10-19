@@ -37,12 +37,12 @@
       	</geometry>
       </visual>
 
-      <collision>
+      <!--<collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <cylinder radius="0.051" length="0.131" />
         </geometry>
-      </collision>
+      </collision>-->
 
       <inertial>
         <mass value="1.1"/>
@@ -62,12 +62,12 @@
           </geometry>
         </visual>
 
-        <collision>
+        <!--<collision>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
             <cylinder radius="0.04" length="0.04" />
           </geometry>
-        </collision>
+        </collision>-->
     </link>
 
     <joint name="${name}_heart_fix" type="fixed">
