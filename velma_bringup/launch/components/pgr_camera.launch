@@ -1,9 +1,10 @@
 <launch>
    <!-- Determine this using rosrun pointgrey_camera_driver list_cameras.
        If not specified, defaults to first camera found. -->
-  <arg name="name" default="camera"/>
+  <arg name="name"          default="camera"/>
   <arg name="camera_serial" default="0" />
-  <arg name="frame_id" default="camera" />
+  <arg name="frame_id"      default="camera_optical_frame" />
+  <arg name="trigger"       default="true" />
 
     <node pkg="pointgrey_camera_driver" type="camera_node" name="$(arg name)" >
       <param name="frame_id" value="$(arg frame_id)" />
@@ -12,15 +13,20 @@
       <param name="auto_shutter" value="false" />
       <param name="auto_gain" value="false" />
       <param name="shutter_speed" value="0.01" />
-      <param name="gain" value="0.0" />
-      <param name="enable_trigger" value="true" />
+      <param name="gain" value="0.0" /> 
+
+      <param name="enable_trigger" value="$(arg trigger)" />
+      <param name="frame_rate" value="20" />
       <param name="trigger_mode" value="mode0" />
       <param name="trigger_source" value="gpio0" />
       <param name="trigger_polarity" value="0" />
+  
       <param name="auto_packet_size" value="false" />
       <param name="packet_size" value="9000" />
-      <param name="packet_delay" value="100" />
+      <param name="packet_delay" value="15000" />
+
       <param name="camera_info_url" value="file://$(find velma_description)/calibration/$(arg name).yaml" />
+
     </node>
 
 </launch>
