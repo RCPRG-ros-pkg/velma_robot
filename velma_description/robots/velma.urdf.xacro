@@ -53,10 +53,6 @@
 
   <xacro:include filename="$(find barrett_hand_defs)/defs/barret_hand.urdf.xacro"/>
 
-<!--
-  <xacro:include filename="$(find velma_defs)/defs/kinect_camera.urdf.xacro" />
-   -->
-
   <xacro:macro name="visual_marker_xy" params="size pos_x pos_y pos_z">
     <visual name="black_box1">
       <origin xyz="${pos_x + 0.5*size} ${pos_y + 0.5*size} ${pos_z}" rpy="0 0 0" />
@@ -360,17 +356,17 @@
 
   </xacro:if>
 
-  <velma_torso>
+  <xacro:velma_torso>
     <origin xyz="0 0 0" rpy="0 0 0"/>
-  </velma_torso>
+  </xacro:velma_torso>
 
-  <kuka_lwr_arm parent="torso_link0" name="right" right="1">
+  <xacro:kuka_lwr_arm parent="torso_link0" name="right" right="1">
     <origin xyz="${cal_torso_link2_right_arm_base_joint_x} ${cal_torso_link2_right_arm_base_joint_y} ${cal_torso_link2_right_arm_base_joint_z}" rpy="${cal_torso_link2_right_arm_base_joint_roll} ${cal_torso_link2_right_arm_base_joint_pitch} ${cal_torso_link2_right_arm_base_joint_yaw}"/>
-  </kuka_lwr_arm>
+  </xacro:kuka_lwr_arm>
   
-  <kuka_lwr_arm parent="torso_link0" name="left" right="1">
+  <xacro:kuka_lwr_arm parent="torso_link0" name="left" right="1">
     <origin xyz="${cal_torso_link2_left_arm_base_joint_x} ${cal_torso_link2_left_arm_base_joint_y} ${cal_torso_link2_left_arm_base_joint_z}" rpy="${cal_torso_link2_left_arm_base_joint_roll} ${cal_torso_link2_left_arm_base_joint_pitch} ${cal_torso_link2_left_arm_base_joint_yaw}"/>
-  </kuka_lwr_arm>
+  </xacro:kuka_lwr_arm>
 
   <joint name="right_gripper_mount_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -447,7 +443,7 @@
       <inertia ixx="0.0007416" ixy="0" ixz="0.000566225" iyy="0.001365025" iyz="0" izz="0.0009347"/>
     </inertial>
 
-    <visual_marker_xy size="0.02" pos_x="0" pos_y="0" pos_z="0.05" />
+    <xacro:visual_marker_xy size="0.02" pos_x="0" pos_y="0" pos_z="0.05" />
   </link>
 
   <joint name="right_needle_joint" type="fixed">
@@ -565,7 +561,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
       <inertia ixx="0.0007416" ixy="0" ixz="0.000566225" iyy="0.001365025" iyz="0" izz="0.0009347"/>
     </inertial>
 
-    <visual_marker_xy size="0.02" pos_x="0" pos_y="0" pos_z="0.02" />
+    <xacro:visual_marker_xy size="0.02" pos_x="0" pos_y="0" pos_z="0.02" />
   </link>
 
   <gazebo reference="left_gripper_mount_link">
@@ -688,8 +684,8 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
               rpy="${cal_left_hand_camera_joint_roll} ${cal_left_hand_camera_joint_pitch} ${cal_left_hand_camera_joint_yaw}"/>
   </head_camera>
   -->
-  <velma_head parent="torso_link0">
+  <xacro:velma_head parent="torso_link0">
     <origin xyz="${cal_head_base_joint_x} ${cal_head_base_joint_y} ${cal_head_base_joint_z}" rpy="${cal_head_base_joint_roll} ${cal_head_base_joint_pitch} ${cal_head_base_joint_yaw}"/>
-  </velma_head>
+  </xacro:velma_head>
 
 </robot>
