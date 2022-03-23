@@ -46,7 +46,9 @@
 <property name="cal_stereo_left_joint_z" value="-0.04506107579" />
 <property name="cal_stereo_left_joint_roll" value="-1.5728707279228629" />
 <property name="cal_stereo_left_joint_pitch" value="0.0065118784626307935" />
-<property name="cal_stereo_left_joint_yaw" value="-0.06252015825607074" />
+<property name="cal_stereo_left_joint_yaw" value="-0.04992015825607074" />
+<!--<property name="cal_stereo_left_joint_yaw" value="-0.06252015825607074" />-->
+
 <!-- stereo_right_joint -->
 <property name="cal_stereo_right_joint_x" value="0.0039764" />
 <property name="cal_stereo_right_joint_y" value="-0.090444" />
