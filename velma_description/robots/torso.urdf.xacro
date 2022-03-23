@@ -6,13 +6,11 @@
 	 name="torso">
 
   <xacro:include filename="$(find velma_description)/calibration/default_cal.xml"/>
-<!--
-  <xacro:include filename="$(find velma_defs)/defs/kinect_camera.urdf.xacro" />
-  -->
+
   <xacro:include filename="$(find velma_description)/defs/head.urdf.xacro" />
-  
+
 <xacro:property name="M_PI" value="3.1415926535897931" />
-  
+
 <link name="world" />
 
   <joint name="arm_world_joint" type="fixed">

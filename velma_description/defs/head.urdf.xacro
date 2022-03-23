@@ -215,20 +215,20 @@
 
     <!-- sensors -->
     
-    <head_camera parent="head_tilt_link" name="stereo_left">
+    <xacro:head_camera parent="head_tilt_link" name="stereo_left">
       <origin xyz="${cal_stereo_left_joint_x} ${cal_stereo_left_joint_y} ${cal_stereo_left_joint_z}"
               rpy="${cal_stereo_left_joint_roll} ${cal_stereo_left_joint_pitch} ${cal_stereo_left_joint_yaw}"/>
-    </head_camera>
+    </xacro:head_camera>
     
-    <head_camera parent="stereo_left_link" name="stereo_right">
+    <xacro:head_camera parent="stereo_left_link" name="stereo_right">
       <origin xyz="${cal_stereo_right_joint_x} ${cal_stereo_right_joint_y} ${cal_stereo_right_joint_z}"
               rpy="${cal_stereo_right_joint_roll} ${cal_stereo_right_joint_pitch} ${cal_stereo_right_joint_yaw}"/>
-    </head_camera>
+    </xacro:head_camera>
     
-    <head_camera parent="head_tilt_link" name="head_kinect_rgb">
+    <xacro:head_camera parent="head_tilt_link" name="head_kinect_rgb">
       <origin xyz="${cal_head_kinect_rgb_joint_x} ${cal_head_kinect_rgb_joint_y} ${cal_head_kinect_rgb_joint_z}"
               rpy="${cal_head_kinect_rgb_joint_roll} ${cal_head_kinect_rgb_joint_pitch} ${cal_head_kinect_rgb_joint_yaw}"/>
-    </head_camera>
+    </xacro:head_camera>
   </xacro:macro>
 </robot>
 

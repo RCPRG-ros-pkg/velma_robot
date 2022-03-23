@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="with_stereo"  default="true" />
+  <arg name="with_pcl"     default="true" />
+  <arg name="with_trigger" default="true" />
+  <arg name="with_kinect"  default="true" />
+
+  <group ns="/right_camera" if="$(arg with_trigger)">
+    <include file="$(find velma_bringup)/launch/components/pgr_camera.launch" >
+      <arg name="name" value="pgr_right"/>
+      <arg name="camera_serial" value="13201080"/>
+      <arg name="frame_id" value="stereo_right_optical_frame"/>
+      <arg name="trigger" value="$(arg with_trigger)" />
+    </include>
+
+    <node pkg="velma_vision_utils" type="image_stamper_node" name="stereo_right_stamper">
+      <remap from="image" to="image_raw"/>
+      <remap from="image_out" to="/stereo/right/image_raw"/>
+      <remap from="trigger" to="/velma_core_ve_body/TriggerStamp"/>
+    </node>
+
+  </group> <!-- right_camera -->
+
+  <group ns="/left_camera" if="$(arg with_trigger)">
+    <include file="$(find velma_bringup)/launch/components/pgr_camera.launch" >
+      <arg name="name" value="pgr_left"/>
+      <arg name="camera_serial" value="13201068"/>
+      <arg name="frame_id" value="stereo_left_optical_frame"/>
+      <arg name="trigger" value="$(arg with_trigger)" />
+    </include>
+
+    <node pkg="velma_vision_utils" type="image_stamper_node" name="stereo_left_stamper">
+      <remap from="image" to="image_raw"/>
+      <remap from="image_out" to="/stereo/left/image_raw"/>
+      <remap from="trigger" to="/velma_core_ve_body/TriggerStamp"/>
+    </node>
+
+  </group> <!-- left_camera -->
+
+  <group ns="/stereo/right" unless="$(arg with_trigger)">
+    <include file="$(find velma_bringup)/launch/components/pgr_camera.launch" >
+      <arg name="name" value="pgr_right"/>
+      <arg name="camera_serial" value="13201080"/>
+      <arg name="frame_id" value="stereo_right_optical_frame"/>
+      <arg name="trigger" value="$(arg with_trigger)" />
+    </include>
+  </group> <!-- stereo/right -->
+
+  <group ns="/stereo/left" unless="$(arg with_trigger)">
+    <include file="$(find velma_bringup)/launch/components/pgr_camera.launch" >
+      <arg name="name" value="pgr_left"/>
+      <arg name="camera_serial" value="13201068"/>
+      <arg name="frame_id" value="stereo_left_optical_frame"/>
+      <arg name="trigger" value="$(arg with_trigger)" />
+    </include>
+  </group> <!-- stereo/left -->
+
+  <group if="$(arg with_stereo)" ns="stereo">
+    <node pkg="stereo_image_proc" type="stereo_image_proc" name="stereo_image_proc" >
+      <param name="approximate_sync" value="true"/>
+      <param name="queue_size" value="10"/>
+
+      <param name="stereo_algorithm" value="StereoBM"/>
+      <param name="prefilter_size" value="49"/>
+      <param name="prefilter_cap" value="12"/>
+
+      <param name="correlation_window_size" value="19"/>
+      <param name="min_disparity" value="16"/>
+      <param name="disparity_range" value="224"/>
+
+      <param name="uniqueness_ratio" value="16"/>
+      <param name="texture_threshold" value="150"/>
+      <param name="speckle_size" value="500"/>
+      <param name="speckle_range" value="5"/>
+    </node>
+  
+    <group if="$(arg with_pcl)">
+      <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" />
+
+      <!-- Run a VoxelGrid filter to clean NaNs and downsample the data -->
+
+      <node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid pcl_manager" output="screen">
+        <remap from="~input" to="/stereo/points2" />
+        <rosparam>
+          filter_field_name: z
+          filter_limit_min: 0.5
+          filter_limit_max: 1.5
+          filter_limit_negative: False
+          leaf_size: 0.005
+        </rosparam>
+      </node>
+    </group> <!-- with_pcl-->
+
+  </group> <!-- with_stereo-->
+
+  <include if="$(arg with_kinect)" file="$(find freenect_launch)/launch/freenect.launch">
+    <arg name="camera" default="head_kinect" />
+    <arg name="publish_tf" default="false" />
+    <arg name="rgb_frame_id" default="head_kinect_rgb_optical_frame" />
+    <arg name="data_skip" default="2" />
+    <arg name="depth_registration" default="true" />
+    <arg name="rgb_camera_info_url" default="file://$(find velma_description)/calibration/head_kinect_rgb.yaml" />
+  </include>
+
+</launch>
+
