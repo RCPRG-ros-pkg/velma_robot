@@ -1,144 +1,144 @@
 <?xml version="1.0"?>
 
-<root>
+<root xmlns:xacro="http://www.ros.org/wiki/xacro">
 <!-- head_base_joint -->
-<property name="cal_head_base_joint_x" value="0.0105" />
-<property name="cal_head_base_joint_y" value="-0.001" />
-<property name="cal_head_base_joint_z" value="1.3117" />
-<property name="cal_head_base_joint_roll" value="0.00040339" />
-<property name="cal_head_base_joint_pitch" value="-0.0062724" />
-<property name="cal_head_base_joint_yaw" value="-0.048944" />
+<xacro:property name="cal_head_base_joint_x" value="0.0105" />
+<xacro:property name="cal_head_base_joint_y" value="-0.001" />
+<xacro:property name="cal_head_base_joint_z" value="1.3117" />
+<xacro:property name="cal_head_base_joint_roll" value="0.00040339" />
+<xacro:property name="cal_head_base_joint_pitch" value="-0.0062724" />
+<xacro:property name="cal_head_base_joint_yaw" value="-0.048944" />
 <!-- measured with a ruler: -->
 <!--
-<property name="cal_head_base_joint_x" value="0.0105" />
-<property name="cal_head_base_joint_y" value="0" />
-<property name="cal_head_base_joint_z" value="1.3" />
-<property name="cal_head_base_joint_roll" value="0" />
-<property name="cal_head_base_joint_pitch" value="0" />
-<property name="cal_head_base_joint_yaw" value="0" />
+<xacro:property name="cal_head_base_joint_x" value="0.0105" />
+<xacro:property name="cal_head_base_joint_y" value="0" />
+<xacro:property name="cal_head_base_joint_z" value="1.3" />
+<xacro:property name="cal_head_base_joint_roll" value="0" />
+<xacro:property name="cal_head_base_joint_pitch" value="0" />
+<xacro:property name="cal_head_base_joint_yaw" value="0" />
 -->
 <!-- head_kinect_rgb_joint -->
-<property name="cal_head_kinect_rgb_joint_x" value="0.062644" />
-<property name="cal_head_kinect_rgb_joint_y" value="0.19458" />
-<property name="cal_head_kinect_rgb_joint_z" value="0.017223" />
-<property name="cal_head_kinect_rgb_joint_roll" value="-1.5527" />
-<property name="cal_head_kinect_rgb_joint_pitch" value="0.015593" />
-<property name="cal_head_kinect_rgb_joint_yaw" value="-0.094166" />
+<xacro:property name="cal_head_kinect_rgb_joint_x" value="0.062644" />
+<xacro:property name="cal_head_kinect_rgb_joint_y" value="0.19458" />
+<xacro:property name="cal_head_kinect_rgb_joint_z" value="0.017223" />
+<xacro:property name="cal_head_kinect_rgb_joint_roll" value="-1.5527" />
+<xacro:property name="cal_head_kinect_rgb_joint_pitch" value="0.015593" />
+<xacro:property name="cal_head_kinect_rgb_joint_yaw" value="-0.094166" />
 <!-- right_gripper_calib_link1 -->
-<property name="cal_right_gripper_calib_link1_x" value="0.14271" />
-<property name="cal_right_gripper_calib_link1_y" value="0.029958" />
-<property name="cal_right_gripper_calib_link1_z" value="-0.046211" />
-<property name="cal_right_gripper_calib_link1_roll" value="0" />
-<property name="cal_right_gripper_calib_link1_pitch" value="0" />
-<property name="cal_right_gripper_calib_link1_yaw" value="0" />
+<xacro:property name="cal_right_gripper_calib_link1_x" value="0.14271" />
+<xacro:property name="cal_right_gripper_calib_link1_y" value="0.029958" />
+<xacro:property name="cal_right_gripper_calib_link1_z" value="-0.046211" />
+<xacro:property name="cal_right_gripper_calib_link1_roll" value="0" />
+<xacro:property name="cal_right_gripper_calib_link1_pitch" value="0" />
+<xacro:property name="cal_right_gripper_calib_link1_yaw" value="0" />
 <!-- left_gripper_calib_link1 -->
-<property name="cal_left_gripper_calib_link1_x" value="-0.1422" />
-<property name="cal_left_gripper_calib_link1_y" value="0.036903" />
-<property name="cal_left_gripper_calib_link1_z" value="-0.051417" />
-<property name="cal_left_gripper_calib_link1_roll" value="0" />
-<property name="cal_left_gripper_calib_link1_pitch" value="0" />
-<property name="cal_left_gripper_calib_link1_yaw" value="0" />
+<xacro:property name="cal_left_gripper_calib_link1_x" value="-0.1422" />
+<xacro:property name="cal_left_gripper_calib_link1_y" value="0.036903" />
+<xacro:property name="cal_left_gripper_calib_link1_z" value="-0.051417" />
+<xacro:property name="cal_left_gripper_calib_link1_roll" value="0" />
+<xacro:property name="cal_left_gripper_calib_link1_pitch" value="0" />
+<xacro:property name="cal_left_gripper_calib_link1_yaw" value="0" />
 
 
 <!-- stereo_left_joint -->
-<property name="cal_stereo_left_joint_x" value="0.04272367283" />
-<property name="cal_stereo_left_joint_y" value="0.2263882065" />
-<property name="cal_stereo_left_joint_z" value="-0.04506107579" />
-<property name="cal_stereo_left_joint_roll" value="-1.5728707279228629" />
-<property name="cal_stereo_left_joint_pitch" value="0.0065118784626307935" />
-<property name="cal_stereo_left_joint_yaw" value="-0.06252015825607074" />
+<xacro:property name="cal_stereo_left_joint_x" value="0.04272367283" />
+<xacro:property name="cal_stereo_left_joint_y" value="0.2263882065" />
+<xacro:property name="cal_stereo_left_joint_z" value="-0.04506107579" />
+<xacro:property name="cal_stereo_left_joint_roll" value="-1.5728707279228629" />
+<xacro:property name="cal_stereo_left_joint_pitch" value="0.0065118784626307935" />
+<xacro:property name="cal_stereo_left_joint_yaw" value="-0.04992015825607074" />
+<!--<xacro:property name="cal_stereo_left_joint_yaw" value="-0.06252015825607074" />-->
+
 <!-- stereo_right_joint -->
-<property name="cal_stereo_right_joint_x" value="0.0039764" />
-<property name="cal_stereo_right_joint_y" value="-0.090444" />
-<property name="cal_stereo_right_joint_z" value="-0.00065625" />
-<property name="cal_stereo_right_joint_roll" value="-0.0011009" />
-<property name="cal_stereo_right_joint_pitch" value="0.016076" />
-<property name="cal_stereo_right_joint_yaw" value="0.0072743" />
+<xacro:property name="cal_stereo_right_joint_x" value="0.0039764" />
+<xacro:property name="cal_stereo_right_joint_y" value="-0.090444" />
+<xacro:property name="cal_stereo_right_joint_z" value="-0.00065625" />
+<xacro:property name="cal_stereo_right_joint_roll" value="-0.0011009" />
+<xacro:property name="cal_stereo_right_joint_pitch" value="0.016076" />
+<xacro:property name="cal_stereo_right_joint_yaw" value="0.0072743" />
 
 <!-- torso_link2_left_arm_base_joint -->
 <!--
      These are the old calibration parameters
-<property name="cal_torso_link2_left_arm_base_joint_x" value="0.0" />
-<property name="cal_torso_link2_left_arm_base_joint_y" value="0.000188676" />
-<property name="cal_torso_link2_left_arm_base_joint_z" value="1.17335" />
-<property name="cal_torso_link2_left_arm_base_joint_roll" value="0" />
-<property name="cal_torso_link2_left_arm_base_joint_pitch" value="${M_PI/3}" />
-<property name="cal_torso_link2_left_arm_base_joint_yaw" value="${M_PI/2}" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_x" value="0.0" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_y" value="0.000188676" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_z" value="1.17335" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_roll" value="0" />
 -->
 
 <!-- Calibration procedure performed on 2021.08 by DS, MF, MS -->
-<property name="cal_torso_link2_left_arm_base_joint_x" value="-0.0006" />
-<property name="cal_torso_link2_left_arm_base_joint_y" value="-0.001311324" />
-<property name="cal_torso_link2_left_arm_base_joint_z" value="1.17335" />
-<property name="cal_torso_link2_left_arm_base_joint_roll" value="0.0008701342499668567" />
-<property name="cal_torso_link2_left_arm_base_joint_pitch" value="1.0475048897873576" />
-<property name="cal_torso_link2_left_arm_base_joint_yaw" value="1.5724254826531625" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_x" value="-0.0006" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_y" value="-0.001311324" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_z" value="1.17335" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_roll" value="0.0008701342499668567" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_pitch" value="1.0475048897873576" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_yaw" value="1.5724254826531625" />
 
-<property name="cal_torso_link2_right_arm_base_joint_x" value="-0.0004" />
-<property name="cal_torso_link2_right_arm_base_joint_y" value="-0.000888676" />
-<property name="cal_torso_link2_right_arm_base_joint_z" value="1.17335" />
-<property name="cal_torso_link2_right_arm_base_joint_roll" value="-0.0004493549541723" />
-<property name="cal_torso_link2_right_arm_base_joint_pitch" value="-1.04747154567336" />
-<property name="cal_torso_link2_right_arm_base_joint_yaw" value="1.5704709495574307" />
+<xacro:property name="cal_torso_link2_right_arm_base_joint_x" value="-0.0004" />
+<xacro:property name="cal_torso_link2_right_arm_base_joint_y" value="-0.000888676" />
+<xacro:property name="cal_torso_link2_right_arm_base_joint_z" value="1.17335" />
+<xacro:property name="cal_torso_link2_right_arm_base_joint_roll" value="-0.0004493549541723" />
+<xacro:property name="cal_torso_link2_right_arm_base_joint_pitch" value="-1.04747154567336" />
+<xacro:property name="cal_torso_link2_right_arm_base_joint_yaw" value="1.5704709495574307" />
 
-<property name="cal_right_needle_joint_x" value="0.0011" />
-<property name="cal_right_needle_joint_y" value="-0.0008" />
-<property name="cal_right_needle_joint_z" value="0.1126" />
+<xacro:property name="cal_right_needle_joint_x" value="0.0011" />
+<xacro:property name="cal_right_needle_joint_y" value="-0.0008" />
+<xacro:property name="cal_right_needle_joint_z" value="0.1126" />
 
-<property name="cal_left_needle_joint_x" value="-0.001" />
-<property name="cal_left_needle_joint_y" value="0.0008" />
-<property name="cal_left_needle_joint_z" value="0.106" />
+<xacro:property name="cal_left_needle_joint_x" value="-0.001" />
+<xacro:property name="cal_left_needle_joint_y" value="0.0008" />
+<xacro:property name="cal_left_needle_joint_z" value="0.106" />
 
 <!-- left_hand_camera_joint -->
-<property name="cal_left_hand_camera_joint_x" value="-0.12137" />
-<property name="cal_left_hand_camera_joint_y" value="-0.0026114" />
-<property name="cal_left_hand_camera_joint_z" value="0.022871" />
-<property name="cal_left_hand_camera_joint_roll" value="3.1346" />
-<property name="cal_left_hand_camera_joint_pitch" value="0.030088" />
-<property name="cal_left_hand_camera_joint_yaw" value="3.1339" />
+<xacro:property name="cal_left_hand_camera_joint_x" value="-0.12137" />
+<xacro:property name="cal_left_hand_camera_joint_y" value="-0.0026114" />
+<xacro:property name="cal_left_hand_camera_joint_z" value="0.022871" />
+<xacro:property name="cal_left_hand_camera_joint_roll" value="3.1346" />
+<xacro:property name="cal_left_hand_camera_joint_pitch" value="0.030088" />
+<xacro:property name="cal_left_hand_camera_joint_yaw" value="3.1339" />
 
 <!-- right_gripper_calib_link2 -->
-<property name="cal_right_gripper_calib_link2_x" value="0.14019" />
-<property name="cal_right_gripper_calib_link2_y" value="0.026731" />
-<property name="cal_right_gripper_calib_link2_z" value="-0.11236" />
+<xacro:property name="cal_right_gripper_calib_link2_x" value="0.14019" />
+<xacro:property name="cal_right_gripper_calib_link2_y" value="0.026731" />
+<xacro:property name="cal_right_gripper_calib_link2_z" value="-0.11236" />
 
 <!-- left_gripper_calib_link2 -->
-<property name="cal_left_gripper_calib_link2_x" value="-0.14349" />
-<property name="cal_left_gripper_calib_link2_y" value="0.026545" />
-<property name="cal_left_gripper_calib_link2_z" value="-0.11244" />
+<xacro:property name="cal_left_gripper_calib_link2_x" value="-0.14349" />
+<xacro:property name="cal_left_gripper_calib_link2_y" value="0.026545" />
+<xacro:property name="cal_left_gripper_calib_link2_z" value="-0.11244" />
 
 
 <!-- right_gripper_calib_link -->
-<property name="cal_right_gripper_calib_link_x" value="0.14415" />
-<property name="cal_right_gripper_calib_link_y" value="0.043751" />
-<property name="cal_right_gripper_calib_link_z" value="-0.076946" />
-<property name="cal_right_gripper_calib_link_roll" value="0" />
-<property name="cal_right_gripper_calib_link_pitch" value="0" />
-<property name="cal_right_gripper_calib_link_yaw" value="0" />
+<xacro:property name="cal_right_gripper_calib_link_x" value="0.14415" />
+<xacro:property name="cal_right_gripper_calib_link_y" value="0.043751" />
+<xacro:property name="cal_right_gripper_calib_link_z" value="-0.076946" />
+<xacro:property name="cal_right_gripper_calib_link_roll" value="0" />
+<xacro:property name="cal_right_gripper_calib_link_pitch" value="0" />
+<xacro:property name="cal_right_gripper_calib_link_yaw" value="0" />
 <!-- left_gripper_calib_link -->
-<property name="cal_left_gripper_calib_link_x" value="-0.14278" />
-<property name="cal_left_gripper_calib_link_y" value="0.042723" />
-<property name="cal_left_gripper_calib_link_z" value="-0.077021" />
-<property name="cal_left_gripper_calib_link_roll" value="0" />
-<property name="cal_left_gripper_calib_link_pitch" value="0" />
-<property name="cal_left_gripper_calib_link_yaw" value="0" />
+<xacro:property name="cal_left_gripper_calib_link_x" value="-0.14278" />
+<xacro:property name="cal_left_gripper_calib_link_y" value="0.042723" />
+<xacro:property name="cal_left_gripper_calib_link_z" value="-0.077021" />
+<xacro:property name="cal_left_gripper_calib_link_roll" value="0" />
+<xacro:property name="cal_left_gripper_calib_link_pitch" value="0" />
+<xacro:property name="cal_left_gripper_calib_link_yaw" value="0" />
 
 <!-- right_gripper_calib_link1 -->
-<property name="cal_right_gripper_calib_link1_roll" value="-0.8" />
-<property name="cal_right_gripper_calib_link1_pitch" value="0" />
-<property name="cal_right_gripper_calib_link1_yaw" value="0" />
+<xacro:property name="cal_right_gripper_calib_link1_roll" value="-0.8" />
+<xacro:property name="cal_right_gripper_calib_link1_pitch" value="0" />
+<xacro:property name="cal_right_gripper_calib_link1_yaw" value="0" />
 <!-- right_gripper_calib_link2 -->
-<property name="cal_right_gripper_calib_link2_roll" value="-2.5" />
-<property name="cal_right_gripper_calib_link2_pitch" value="0" />
-<property name="cal_right_gripper_calib_link2_yaw" value="0" />
+<xacro:property name="cal_right_gripper_calib_link2_roll" value="-2.5" />
+<xacro:property name="cal_right_gripper_calib_link2_pitch" value="0" />
+<xacro:property name="cal_right_gripper_calib_link2_yaw" value="0" />
 <!-- left_gripper_calib_link1 -->
-<property name="cal_left_gripper_calib_link1_roll" value="-0.8" />
-<property name="cal_left_gripper_calib_link1_pitch" value="0" />
-<property name="cal_left_gripper_calib_link1_yaw" value="0" />
+<xacro:property name="cal_left_gripper_calib_link1_roll" value="-0.8" />
+<xacro:property name="cal_left_gripper_calib_link1_pitch" value="0" />
+<xacro:property name="cal_left_gripper_calib_link1_yaw" value="0" />
 <!-- left_gripper_calib_link2 -->
-<property name="cal_left_gripper_calib_link2_roll" value="-2.5" />
-<property name="cal_left_gripper_calib_link2_pitch" value="0" />
-<property name="cal_left_gripper_calib_link2_yaw" value="0" />
+<xacro:property name="cal_left_gripper_calib_link2_roll" value="-2.5" />
+<xacro:property name="cal_left_gripper_calib_link2_pitch" value="0" />
+<xacro:property name="cal_left_gripper_calib_link2_yaw" value="0" />
 </root>
 
 <!-- -0.0030

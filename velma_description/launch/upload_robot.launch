@@ -36,7 +36,7 @@
     command="$(find xacro)/xacro '$(find velma_description)/robots/$(arg __srdf_filename)'"
   />
 
-  <param name="/robot_description_semantic_no_hands" command="$(find xacro)/xacro.py '$(find velma_description)/robots/velma_no_hands.srdf'" />
+  <param name="/robot_description_semantic_no_hands" command="$(find xacro)/xacro '$(find velma_description)/robots/velma_no_hands.srdf'" />
 
   <group if="$(arg load_velma_sim_gazebo)">
     <param
