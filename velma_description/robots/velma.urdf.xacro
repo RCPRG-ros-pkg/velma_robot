@@ -702,4 +702,93 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     <origin xyz="${cal_head_base_joint_x} ${cal_head_base_joint_y} ${cal_head_base_joint_z}" rpy="${cal_head_base_joint_roll} ${cal_head_base_joint_pitch} ${cal_head_base_joint_yaw}"/>
   </xacro:velma_head>
 
+
+
+  <!-- This is a part of the tree that is used to enable orientation constraints
+       for the end-effectors in planning. -->
+
+  <joint name="rightKeepUprightJoint0" type="revolute">
+    <parent link="right_arm_ee_link"/>
+    <child link="right_keepUprightLink1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" lower="${-M_PI}" upper="${M_PI}" velocity="3.27"/>
+    <dynamics damping="0.05"/>
+  </joint>
+
+  <link name="right_keepUprightLink1">
+    <inertial>
+      <mass value="0.002"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.00000520833333333" ixy="0" ixz="0" iyy="0.00000520833333333" iyz="0" izz="0.00000520833333333"/>
+    </inertial>
+  </link>
+  <gazebo reference="right_keepUprightLink1">
+    <turnGravityOff>false</turnGravityOff>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <joint name="rightKeepUprightJoint1" type="revolute">
+    <parent link="right_keepUprightLink1"/>
+    <child link="right_keepUprightLink2"/>
+    <origin xyz="0 0 0" rpy="0 ${M_PI/2} 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" lower="${-M_PI}" upper="${M_PI}" velocity="3.27"/>
+    <dynamics damping="0.05"/>
+  </joint>
+
+  <link name="right_keepUprightLink2">
+    <inertial>
+      <mass value="0.002"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.00000520833333333" ixy="0" ixz="0" iyy="0.00000520833333333" iyz="0" izz="0.00000520833333333"/>
+    </inertial>
+  </link>
+  <gazebo reference="right_keepUprightLink2">
+    <turnGravityOff>false</turnGravityOff>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <joint name="leftKeepUprightJoint0" type="revolute">
+    <parent link="left_arm_ee_link"/>
+    <child link="left_keepUprightLink1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" lower="${-M_PI}" upper="${M_PI}" velocity="3.27"/>
+    <dynamics damping="0.05"/>
+  </joint>
+
+  <link name="left_keepUprightLink1">
+    <inertial>
+      <mass value="0.002"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.00000520833333333" ixy="0" ixz="0" iyy="0.00000520833333333" iyz="0" izz="0.00000520833333333"/>
+    </inertial>
+  </link>
+  <gazebo reference="left_keepUprightLink1">
+    <turnGravityOff>false</turnGravityOff>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <joint name="leftKeepUprightJoint1" type="revolute">
+    <parent link="left_keepUprightLink1"/>
+    <child link="left_keepUprightLink2"/>
+    <origin xyz="0 0 0" rpy="0 ${M_PI/2} 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" lower="${-M_PI}" upper="${M_PI}" velocity="3.27"/>
+    <dynamics damping="0.05"/>
+  </joint>
+
+  <link name="left_keepUprightLink2">
+    <inertial>
+      <mass value="0.002"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.00000520833333333" ixy="0" ixz="0" iyy="0.00000520833333333" iyz="0" izz="0.00000520833333333"/>
+    </inertial>
+  </link>
+  <gazebo reference="left_keepUprightLink2">
+    <turnGravityOff>false</turnGravityOff>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
 </robot>
