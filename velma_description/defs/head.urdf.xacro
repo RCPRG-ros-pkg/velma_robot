@@ -83,7 +83,7 @@
         <inertia ixx="0.000520833333333" ixy="0" ixz="0" iyy="0.000520833333333" iyz="0" izz="0.000520833333333"/>
       </inertial>
     </link>
-    
+
     <!-- pan -->
     <joint name="head_pan_joint" type="revolute">
       <origin xyz="0 0 0.062" rpy="0 0 0"/>
@@ -128,7 +128,7 @@
       <axis xyz="0 1 0"/>
       <parent link="head_pan_link"/>
       <child link="head_tilt_link_dummy"/>
-      <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
+      <limit lower="-1.0" upper="1.3" effort="100" velocity="100"/>
       <dynamics damping="0.1"/>
     </joint>
 
