@@ -19,8 +19,8 @@
 -->
 <!-- head_kinect_rgb_joint -->
 <xacro:property name="cal_head_kinect_rgb_joint_x" value="0.062644" />
-<xacro:property name="cal_head_kinect_rgb_joint_y" value="0.19458" />
-<xacro:property name="cal_head_kinect_rgb_joint_z" value="0.017223" />
+<xacro:property name="cal_head_kinect_rgb_joint_y" value="0.22458" />
+<xacro:property name="cal_head_kinect_rgb_joint_z" value="0.020223" />
 <xacro:property name="cal_head_kinect_rgb_joint_roll" value="-1.5527" />
 <xacro:property name="cal_head_kinect_rgb_joint_pitch" value="0.015593" />
 <xacro:property name="cal_head_kinect_rgb_joint_yaw" value="-0.094166" />
@@ -41,9 +41,9 @@
 
 
 <!-- stereo_left_joint -->
-<xacro:property name="cal_stereo_left_joint_x" value="0.04272367283" />
-<xacro:property name="cal_stereo_left_joint_y" value="0.2263882065" />
-<xacro:property name="cal_stereo_left_joint_z" value="-0.04506107579" />
+<xacro:property name="cal_stereo_left_joint_x" value="0.04242367283" />
+<xacro:property name="cal_stereo_left_joint_y" value="0.2163882065" />
+<xacro:property name="cal_stereo_left_joint_z" value="-0.06006107579" />
 <xacro:property name="cal_stereo_left_joint_roll" value="-1.5728707279228629" />
 <xacro:property name="cal_stereo_left_joint_pitch" value="0.0065118784626307935" />
 <xacro:property name="cal_stereo_left_joint_yaw" value="-0.04992015825607074" />
