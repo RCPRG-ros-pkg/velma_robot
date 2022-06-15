@@ -26,6 +26,14 @@
     <group name="left_arm_torso">
         <chain base_link="torso_base" tip_link="left_HandPalmLink" />
     </group>
+    <group name="no_fingers">
+        <chain base_link="torso_base" tip_link="torso_link0" />
+        <chain base_link="torso_link0" tip_link="right_HandPalmLink" />
+        <chain base_link="torso_link0" tip_link="left_HandPalmLink" />
+        <chain base_link="torso_link0" tip_link="head_tilt_link" />
+        <link name="right_needle_link" />
+        <link name="left_needle_link" />
+    </group>
     <group name="right_hand">
         <link name="right_HandPalmLink" />
         <link name="right_HandFingerOneKnuckleOneLink" />
