@@ -81,6 +81,24 @@
 <xacro:property name="cal_torso_link2_right_arm_base_joint_pitch" value="-1.04747154567336" />
 <xacro:property name="cal_torso_link2_right_arm_base_joint_yaw" value="1.5704709495574307" />
 
+<!-- example of alternative mount of arms -->
+<!--
+<xacro:property name="cal_torso_link2_left_arm_base_joint_x" value="-0.0006" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_y" value="-0.001311324" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_z" value="1.17335" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_roll" value="0.0008701342499668567" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_pitch" value="1.572475048897873576" />
+<xacro:property name="cal_torso_link2_left_arm_base_joint_yaw" value="1.5724254826531625" />
+
+<xacro:property name="cal_torso_link2_right_arm_base_joint_x" value="-0.0004" />
+<xacro:property name="cal_torso_link2_right_arm_base_joint_y" value="-0.000888676" />
+<xacro:property name="cal_torso_link2_right_arm_base_joint_z" value="1.17335" />
+<xacro:property name="cal_torso_link2_right_arm_base_joint_roll" value="-0.0004493549541723" />
+<xacro:property name="cal_torso_link2_right_arm_base_joint_pitch" value="-1.5724747154567336" />
+<xacro:property name="cal_torso_link2_right_arm_base_joint_yaw" value="1.5704709495574307" />
+-->
+
+
 <xacro:property name="cal_right_needle_joint_x" value="0.0011" />
 <xacro:property name="cal_right_needle_joint_y" value="-0.0008" />
 <xacro:property name="cal_right_needle_joint_z" value="0.1126" />
