@@ -26,6 +26,8 @@
 
   <xacro:arg name="use_dh_compatible_model" default="false"/>
 
+  <xacro:arg name="calibration_needles" default="false"/>
+
   <xacro:include filename="$(find lwr_defs)/defs/materials.xml"/>
   <xacro:include filename="$(find velma_description)/calibration/default_cal.xml"/>
   <xacro:if value="$(arg mobile_base)">
@@ -422,20 +424,22 @@
       </xacro:if>
     </xacro:unless>
 
-    <!-- needle -->
-    <collision>
-      <origin xyz="0 0 0.07" rpy="0 0 0"/>
-      <geometry>
-        <box size="0.05 0.05 0.14"/>
-      </geometry>
-    </collision>
+    <xacro:if value="$(arg calibration_needles)">
+      <!-- needle -->
+      <collision>
+        <origin xyz="0 0 0.07" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.05 0.05 0.14"/>
+        </geometry>
+      </collision>
 
-    <self_collision_checking>
-      <origin xyz="0 0 0.07" rpy="0 0 0"/>
-      <geometry>
-        <capsule radius="0.025" length="0.09"/>
-      </geometry>
-    </self_collision_checking>
+      <self_collision_checking>
+        <origin xyz="0 0 0.07" rpy="0 0 0"/>
+        <geometry>
+          <capsule radius="0.025" length="0.09"/>
+        </geometry>
+      </self_collision_checking>
+    </xacro:if>
 
     <self_collision_checking>
       <origin xyz="0.02 0.0 0.01" rpy="0 ${M_PI/2.0} 0"/>
@@ -453,31 +457,33 @@
     <xacro:visual_marker_xy size="0.02" pos_x="0" pos_y="0" pos_z="0.05" />
   </link>
 
-  <joint name="right_needle_joint" type="fixed">
-    <origin xyz="${cal_right_needle_joint_x} ${cal_right_needle_joint_y} ${cal_right_needle_joint_z}" rpy="0 0 0"/>
-    <parent link="right_arm_ee_link"/>
-    <child link="right_needle_link"/>
-  </joint>
-  <link name="right_needle_link">
-    <inertial>
-      <mass value="0"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
-    </inertial>
-  </link>
+  <xacro:if value="$(arg calibration_needles)">
+    <joint name="right_needle_joint" type="fixed">
+      <origin xyz="${cal_right_needle_joint_x} ${cal_right_needle_joint_y} ${cal_right_needle_joint_z}" rpy="0 0 0"/>
+      <parent link="right_arm_ee_link"/>
+      <child link="right_needle_link"/>
+    </joint>
+    <link name="right_needle_link">
+      <inertial>
+        <mass value="0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+    </link>
 
-  <joint name="left_needle_joint" type="fixed">
-    <origin xyz="${cal_left_needle_joint_x} ${cal_left_needle_joint_y} ${cal_left_needle_joint_z}" rpy="0 0 0"/>
-    <parent link="left_arm_ee_link"/>
-    <child link="left_needle_link"/>
-  </joint>
-  <link name="left_needle_link">
-    <inertial>
-      <mass value="0"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
-    </inertial>
-  </link>
+    <joint name="left_needle_joint" type="fixed">
+      <origin xyz="${cal_left_needle_joint_x} ${cal_left_needle_joint_y} ${cal_left_needle_joint_z}" rpy="0 0 0"/>
+      <parent link="left_arm_ee_link"/>
+      <child link="left_needle_link"/>
+    </joint>
+    <link name="left_needle_link">
+      <inertial>
+        <mass value="0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+    </link>
+  </xacro:if>
 
 <!--
 gripper mount link:
@@ -547,20 +553,22 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
       </xacro:if>
     </xacro:unless>
 
-    <!-- needle -->
-    <collision>
-      <origin xyz="0 0 0.07" rpy="0 0 0"/>
-      <geometry>
-        <box size="0.05 0.05 0.14"/>
-      </geometry>
-    </collision>
+    <xacro:if value="$(arg calibration_needles)">
+      <!-- needle -->
+      <collision>
+        <origin xyz="0 0 0.07" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.05 0.05 0.14"/>
+        </geometry>
+      </collision>
 
-    <self_collision_checking>
-      <origin xyz="0 0 0.07" rpy="0 0 0"/>
-      <geometry>
-        <capsule radius="0.025" length="0.09"/>
-      </geometry>
-    </self_collision_checking>
+      <self_collision_checking>
+        <origin xyz="0 0 0.07" rpy="0 0 0"/>
+        <geometry>
+          <capsule radius="0.025" length="0.09"/>
+        </geometry>
+      </self_collision_checking>
+    </xacro:if>
 
     <self_collision_checking>
       <origin xyz="0.02 0.0 -0.01" rpy="0 ${M_PI/2.0} 0"/>
