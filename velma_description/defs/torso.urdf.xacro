@@ -125,6 +125,12 @@
             <mesh filename="package://velma_description/meshes/collision/torso0_collision.stl" />
           </geometry>
         </collision>
+        <collision>
+          <origin xyz="0.04 0 1.57" rpy="0 0 0"/>
+          <geometry>
+            <sphere radius="0.24"/>
+          </geometry>
+        </collision>
       </xacro:if>
       <xacro:if value="${collision_detector == 'dart'}">
         <collision>
@@ -145,6 +151,12 @@
             <box size="0.353161275387 0.255815982819 0.5"/>
           </geometry>
         </collision>
+        <collision>
+          <origin xyz="0.04 0 1.57" rpy="0 0 0"/>
+          <geometry>
+            <sphere radius="0.24"/>
+          </geometry>
+        </collision>
       </xacro:if>
       <self_collision_checking>
         <origin xyz="0 0.0 0.8" rpy="0 0 0"/>
@@ -157,6 +169,13 @@
         <origin xyz="-0.1 0.0 0.45" rpy="0 0 0"/>
         <geometry>
           <capsule radius="0.18" length="0.4"/>
+        </geometry>
+      </self_collision_checking>
+
+      <self_collision_checking>
+        <origin xyz="0.04 0 1.57" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.24"/>
         </geometry>
       </self_collision_checking>
 
