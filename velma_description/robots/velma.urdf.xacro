@@ -382,7 +382,9 @@
       <geometry>
         <mesh filename="package://velma_description/meshes/gripper_mount_simplified.stl" />
       </geometry>
-      <material name="Orange"/>
+        <material name="Orange" >
+          <color rgba="1 0.5 0 1.0"/>
+        </material>
     </visual>
 
     <visual>
@@ -390,7 +392,9 @@
       <geometry>
         <mesh filename="package://velma_description/meshes/imu_case_right.stl" />
       </geometry>
-      <material name="Orange"/>
+        <material name="Orange" >
+          <color rgba="1 0.5 0 1.0"/>
+        </material>
     </visual>
 
     <xacro:unless value="$(arg collision_model_no_hands)">
@@ -519,7 +523,9 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
       <geometry>
         <mesh filename="package://velma_description/meshes/gripper_mount_simplified.stl" />
       </geometry>
-      <material name="Orange"/>
+        <material name="Orange" >
+          <color rgba="1 0.5 0 1.0"/>
+        </material>
     </visual>
 
     <xacro:unless value="$(arg collision_model_no_hands)">
