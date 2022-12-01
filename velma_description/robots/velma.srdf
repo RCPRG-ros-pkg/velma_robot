@@ -126,6 +126,12 @@
     <disable_collisions link1="head_pan_motor" link2="torso_link0" reason="Never" />
     <disable_collisions link1="head_tilt_link" link2="torso_base" reason="Never" />
     <disable_collisions link1="head_tilt_link" link2="torso_link0" reason="Never" />
+
+    <disable_collisions link1="head_base" link2="head_bounding_sphere" reason="Never" />
+    <disable_collisions link1="head_tilt_link" link2="head_bounding_sphere" reason="Never" />
+    <disable_collisions link1="head_pan_link" link2="head_bounding_sphere" reason="Never" />
+    <disable_collisions link1="head_pan_motor" link2="head_bounding_sphere" reason="Never" />
+
     <disable_collisions link1="left_HandFingerOneKnuckleOneLink" link2="left_HandFingerOneKnuckleThreeLink" reason="Never" />
     <disable_collisions link1="left_HandFingerOneKnuckleOneLink" link2="left_HandFingerOneKnuckleTwoLink" reason="Adjacent" />
     <disable_collisions link1="left_HandFingerOneKnuckleOneLink" link2="left_HandFingerThreeKnuckleThreeLink" reason="Never" />

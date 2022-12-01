@@ -151,12 +151,6 @@
             <box size="0.353161275387 0.255815982819 0.5"/>
           </geometry>
         </collision>
-        <collision>
-          <origin xyz="0.04 0 1.57" rpy="0 0 0"/>
-          <geometry>
-            <sphere radius="0.24"/>
-          </geometry>
-        </collision>
       </xacro:if>
       <self_collision_checking>
         <origin xyz="0 0.0 0.8" rpy="0 0 0"/>
@@ -172,13 +166,6 @@
         </geometry>
       </self_collision_checking>
 
-      <self_collision_checking>
-        <origin xyz="0.04 0 1.57" rpy="0 0 0"/>
-        <geometry>
-          <sphere radius="0.24"/>
-        </geometry>
-      </self_collision_checking>
-
       <inertial>
         <mass value="30.0"/>
         <origin rpy="0 0 0" xyz="0 -0.06 0.130"/>
@@ -187,6 +174,40 @@
     </link>
 
     <gazebo reference="torso_link0">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+      <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
+
+    <joint name="head_bounding_sphere_joint" type="fixed">
+      <origin xyz="0 0 0.03" rpy="0 0 0"/>
+      <parent link="torso_base"/>
+      <child link="head_bounding_sphere"/>
+    </joint>
+  
+    <link name="head_bounding_sphere">
+      <collision>
+        <origin xyz="0.04 0 1.57" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.24"/>
+        </geometry>
+      </collision>
+      <self_collision_checking>
+        <origin xyz="0.04 0 1.57" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.24"/>
+        </geometry>
+      </self_collision_checking>
+
+      <inertial>
+        <mass value="0.3"/>
+        <origin rpy="0 0 0" xyz="0 -0.06 0.130"/>
+        <inertia ixx="0.03175" ixy="0" ixz="0" iyy="0.03175" iyz="0" izz="0.0135"/>
+      </inertial>
+    </link>
+
+    <gazebo reference="head_bounding_sphere">
       <turnGravityOff>false</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/DarkGrey</material>
