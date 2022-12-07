@@ -101,7 +101,7 @@
     <joint name="torso_0_joint" type="revolute">
       <origin xyz="0 0 0.03" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
-      <limit lower="-1.57" upper="1.57" effort="100" velocity="100"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="${30 * M_PI / 180}"/>
       <parent link="torso_base"/>
       <child link="torso_link0"/>
       <dynamics damping="10.0"/>
