@@ -1,15 +1,10 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.16)
 project(velma_description)
 
-find_package(catkin REQUIRED)
+find_package(ament_cmake REQUIRED)
 
-catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES velma_description
-#  CATKIN_DEPENDS other_catkin_pkg
-#  DEPENDS system_lib
+install(DIRECTORY rviz urdf meshes materials calibration launch
+  DESTINATION share/${PROJECT_NAME}
 )
 
-install(DIRECTORY calibration defs launch robots meshes
- DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)
+ament_package()

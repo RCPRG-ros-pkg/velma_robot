@@ -1,0 +1,583 @@
+<?xml version="1.0"?>
+<!--
+ * COPYRIGHT (C) 2010
+ * RE2, INC.
+ *
+ * Author: RE2
+ *
+ * This file is a part of RobotModel, which was developed for the
+ * DARPA ARM ROBOT Track C project.
+ *
+ * RobotModel is free software:
+ * you can redistribute it and/or modify it under the terms of the GNU General
+ * Public License as published by the Free Software Foundation, either version
+ * 3 of the License, or (at your option) any later version.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this package.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * RE2, INC. disclaims all warranties with regard to this software, including
+ * all implied warranties of merchantability and fitness, in no event shall
+ * RE2, INC. be liable for any special, indirect or consequential damages or
+ * any damages whatsoever resulting from loss of use, data or profits, whether
+ * in an action of contract, negligence or other tortious action, arising out
+ * of or in connection with the use or performance of this software.
+-->
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--<xacro:include filename="$(find barrett_hand_defs)/defs/materials.xml"/>-->
+
+  <xacro:arg name="collision_model_full" default="true"/>
+  <xacro:arg name="collision_model_simplified" default="false"/>
+  <xacro:arg name="collision_model_enlargement" default="0.0"/>
+  <xacro:arg name="collision_model_no_hands" default="false"/>
+
+  <xacro:property name="homeDirectory" value="package://velma_description" />
+  <!-- <xacro:property name="highResModelDirectory" value="${homeDirectory}/meshes/splitModels" /> -->
+  <xacro:property name="PI" value="3.1415926535897931" />
+
+  <xacro:property name="collision_model_enlargement" value="$(arg collision_model_enlargement)" />
+
+  <xacro:macro name="palm" params="prefix parent *origin">
+
+    <link name="${prefix}_HandPalmLink" >
+      <inertial>
+        <origin xyz="0.00035500 -0.00499005 0.04864979" />
+        <mass value="0.63352875" />
+        <inertia  ixx="0.00102103" ixy="0.00000775"  ixz="-0.00001230"
+                                   iyy="0.00080944"  iyz="-0.00014417"
+                                                     izz="0.00068788" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="${homeDirectory}/meshes/barrett_hand/palm.stl"/>
+        </geometry>
+        <material name="Blue" >
+          <color rgba="0 0.7 1 1.0"/>
+        </material>
+      </visual>
+
+      <xacro:unless value="$(arg collision_model_no_hands)">
+      <!-- collision mesh used for whole arm motion planning -->
+      <xacro:if value="$(arg collision_model_simplified)">
+        <collision>
+          <origin xyz="0 0 0.029" rpy="0 0 0"/>
+          <geometry>
+            <sphere radius="0.049"/>
+          </geometry>
+        </collision>
+        <collision>
+          <origin xyz="0 0 0.0578880161047" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.0905260443687 0.0546207651496 0.0420634746552"/>
+          </geometry>
+        </collision>
+        <collision>
+          <origin xyz="0 -0.0385280400515 0.0572689175606" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.0275810360909 0.0546207651496 0.0339374542236"/>
+          </geometry>
+        </collision>
+        <collision>
+          <origin xyz="0 -0.0487826019526 0.0744814276695" rpy="0 0 0"/>
+          <geometry>
+            <sphere radius="0.0194399058819"/>
+          </geometry>
+        </collision>
+      </xacro:if>
+
+      <!-- collision mesh used for grasp planning -->
+      <xacro:if value="$(arg collision_model_full)">
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="${homeDirectory}/meshes/barrett_hand/palm.stl"/>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1.0</mu>
+                <mu2>1.0</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+      </xacro:if>
+      </xacro:unless>
+
+      <!-- collision mesh used for RT self-collision avoidance -->
+      <!-- <self_collision_checking>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <convex>
+            <point xyz="0.03 0.03 0.0" frame="${prefix}_HandPalmLink"/>
+            <point xyz="-0.03 0.03 0.0" frame="${prefix}_HandPalmLink"/>
+            <point xyz="-0.03 -0.03 0.0" frame="${prefix}_HandPalmLink"/>
+            <point xyz="0.03 -0.03 0.0" frame="${prefix}_HandPalmLink"/>
+
+            <point xyz="0.06 0 0" frame="${prefix}_HandFingerOneKnuckleOneLink"/>
+            <point xyz="0.06 0 0" frame="${prefix}_HandFingerTwoKnuckleOneLink"/>
+            <point xyz="0 -0.06 0.06" frame="${prefix}_HandPalmLink"/>
+
+            <point xyz="0 0 0" frame="${prefix}_HandFingerOneKnuckleThreeLink"/>
+            <point xyz="0 0 0" frame="${prefix}_HandFingerTwoKnuckleThreeLink"/>
+            <point xyz="0 0 0" frame="${prefix}_HandFingerThreeKnuckleThreeLink"/>
+
+            <point xyz="0.06 0 0" frame="${prefix}_HandFingerOneKnuckleThreeLink"/>
+            <point xyz="0.06 0 0" frame="${prefix}_HandFingerTwoKnuckleThreeLink"/>
+            <point xyz="0.06 0 0" frame="${prefix}_HandFingerThreeKnuckleThreeLink"/>
+          </convex>
+        </geometry>
+      </self_collision_checking> -->
+
+      <self_collision_checking>
+        <origin xyz="0.0 0.0 0.03" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.06"/>
+        </geometry>
+      </self_collision_checking>
+    </link>
+
+    <gazebo reference="${prefix}_HandPalmLink">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+      <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <joint name="${prefix}_HandPalmMarkerAJoint" type="fixed">
+      <parent link="${prefix}_HandPalmLink"/>
+      <child link="${prefix}_HandPalmMarkerALink"/>
+      <origin xyz="0.0445 0.0 0.0255" rpy="0 ${PI/2} 0" />
+    </joint>
+
+    <link name="${prefix}_HandPalmMarkerALink">
+      <inertial>
+        <mass value="0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+    </link>
+
+
+    <joint name="${prefix}_HandPalmMarkerCJoint" type="fixed">
+      <parent link="${prefix}_HandPalmLink"/>
+      <child link="${prefix}_HandPalmMarkerCLink"/>
+      <origin xyz="-0.0445 0.0 0.0255" rpy="0 ${-PI/2} 0" />
+    </joint>
+
+    <link name="${prefix}_HandPalmMarkerCLink">
+      <inertial>
+        <mass value="0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_HandPalmMarkerBJoint" type="fixed">
+      <parent link="${prefix}_HandPalmLink"/>
+      <child link="${prefix}_HandPalmMarkerBLink"/>
+      <origin xyz="0.0 0.0445 0.0255" rpy="${-PI/2} 0 0" />
+    </joint>
+
+    <link name="${prefix}_HandPalmMarkerBLink">
+      <inertial>
+        <mass value="0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_HandPalmMarkerDJoint" type="fixed">
+      <parent link="${prefix}_HandPalmLink"/>
+      <child link="${prefix}_HandPalmMarkerDLink"/>
+      <origin xyz="0.0 -0.0445 0.0255" rpy="${PI/2} 0 0" />
+    </joint>
+
+    <link name="${prefix}_HandPalmMarkerDLink">
+      <inertial>
+        <mass value="0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+    </link>
+
+
+    <joint name="${prefix}_HandPalmJoint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${prefix}_HandPalmLink"/>
+      <xacro:insert_block name="origin"/>
+      <provideFeedback value="true"/>
+    </joint>
+
+    <link name="${prefix}_HandGripLink" >
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" />
+        <mass value="0.005" />
+        <inertia  ixx="0.00000041" ixy="0.00000000"  ixz="0.00000016"
+                                   iyy="0.00000359"  iyz="0.00000000"
+                                                     izz="0.00000368" />
+      </inertial>
+    </link>
+
+    <gazebo reference="${prefix}_HandGripLink">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <joint name="${prefix}_HandGripJoint" type="fixed">
+      <parent link="${prefix}_HandPalmLink"/>
+      <child link="${prefix}_HandGripLink"/>
+      <origin rpy="0 0 0" xyz="0 0 0.12"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:macro name="KnuckleOne" params="prefix number xyz rpy axis">
+    <link name="${prefix}_HandFinger${number}KnuckleOneLink">
+      <visual>
+        <origin xyz="0 0 -0.0045" rpy="${0.5 * PI} 0 -${0.5 * PI}" />
+        <geometry>
+          <mesh filename="${homeDirectory}/meshes/barrett_hand/firstFingerLink.stl"/>
+        </geometry>
+        <material name="Grey" >
+          <color rgba="0.8 0.8 0.8 1.0"/>
+        </material>
+      </visual>
+      <inertial>
+        <origin xyz="0.03201666 -0.00086502 0.00890075" />
+        <mass value="0.16252678" />
+        <inertia  ixx="0.00002567" ixy="-0.00000146"  ixz="0.00001128"
+                  iyy="0.00008818"   iyz="-0.00000094"
+                  izz="0.00007827" />
+      </inertial>
+
+      <xacro:unless value="$(arg collision_model_no_hands)">
+      <!-- collision mesh used for whole arm motion planning -->
+      <xacro:if value="$(arg collision_model_simplified)">
+        <collision>
+          <origin xyz="0.0270798802376 0 0.00195854902267" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.0752255320549 0.0278776362538 0.0362581014633"/>
+          </geometry>
+        </collision>
+        <collision>
+          <origin xyz="0.0493242815137 0 0.0150546580553" rpy="0 0 0"/>
+          <geometry>
+            <sphere radius="0.0196040868759"/>
+          </geometry>
+        </collision>
+      </xacro:if>
+
+      <!-- collision mesh used for grasp planning -->
+      <xacro:if value="$(arg collision_model_full)">
+        <collision>
+          <origin xyz="0 0 -0.0045" rpy="${0.5 * PI} 0 -${0.5 * PI}" />
+          <geometry>
+            <mesh filename="${homeDirectory}/meshes/barrett_hand/firstFingerLink.stl"/>
+          </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
+        </collision>
+      </xacro:if>
+      </xacro:unless>
+    </link>
+
+    <gazebo reference="${prefix}_HandFinger${number}KnuckleOneLink">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+      <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <joint name="${prefix}_HandFinger${number}KnuckleOneJoint" type="revolute">
+      <parent link="${prefix}_HandPalmLink"/>
+      <child link="${prefix}_HandFinger${number}KnuckleOneLink"/>
+      <origin xyz="${xyz}" rpy="${rpy}"/>
+      <axis xyz="${axis}"/>
+      <limit effort="2" lower="0" upper="${PI}" velocity="3.27"/>
+      <dynamics damping="0.1"/>
+    </joint>
+    <gazebo reference="${prefix}_HandFinger${number}KnuckleOneJoint">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:macro name="KnuckleTwo" params="parent prefix number xyz rpy">
+    <link name="${prefix}_HandFinger${number}KnuckleTwoLink">
+      <visual>
+        <origin xyz="0 0 0" rpy="${PI} ${0.5 * PI} 0" />
+        <geometry>
+          <mesh filename="${homeDirectory}/meshes/barrett_hand/secondFingerLink.stl"/>
+        </geometry>
+        <material name="Grey" >
+          <color rgba="0.8 0.8 0.8 1.0"/>
+        </material>
+      </visual>
+      <inertial>
+        <origin xyz="0.031720 0.001070 -0.000586" />
+        <mass value="0.057957" />
+        <inertia  ixx="0.00000461" ixy="0.00000003"  ixz="0.00000164"
+                                   iyy="0.00003590"  iyz="0.00000004"
+                                                     izz="0.00003682" />
+      </inertial>
+
+      <xacro:unless value="$(arg collision_model_no_hands)">
+      <!-- collision mesh used for whole arm motion planning -->
+      <xacro:if value="$(arg collision_model_simplified)">
+        <collision>
+          <origin xyz="0.0455318503082 0 0" rpy="0 0 0.0424077153578"/>
+          <geometry>
+            <box size="0.0572708845139 0.0259905532002 0.0224001407623"/>
+          </geometry>
+        </collision>
+      </xacro:if>
+      <!-- collision mesh used for grasp planning -->
+      <xacro:if value="$(arg collision_model_full)">
+        <collision>
+<!--          <origin xyz="0 0 0" rpy="${PI} ${0.5 * PI} 0" />
+          <geometry>
+            <mesh filename="${homeDirectory}/meshes/barrett_hand/secondFingerLink.stl"/>
+          </geometry>-->
+          <origin xyz="0.03 0 0" rpy="0 0 0" />
+          <geometry>
+            <box size="0.07 0.02 0.02" />
+          </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
+        </collision>
+      </xacro:if>
+      </xacro:unless>
+
+      <self_collision_checking>
+        <origin xyz="0.03 0.0 0.0" rpy="0 1.57075 0"/>
+        <geometry>
+          <capsule radius="0.015" length="0.06"/>
+        </geometry>
+      </self_collision_checking>
+<!--
+      <self_collision_checking>
+        <origin xyz="0.04 -0.01 0.0" rpy="0 1.57075 -0.5"/>
+        <geometry>
+          <capsule radius="0.01" length="0.1"/>
+        </geometry>
+      </self_collision_checking>
+-->
+    </link>
+
+    <gazebo reference="${prefix}_HandFinger${number}KnuckleTwoLink">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+      <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <joint name="${prefix}_HandFinger${number}KnuckleTwoJoint" type="revolute">
+      <parent link="${parent}"/>
+      <child link="${prefix}_HandFinger${number}KnuckleTwoLink"/>
+      <origin xyz="${xyz}" rpy="${rpy}"/>
+      <axis xyz="0 0 -1"/>
+                      <!-- 122 degrees - start orientation of 0.4 degrees-->
+      <limit effort="2" lower="0" upper="2.443388889" velocity="3.27"/>
+      <dynamics damping="0.05"/>
+    </joint>
+    <gazebo reference="${prefix}_HandFinger${number}KnuckleTwoJoint">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:macro name="KnuckleThree" params="prefix number with_optoforce">
+
+    <link name="${prefix}_HandFinger${number}KnuckleThreeLink">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <xacro:if value="${with_optoforce}">
+            <mesh filename="${homeDirectory}/meshes/barrett_hand/thirdFingerOptoforceBaseLink.stl"/>
+          </xacro:if>
+          <xacro:unless value="${with_optoforce}">
+            <mesh filename="${homeDirectory}/meshes/barrett_hand/thirdFingerLink.stl"/>
+          </xacro:unless>
+        </geometry>
+        <material name="Grey" >
+          <color rgba="0.8 0.8 0.8 1.0"/>
+        </material>
+      </visual>
+<!--      <inertial>
+        <origin xyz="0.01970974 0.00182016 0.00020041" />
+        <mass value="0.03421781" />
+        <inertia  ixx="0.00000287" ixy="0.00000091"  ixz="-0.00000007"
+                                   iyy="0.00001329"  iyz="-0.00000002"
+                                                     izz="0.00001214" />
+      </inertial>
+-->
+      <inertial>
+        <origin xyz="0.01970974 0.00182016 0.00020041" />
+        <mass value="0.03421781" />
+        <inertia  ixx="0.00000461" ixy="0.00000003"  ixz="0.00000164"
+                                   iyy="0.00003590"  iyz="0.00000004"
+                                                     izz="0.00003682" />
+      </inertial>
+
+      <xacro:unless value="$(arg collision_model_no_hands)">
+      <!-- collision mesh used for whole arm motion planning -->
+      <xacro:if value="$(arg collision_model_simplified)">
+        <collision>
+          <origin xyz="0.0220463573933 0 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.0456312298775 0.0218328088522 0.0227420330048"/>
+          </geometry>
+        </collision>
+        <collision>
+          <origin xyz="0.046044960618 0.001 0" rpy="0 0 0"/>
+          <geometry>
+            <sphere radius="0.012090086937"/>
+          </geometry>
+        </collision>
+
+      </xacro:if>
+      <!-- collision mesh used for grasp planning -->
+      <xacro:if value="$(arg collision_model_full)">
+        <collision>
+<!--          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <xacro:if value="${with_optoforce}">
+              <mesh filename="${homeDirectory}/meshes/barrett_hand/thirdFingerOptoforceBaseLink.stl"/>
+            </xacro:if>
+            <xacro:unless value="${with_optoforce}">
+              <mesh filename="${homeDirectory}/meshes/barrett_hand/thirdFingerLink.stl"/>
+            </xacro:unless>
+          </geometry>
+-->
+          <origin xyz="0.025 0 0" rpy="0 0 0" />
+          <geometry>
+            <box size="0.05 0.02 0.02" />
+          </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
+        </collision>
+      </xacro:if>
+      </xacro:unless>
+
+      <self_collision_checking>
+        <origin xyz="0.025 0.0 0.0" rpy="0 1.57075 0"/>
+        <geometry>
+          <capsule radius="0.015" length="0.05"/>
+        </geometry>
+      </self_collision_checking>
+
+    </link>
+
+    <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeLink">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+      <material>Gazebo/Grey</material>
+    </gazebo>
+    <joint name="${prefix}_HandFinger${number}KnuckleThreeJoint" type="revolute">
+      <parent link="${prefix}_HandFinger${number}KnuckleTwoLink"/>
+      <child link="${prefix}_HandFinger${number}KnuckleThreeLink"/>
+                                  <!-- 39.56 degrees -->
+      <origin xyz="0.07 0 0" rpy="0 0 -0.690452252"/>
+      <axis xyz="0 0 -1"/>
+                          <!-- measured max angle is 94.  so upper limit is 94 - start orientation (42 degrees)-->
+      <limit effort="2" lower="0" upper="0.837733333" velocity="3.27"/>
+      <dynamics damping="0.05"/>
+    </joint>
+    <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeJoint">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+
+    <xacro:if value="${with_optoforce}">
+        <link name="${prefix}_HandFinger${number}KnuckleThreeOptoforceSensor" >
+          <inertial>
+            <origin xyz="0 0 0" />
+            <mass value="0.003421781" />
+            <inertia  ixx="0.000000287" ixy="0.000000091"  ixz="-0.000000007"
+                                         iyy="0.000001329"  iyz="-0.000000002"
+                                                             izz="0.000001214" />
+          </inertial>
+          <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+              <mesh filename="${homeDirectory}/meshes/barrett_hand/optoforce_sphere.stl"/>
+              <!--<sphere radius="0.01"/>-->
+            </geometry>
+            <material name="bh_Black"/>
+          </visual>
+          <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+              <sphere radius="0.01"/>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>1.0</mu>
+                  <mu2>1.0</mu2>
+                </ode>
+              </friction>
+            </surface>
+          </collision>
+        </link>
+        <joint name="${prefix}_HandFinger${number}KnuckleThreeOptoforceJoint" type="prismatic">
+          <parent link="${prefix}_HandFinger${number}KnuckleThreeLink"/>
+          <child link="${prefix}_HandFinger${number}KnuckleThreeOptoforceSensor"/>
+          <origin rpy="0 ${PI/2} -${35.0 * PI / 180.0}" xyz="0.04486 -0.00685 0"/>
+
+          <axis xyz="0 0 1"/>
+          <limit effort="2" lower="-0.005" upper="0.005" velocity="0.1"/>
+          <dynamics damping="0.1"/>
+        </joint>
+
+        <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeOptoforceJoint">
+          <provideFeedback>true</provideFeedback>
+        </gazebo>
+
+        <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeOptoforceSensor">
+          <turnGravityOff>false</turnGravityOff>
+          <selfCollide>true</selfCollide>
+        </gazebo>
+    </xacro:if>
+  </xacro:macro>
+
+  <xacro:macro name="fingers" params="parent prefix number xyz rpy with_optoforce">
+    <xacro:KnuckleTwo parent="${parent}" prefix="${prefix}" number="${number}" xyz="${xyz}" rpy="${rpy}" />
+    <xacro:KnuckleThree prefix="${prefix}" number="${number}" with_optoforce="${with_optoforce}"/>
+  </xacro:macro>
+
+  <xacro:macro name="barret_hand" params="prefix parent *origin with_optoforce">
+    <xacro:palm prefix="${prefix}" parent="${parent}">
+      <xacro:insert_block name="origin"/>
+    </xacro:palm>
+
+    <xacro:fingers prefix="${prefix}" parent="${prefix}_HandPalmLink" number="Three" xyz="0 -0.05 0.0754" rpy="-${0.5 * PI} 0 -${0.5 * PI}" with_optoforce="${with_optoforce}"/>
+
+    <xacro:KnuckleOne prefix="${prefix}" number="One" xyz="0.02497 0 0.0587966" rpy="0 0 ${0.5 * PI}" axis="0 0 -1"/>
+    <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerOneKnuckleOneLink" number="One" xyz="0.05 0 0.0166034" rpy="-${0.5 * PI} 0 0" with_optoforce="${with_optoforce}"/>
+
+    <xacro:KnuckleOne prefix="${prefix}" number="Two" xyz="-0.02497 0 0.0587966" rpy="0 0 ${0.5 * PI}" axis ="0 0 1"/>
+    <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerTwoKnuckleOneLink" number="Two" xyz="0.05 0 0.0166034" rpy="-${0.5 * PI} 0 0" with_optoforce="${with_optoforce}"/>
+    <!-- <xacro:fingers prefix="${prefix}" parent="${prefix}_HandFingerTwoKnuckleOneLink" number="Two" xyz="0.05 0 0.0166034" rpy="-${0.5 * PI} -0.0429350996 0"/> -->
+  </xacro:macro>
+</robot>

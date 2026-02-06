@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: velma_description
+    relative_path: urdf/velma.urdf.xacro
+  srdf:
+    relative_path: config/velma.srdf
+  package_settings:
+    author_name: Dawid Seredyński
+    author_email: dawid.seredynski@pw.edu.pl
+    generated_timestamp: 1768398907
