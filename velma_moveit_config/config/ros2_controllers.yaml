@@ -49,9 +49,9 @@ arms_torso_controller:
       - right_arm_5_joint
       - right_arm_6_joint
     command_interfaces:
-      []
+      [position]
     state_interfaces:
-      []
+      [position, velocity]
     allow_nonzero_velocity_at_trajectory_end: true
 arms_controller:
   ros__parameters:

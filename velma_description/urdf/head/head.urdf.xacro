@@ -216,6 +216,13 @@
     <gazebo reference="head_tilt_link">
       <turnGravityOff>false</turnGravityOff>
       <selfCollide>true</selfCollide>
+       <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
+    <gazebo reference="head_tilt_link_dummy">
+      <turnGravityOff>false</turnGravityOff>
+      <selfCollide>true</selfCollide>
+       <material>Gazebo/DarkGrey</material>
     </gazebo>
 
     <!-- sensors -->

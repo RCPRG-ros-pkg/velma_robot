@@ -5,6 +5,10 @@
                         xmlns:xacro="http://www.ros.org/wiki/xacro"
 	 name="velma">
 
+  <gazebo>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
   <xacro:arg name="collision_model_full" default="false"/>
   <xacro:arg name="collision_model_simplified" default="true"/>
   <xacro:arg name="collision_model_enlargement" default="0.0"/>
@@ -83,78 +87,6 @@
   <xacro:property name="M_PI" value="3.1415926535897931" />
 
   <!-- Gazebo Plugin -->
-  <gazebo>
-    <plugin name="rtt_gazebo" filename="librtt_gazebo_deployer.so">
-      <isolated/>
-      <collision_detector>${collision_detector}</collision_detector>
-      <xacro:if value="$(arg subsystem_xml)">
-        <subsystem_xml>
-          <filename>$(arg xml_file_re_body)</filename>
-        </subsystem_xml>
-      </xacro:if>
-      <master_service>
-        <name>velma_sim_gazebo</name>
-        <subname>velma_sim_gazebo</subname>
-      </master_service>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>TorsoGazebo</type>
-        <name>TorsoSim</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>LWRGazebo</type>
-        <name>LWRrSim</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>LWRGazebo</type>
-        <name>LWRlSim</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>FtSensorGazebo</type>
-        <name>LeftFtSensor</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>FtSensorGazebo</type>
-        <name>RightFtSensor</name>
-      </component>
-
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>BarrettHandGazebo</type>
-        <name>RightHand</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>BarrettTactileGazebo</type>
-        <name>RightHandTactile</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>OptoforceGazebo</type>
-        <name>RightHandOptoforce</name>
-      </component>
-
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>BarrettHandGazebo</type>
-        <name>LeftHand</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>BarrettTactileGazebo</type>
-        <name>LeftHandTactile</name>
-      </component>
-      <component>
-        <package>velma_sim_gazebo</package>
-        <type>OptoforceGazebo</type>
-        <name>LeftHandOptoforce</name>
-      </component>
-    </plugin>
-  </gazebo>
   <xacro:if value="$(arg use_gazebo_kinect)">
     <gazebo reference="head_kinect_rgb_link">
       <sensor type="depth" name="openni_camera_camera">       
@@ -804,40 +736,5 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     <turnGravityOff>false</turnGravityOff>
     <selfCollide>true</selfCollide>
   </gazebo>
-
-  <!-- Floating gripper -->
-
-  <xacro:include filename="hand/floating_gripper_joint.xacro"/>
-
-  <xacro:floating_gripper_joint parent="world" />
-
-<!--   <link name="floating_FtSensorLink">
-    <inertial>
-      <mass value="0.002"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="0.00000520833333333" ixy="0" ixz="0" iyy="0.00000520833333333" iyz="0" izz="0.00000520833333333"/>
-    </inertial>
-  </link>
-
-  <joint name="floatingFtSensorJoint" type="revolute">
-    <parent link="floating_gripper_mount_link"/>
-    <child link="floating_FtSensorLink"/>
-    <origin xyz="0.115 0.0 -0.078" rpy="0 ${M_PI/2} 0"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="10" lower="0" upper="${M_PI}" velocity="3.27"/>
-    <dynamics damping="0.05"/>
-  </joint>
-  <gazebo reference="leftFtSensorJoint">
-    <provideFeedback>true</provideFeedback>
-  </gazebo>
-
-  <xacro:barret_hand prefix="left" parent="left_FtSensorLink" with_optoforce="$(arg use_left_optoforces)">
-    <origin xyz="0 0 0.005" rpy="0 0 ${M_PI}"/>
-  </xacro:barret_hand>
- -->
-
-  <xacro:barret_hand prefix="floating" parent="floating_gripper_base" with_optoforce="False">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-  </xacro:barret_hand>
 
 </robot>

@@ -9,6 +9,17 @@
     <xacro:include filename="velma.ros2_control.xacro" />
 
 
+    <gazebo>
+    <xacro:velma_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)"/>
+    </gazebo>
+
     <xacro:velma_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)"/>
 
+    <gazebo>
+        <plugin filename="libgz_ros2_control-system.so"
+            name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <parameters>$(find velma_moveit_config)/config/ros2_controllers.yaml</parameters>
+            <controller_manager_name>controller_manager</controller_manager_name>
+        </plugin>
+    </gazebo>
 </robot>
