@@ -9,6 +9,9 @@
     <selfCollide>true</selfCollide>
   </gazebo>
 
+  <xacro:arg name="gravity_compensation" default="true"/>
+  <xacro:property name="gravity_compensation" value="$(arg gravity_compensation)"/>
+
   <xacro:arg name="collision_model_full" default="false"/>
   <xacro:arg name="collision_model_simplified" default="true"/>
   <xacro:arg name="collision_model_enlargement" default="0.0"/>
@@ -295,11 +298,13 @@
   </xacro:velma_torso>
 
   <xacro:kuka_lwr_arm parent="torso_link0" name="right" right="1">
-    <origin xyz="${cal_torso_link2_right_arm_base_joint_x} ${cal_torso_link2_right_arm_base_joint_y} ${cal_torso_link2_right_arm_base_joint_z}" rpy="${cal_torso_link2_right_arm_base_joint_roll} ${cal_torso_link2_right_arm_base_joint_pitch} ${cal_torso_link2_right_arm_base_joint_yaw}"/>
+    <origin xyz="${cal_torso_link2_right_arm_base_joint_x} ${cal_torso_link2_right_arm_base_joint_y} ${cal_torso_link2_right_arm_base_joint_z}"
+            rpy="${cal_torso_link2_right_arm_base_joint_roll} ${cal_torso_link2_right_arm_base_joint_pitch} ${cal_torso_link2_right_arm_base_joint_yaw}"/>
   </xacro:kuka_lwr_arm>
   
   <xacro:kuka_lwr_arm parent="torso_link0" name="left" right="1">
-    <origin xyz="${cal_torso_link2_left_arm_base_joint_x} ${cal_torso_link2_left_arm_base_joint_y} ${cal_torso_link2_left_arm_base_joint_z}" rpy="${cal_torso_link2_left_arm_base_joint_roll} ${cal_torso_link2_left_arm_base_joint_pitch} ${cal_torso_link2_left_arm_base_joint_yaw}"/>
+    <origin xyz="${cal_torso_link2_left_arm_base_joint_x} ${cal_torso_link2_left_arm_base_joint_y} ${cal_torso_link2_left_arm_base_joint_z}"
+            rpy="${cal_torso_link2_left_arm_base_joint_roll} ${cal_torso_link2_left_arm_base_joint_pitch} ${cal_torso_link2_left_arm_base_joint_yaw}"/>
   </xacro:kuka_lwr_arm>
 
   <joint name="right_gripper_mount_joint" type="fixed">
@@ -439,7 +444,7 @@ LOG: 2 axis momenta are :
 LOG: 2     |  0.010550   0.054601   0.056502 |
 -->
   <gazebo reference="right_gripper_mount_link">
-    <turnGravityOff>false</turnGravityOff>
+    <turnGravityOff>${gravity_compensation}</turnGravityOff>
     <selfCollide>true</selfCollide>
   </gazebo>
 
@@ -525,7 +530,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
   </link>
 
   <gazebo reference="left_gripper_mount_link">
-    <turnGravityOff>false</turnGravityOff>
+    <turnGravityOff>${gravity_compensation}</turnGravityOff>
     <selfCollide>true</selfCollide>
   </gazebo>
 
@@ -537,7 +542,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     </inertial>
   </link>
   <gazebo reference="right_FtSensorLink">
-    <turnGravityOff>false</turnGravityOff>
+    <turnGravityOff>${gravity_compensation}</turnGravityOff>
     <selfCollide>true</selfCollide>
   </gazebo>
 
@@ -567,7 +572,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     </inertial>
   </link>
   <gazebo reference="left_FtSensorLink">
-    <turnGravityOff>false</turnGravityOff>
+    <turnGravityOff>${gravity_compensation}</turnGravityOff>
     <selfCollide>true</selfCollide>
   </gazebo>
 
@@ -670,7 +675,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     </inertial>
   </link>
   <gazebo reference="right_keepUprightLink1">
-    <turnGravityOff>false</turnGravityOff>
+    <turnGravityOff>${gravity_compensation}</turnGravityOff>
     <selfCollide>true</selfCollide>
   </gazebo>
 
@@ -691,7 +696,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     </inertial>
   </link>
   <gazebo reference="right_keepUprightLink2">
-    <turnGravityOff>false</turnGravityOff>
+    <turnGravityOff>${gravity_compensation}</turnGravityOff>
     <selfCollide>true</selfCollide>
   </gazebo>
 
@@ -712,7 +717,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     </inertial>
   </link>
   <gazebo reference="left_keepUprightLink1">
-    <turnGravityOff>false</turnGravityOff>
+    <turnGravityOff>${gravity_compensation}</turnGravityOff>
     <selfCollide>true</selfCollide>
   </gazebo>
 
@@ -733,7 +738,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
     </inertial>
   </link>
   <gazebo reference="left_keepUprightLink2">
-    <turnGravityOff>false</turnGravityOff>
+    <turnGravityOff>${gravity_compensation}</turnGravityOff>
     <selfCollide>true</selfCollide>
   </gazebo>
 

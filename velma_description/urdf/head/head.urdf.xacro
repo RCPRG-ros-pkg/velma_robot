@@ -7,6 +7,9 @@
   <xacro:arg name="collision_detector" default="fcl"/>
   <xacro:property name="collision_detector" value="$(arg collision_detector)"/>
 
+  <xacro:arg name="gravity_compensation" default="true"/>
+  <xacro:property name="gravity_compensation" value="$(arg gravity_compensation)"/>
+
   <xacro:include filename="camera.urdf.xacro" />
 
   <xacro:macro name="velma_head" params="parent *origin">
@@ -122,7 +125,7 @@
     </link>
 
     <gazebo reference="head_pan_link">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
     </gazebo>
 
@@ -214,13 +217,13 @@
     </link>
 
     <gazebo reference="head_tilt_link">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
        <material>Gazebo/DarkGrey</material>
     </gazebo>
 
     <gazebo reference="head_tilt_link_dummy">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
        <material>Gazebo/DarkGrey</material>
     </gazebo>

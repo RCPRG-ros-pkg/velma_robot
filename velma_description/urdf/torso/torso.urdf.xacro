@@ -7,6 +7,9 @@
   <xacro:arg name="collision_detector" default="fcl"/>
   <xacro:property name="collision_detector" value="$(arg collision_detector)"/>
 
+  <xacro:arg name="gravity_compensation" default="true"/>
+  <xacro:property name="gravity_compensation" value="$(arg gravity_compensation)"/>
+
   <xacro:macro name="velma_torso" params="*origin">
 
     <link name="world" />
@@ -88,7 +91,7 @@
     </link>
 
     <gazebo reference="torso_base">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>
           <diffuse>0.4 0.4 0.4 1</diffuse>
@@ -171,7 +174,7 @@
     </link>
 
     <gazebo reference="torso_link0">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/DarkGrey</material>
     </gazebo>
@@ -205,7 +208,7 @@
     </link>
 
     <gazebo reference="head_bounding_sphere">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/DarkGrey</material>
     </gazebo>

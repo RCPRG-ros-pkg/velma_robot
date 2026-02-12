@@ -8,6 +8,9 @@
   <xacro:arg name="collision_detector" default="fcl"/>
   <xacro:property name="collision_detector" value="$(arg collision_detector)"/>
 
+  <xacro:arg name="gravity_compensation" default="true"/>
+  <xacro:property name="gravity_compensation" value="$(arg gravity_compensation)"/>
+
   <xacro:include filename="../defs/lwr_util_defs.xml" />
 
   <xacro:property name="arm_elem_base_mass" value="2.0" />
@@ -501,37 +504,37 @@
     </link>
 
     <gazebo reference="calib_${name}_arm_base_link">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/Orange</material>
     </gazebo>
     <gazebo reference="${name}_arm_1_link">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/Orange</material>
     </gazebo>
     <gazebo reference="${name}_arm_2_link">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/Orange</material>
     </gazebo>
     <gazebo reference="${name}_arm_3_link">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/Orange</material>
     </gazebo>
     <gazebo reference="${name}_arm_4_link">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/Orange</material>
     </gazebo>
     <gazebo reference="${name}_arm_5_link">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/Orange</material>
     </gazebo>
     <gazebo reference="${name}_arm_6_link">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/Grey</material>
     </gazebo>
@@ -539,7 +542,7 @@
       <provideFeedback>true</provideFeedback>
     </gazebo>
     <gazebo reference="${name}_arm_7_link">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/Grey</material>
     </gazebo>

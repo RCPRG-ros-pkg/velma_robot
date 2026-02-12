@@ -37,6 +37,9 @@
   <xacro:arg name="collision_model_enlargement" default="0.0"/>
   <xacro:arg name="collision_model_no_hands" default="false"/>
 
+  <xacro:arg name="gravity_compensation" default="true"/>
+  <xacro:property name="gravity_compensation" value="$(arg gravity_compensation)"/>
+
   <xacro:property name="homeDirectory" value="package://velma_description" />
   <!-- <xacro:property name="highResModelDirectory" value="${homeDirectory}/meshes/splitModels" /> -->
   <xacro:property name="PI" value="3.1415926535897931" />
@@ -146,7 +149,7 @@
     </link>
 
     <gazebo reference="${prefix}_HandPalmLink">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/Blue</material>
     </gazebo>
@@ -227,7 +230,7 @@
     </link>
 
     <gazebo reference="${prefix}_HandGripLink">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
     </gazebo>
 
@@ -295,7 +298,7 @@
     </link>
 
     <gazebo reference="${prefix}_HandFinger${number}KnuckleOneLink">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/Grey</material>
     </gazebo>
@@ -382,7 +385,7 @@
     </link>
 
     <gazebo reference="${prefix}_HandFinger${number}KnuckleTwoLink">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/Grey</material>
     </gazebo>
@@ -490,7 +493,7 @@
     </link>
 
     <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeLink">
-      <turnGravityOff>false</turnGravityOff>
+      <turnGravityOff>${gravity_compensation}</turnGravityOff>
       <selfCollide>true</selfCollide>
       <material>Gazebo/Grey</material>
     </gazebo>
@@ -555,7 +558,7 @@
         </gazebo>
 
         <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeOptoforceSensor">
-          <turnGravityOff>false</turnGravityOff>
+          <turnGravityOff>${gravity_compensation}</turnGravityOff>
           <selfCollide>true</selfCollide>
         </gazebo>
     </xacro:if>
