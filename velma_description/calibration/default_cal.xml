@@ -17,13 +17,13 @@
 <xacro:property name="cal_head_base_joint_pitch" value="0" />
 <xacro:property name="cal_head_base_joint_yaw" value="0" />
 -->
-<!-- head_kinect_rgb_joint -->
-<xacro:property name="cal_head_kinect_rgb_joint_x" value="0.062644" />
-<xacro:property name="cal_head_kinect_rgb_joint_y" value="0.22458" />
-<xacro:property name="cal_head_kinect_rgb_joint_z" value="0.020223" />
-<xacro:property name="cal_head_kinect_rgb_joint_roll" value="-1.5527" />
-<xacro:property name="cal_head_kinect_rgb_joint_pitch" value="0.015593" />
-<xacro:property name="cal_head_kinect_rgb_joint_yaw" value="-0.094166" />
+<!-- head_rgbd_camera_joint -->
+<xacro:property name="cal_head_rgbd_camera_joint_x" value="0.062644" />
+<xacro:property name="cal_head_rgbd_camera_joint_y" value="0.22458" />
+<xacro:property name="cal_head_rgbd_camera_joint_z" value="0.020223" />
+<xacro:property name="cal_head_rgbd_camera_joint_roll" value="-1.5527" />
+<xacro:property name="cal_head_rgbd_camera_joint_pitch" value="0.015593" />
+<xacro:property name="cal_head_rgbd_camera_joint_yaw" value="-0.094166" />
 <!-- right_gripper_calib_link1 -->
 <xacro:property name="cal_right_gripper_calib_link1_x" value="0.14271" />
 <xacro:property name="cal_right_gripper_calib_link1_y" value="0.029958" />

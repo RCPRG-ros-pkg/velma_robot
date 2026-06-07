@@ -4,7 +4,7 @@
                         xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
                         xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find velma_description)/defs/camera.urdf.xacro" />
+  <xacro:include filename="camera.urdf.xacro" />
 
   <xacro:macro name="velma_head" params="parent *origin">
     <joint name="head_base_joint" type="fixed">
@@ -196,9 +196,9 @@
               rpy="${cal_stereo_right_joint_roll} ${cal_stereo_right_joint_pitch} ${cal_stereo_right_joint_yaw}"/>
     </head_camera>
     
-    <head_camera parent="head_tilt_link" name="head_kinect_rgb">
-      <origin xyz="${cal_head_kinect_rgb_joint_x} ${cal_head_kinect_rgb_joint_y} ${cal_head_kinect_rgb_joint_z}"
-              rpy="${cal_head_kinect_rgb_joint_roll} ${cal_head_kinect_rgb_joint_pitch} ${cal_head_kinect_rgb_joint_yaw}"/>
+    <head_camera parent="head_tilt_link" name="head_rgbd_camera">
+      <origin xyz="${cal_head_rgbd_camera_joint_x} ${cal_head_rgbd_camera_joint_y} ${cal_head_rgbd_camera_joint_z}"
+              rpy="${cal_head_rgbd_camera_joint_roll} ${cal_head_rgbd_camera_joint_pitch} ${cal_head_rgbd_camera_joint_yaw}"/>
     </head_camera>
   </xacro:macro>
 </robot>

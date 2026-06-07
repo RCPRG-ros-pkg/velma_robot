@@ -3,30 +3,6 @@ controller_manager:
   ros__parameters:
     update_rate: 500  # Hz
 
-    # arms_torso_controller:
-    #   type: joint_trajectory_controller/JointTrajectoryController
-
-
-    # arms_controller:
-    #   type: joint_trajectory_controller/JointTrajectoryController
-
-
-    # left_arm_torso_controller:
-    #   type: joint_trajectory_controller/JointTrajectoryController
-
-
-    # right_arm_torso_controller:
-    #   type: joint_trajectory_controller/JointTrajectoryController
-
-
-    # left_arm_controller:
-    #   type: joint_trajectory_controller/JointTrajectoryController
-
-
-    # right_arm_controller:
-    #   type: joint_trajectory_controller/JointTrajectoryController
-
-
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
@@ -51,8 +27,57 @@ controller_manager:
     right_hand_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
+    # For tests only
+    test_A:
+      type: wut_velma_effort_controller/TestChainableController
+    test_B:
+      type: wut_velma_effort_controller/TestChainableController
+    test_C:
+      type: wut_velma_effort_controller/TestChainableController
+
+# For tests only
+# Chain test:
+# Structure 1:
+#   command: C -> B -> A -> HW
+#   state: HW -> A -> C
+# Structure 2:
+#   command: C -> B -> A -> HW
+#   state: HW -> A -> B -> C
+# Structure 3:
+#   command: C -> B -> A -> HW
+#   state: HW -> A, HW -> B, HW -> C
+test_A:
+  ros__parameters:
+    joints:
+      - head_pan_joint
+      - head_tilt_joint
+    require_command_interfaces: true
+    require_state_interfaces: true
+
+test_B:
+  ros__parameters:
+    joints:
+      - head_pan_joint
+      - head_tilt_joint
+    require_command_interfaces: true
+    downstream_command_controller: test_A
+    require_state_interfaces: true
+    # downstream_state_controller: test_A
+
+test_C:
+  ros__parameters:
+    joints:
+      - head_pan_joint
+      - head_tilt_joint
+    require_command_interfaces: true
+    downstream_command_controller: test_B
+    require_state_interfaces: true
+    # downstream_state_controller: test_B
+
 computed_cart_torque_controller:
   ros__parameters:
+    # Tu parametry Twojego kontrolera momentowego.
+    # Musi eksportować reference interfaces zgodne z nazwami powyżej.
     joints:
       - torso_0_joint
       - left_arm_0_joint
@@ -101,6 +126,9 @@ arms_torso_trajectory_controller:
       - right_arm_5_joint
       - right_arm_6_joint
 
+    # To są "joint names" po stronie komend.
+    # JTC będzie zapisywał do:
+    # computed_torque_controller/joint1/position itd.
     command_joints:
       - arms_torso_effort/torso_0_joint
       - arms_torso_effort/left_arm_0_joint
@@ -123,6 +151,7 @@ arms_torso_trajectory_controller:
       - velocity
       - acceleration
 
+    # To są fizyczne stany robota, nie wirtualne referencje.
     state_interfaces:
       - position
       - velocity
@@ -161,6 +190,7 @@ arms_torso_effort:
       - position
       - velocity
 
+    # parametr własny kontrolera:
     chainable_command_interfaces:
       - position
       - velocity
@@ -171,6 +201,10 @@ head_controller:
     joints:
       - head_pan_joint
       - head_tilt_joint
+
+    # To są "joint names" po stronie komend.
+    # JTC będzie zapisywał do:
+    # computed_torque_controller/joint1/position itd.
 
     command_interfaces:
       - position
@@ -207,29 +241,6 @@ left_hand_controller:
     allow_partial_joints_goal: false
     interpolation_method: splines
 
-    constraints:
-      goal_time: 0.1
-      stopped_velocity_tolerance: 0.01
-
-      left_HandFingerOneKnuckleTwoJoint:
-        trajectory: 0.5236  # 30 deg.
-        goal: 0.5236
-      left_HandFingerOneKnuckleThreeJoint:
-        trajectory: 0.5236
-        goal: 0.5236
-      left_HandFingerTwoKnuckleTwoJoint:
-        trajectory: 0.5236  # 30 deg.
-        goal: 0.5236
-      left_HandFingerTwoKnuckleThreeJoint:
-        trajectory: 0.5236
-        goal: 0.5236
-      left_HandFingerThreeKnuckleTwoJoint:
-        trajectory: 0.5236  # 30 deg.
-        goal: 0.5236
-      left_HandFingerThreeKnuckleThreeJoint:
-        trajectory: 0.5236
-        goal: 0.5236
-
 right_hand_controller:
   ros__parameters:
     joints:
@@ -252,29 +263,6 @@ right_hand_controller:
 
     allow_partial_joints_goal: false
     interpolation_method: splines
-
-    constraints:
-      goal_time: 0.1
-      stopped_velocity_tolerance: 0.01
-
-      right_HandFingerOneKnuckleTwoJoint:
-        trajectory: 0.5236  # 30 deg.
-        goal: 0.5236
-      right_HandFingerOneKnuckleThreeJoint:
-        trajectory: 0.5236
-        goal: 0.5236
-      right_HandFingerTwoKnuckleTwoJoint:
-        trajectory: 0.5236  # 30 deg.
-        goal: 0.5236
-      right_HandFingerTwoKnuckleThreeJoint:
-        trajectory: 0.5236
-        goal: 0.5236
-      right_HandFingerThreeKnuckleTwoJoint:
-        trajectory: 0.5236  # 30 deg.
-        goal: 0.5236
-      right_HandFingerThreeKnuckleThreeJoint:
-        trajectory: 0.5236
-        goal: 0.5236
 
 # arms_torso_controller:
 #   ros__parameters:

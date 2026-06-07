@@ -160,6 +160,137 @@
                 <state_interface name="effort"/>
             </joint>
 
+            <joint name="head_pan_joint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="head_tilt_joint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="left_HandFingerOneKnuckleOneJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="left_HandFingerOneKnuckleTwoJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="left_HandFingerOneKnuckleThreeJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="left_HandFingerThreeKnuckleTwoJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="left_HandFingerThreeKnuckleThreeJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="left_HandFingerTwoKnuckleOneJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="left_HandFingerTwoKnuckleTwoJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="left_HandFingerTwoKnuckleThreeJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="right_HandFingerOneKnuckleOneJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="right_HandFingerOneKnuckleTwoJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="right_HandFingerOneKnuckleThreeJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="right_HandFingerThreeKnuckleTwoJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="right_HandFingerThreeKnuckleThreeJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="right_HandFingerTwoKnuckleOneJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="right_HandFingerTwoKnuckleTwoJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="right_HandFingerTwoKnuckleThreeJoint">
+                <command_interface name="position"/>
+                <command_interface name="velocity"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <!-- Unused joints -->
+            <!-- <joint name="leftKeepUprightJoint0">
+                <state_interface name="position"/>
+            </joint>
+            <joint name="leftKeepUprightJoint1">
+                <state_interface name="position"/>
+            </joint>
+            <joint name="leftFtSensorJoint">
+                <state_interface name="position"/>
+            </joint>
+            <joint name="rightKeepUprightJoint0">
+                <state_interface name="position"/>
+            </joint>
+            <joint name="rightKeepUprightJoint1">
+                <state_interface name="position"/>
+            </joint>
+            <joint name="rightFtSensorJoint">
+                <state_interface name="position"/>
+            </joint> -->
+
         </ros2_control>
     </xacro:macro>
 </robot>

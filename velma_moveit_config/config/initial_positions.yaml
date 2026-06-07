@@ -1,18 +1,20 @@
 # Default initial positions for velma's ros2_control fake system
 
 initial_positions:
-  left_arm_0_joint: 0
-  left_arm_1_joint: 0
-  left_arm_2_joint: 0
-  left_arm_3_joint: 0
-  left_arm_4_joint: 0
-  left_arm_5_joint: 0
-  left_arm_6_joint: 0
-  right_arm_0_joint: 0
-  right_arm_1_joint: 0
-  right_arm_2_joint: 0
-  right_arm_3_joint: 0
-  right_arm_4_joint: 0
-  right_arm_5_joint: 0
-  right_arm_6_joint: 0
   torso_0_joint: 0
+  left_arm_0_joint: 0.3
+  left_arm_1_joint: 1.8
+  left_arm_2_joint: -1.25
+  left_arm_3_joint: -0.85
+  left_arm_4_joint: 0
+  left_arm_5_joint: 0.5
+  # left_arm_6_joint: 0 # old
+  left_arm_6_joint: 1.57 # new, minimal, 45deg
+  right_arm_0_joint: -0.3
+  right_arm_1_joint: -1.8
+  right_arm_2_joint: 1.25
+  right_arm_3_joint: 0.85
+  right_arm_4_joint: 0
+  right_arm_5_joint: -0.5
+  # right_arm_6_joint: 0 # old
+  right_arm_6_joint: -1.57 # new, minimal, 45deg

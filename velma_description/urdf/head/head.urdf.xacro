@@ -239,10 +239,10 @@
       <origin xyz="${cal_stereo_right_joint_x} ${cal_stereo_right_joint_y} ${cal_stereo_right_joint_z}"
               rpy="${cal_stereo_right_joint_roll} ${cal_stereo_right_joint_pitch} ${cal_stereo_right_joint_yaw}"/>
     </xacro:head_camera>
-    
-    <xacro:head_camera parent="head_tilt_link" name="head_kinect_rgb">
-      <origin xyz="${cal_head_kinect_rgb_joint_x} ${cal_head_kinect_rgb_joint_y} ${cal_head_kinect_rgb_joint_z}"
-              rpy="${cal_head_kinect_rgb_joint_roll} ${cal_head_kinect_rgb_joint_pitch} ${cal_head_kinect_rgb_joint_yaw}"/>
+
+    <xacro:head_camera parent="head_tilt_link" name="head_rgbd_camera">
+      <origin xyz="${cal_head_rgbd_camera_joint_x} ${cal_head_rgbd_camera_joint_y} ${cal_head_rgbd_camera_joint_z}"
+              rpy="${cal_head_rgbd_camera_joint_roll} ${cal_head_rgbd_camera_joint_pitch} ${cal_head_rgbd_camera_joint_yaw}"/>
     </xacro:head_camera>
   </xacro:macro>
 </robot>

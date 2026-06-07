@@ -10,7 +10,7 @@ planning_plugins:
   # - stomp_moveit/StompPlanner
 response_adapters:
   - default_planning_response_adapters/AddTimeOptimalParameterization
-  # - default_planning_response_adapters/ValidateSolution
+  - default_planning_response_adapters/ValidateSolution
   # - default_planning_response_adapters/DisplayMotionPath
 stomp_moveit:
   num_timesteps: 60
@@ -152,6 +152,12 @@ planner_configs:
     max_failures: 5000  # maximum consecutive failure limit. default: 5000
   TrajOptDefault:
     type: geometric::TrajOpt
+
+# arms_torso:
+#   longest_valid_segment_fraction: 0.002
+
+# arms_torso:
+#   longest_valid_segment_fraction: 0.002
 
 # left_arm:
 #   planner_configs:

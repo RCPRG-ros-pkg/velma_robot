@@ -17,13 +17,16 @@
   <xacro:arg name="collision_model_enlargement" default="0.0"/>
   <xacro:arg name="collision_model_no_hands" default="false"/>
 
+  <xacro:arg name="gripper_mount_type" default="45deg"/>
+  <xacro:property name="gripper_mount_type" value="$(arg gripper_mount_type)"/>
+
   <xacro:arg name="collision_detector" default="fcl"/>
   <xacro:property name="collision_detector" value="$(arg collision_detector)"/>
 
   <xacro:arg name="subsystem_xml" default="false"/>
   <xacro:arg name="xml_file_re_body" default=""/>
 
-  <xacro:arg name="use_gazebo_kinect" default="false"/>
+  <xacro:arg name="use_gazebo_rgbd_camera" default="true"/>
   <xacro:arg name="use_stereo_pair" default="false"/>
 
   <xacro:arg name="mobile_base" default="false"/>
@@ -61,6 +64,7 @@
   </xacro:unless>
 
   <xacro:include filename="hand/barret_hand.urdf.xacro"/>
+  <xacro:include filename="hand/gripper_mount.urdf.xacro"/>
 
   <xacro:macro name="visual_marker_xy" params="size pos_x pos_y pos_z">
     <visual name="black_box1">
@@ -90,48 +94,52 @@
   <xacro:property name="M_PI" value="3.1415926535897931" />
 
   <!-- Gazebo Plugin -->
-  <xacro:if value="$(arg use_gazebo_kinect)">
-    <gazebo reference="head_kinect_rgb_link">
-      <sensor type="depth" name="openni_camera_camera">       
-        <always_on>0</always_on>
+<!-- <gazebo reference="head_rgbd_camera_link">
+  <sensor name="head_rgbd_camera" type="rgbd_camera">
+    <always_on>true</always_on>
+    <update_rate>30</update_rate>
+    <topic>/velma/head_rgbd_camera</topic>
+    <visualize>true</visualize>
+
+    <camera>
+      <horizontal_fov>1.047</horizontal_fov>
+
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+
+      <clip>
+        <near>0.05</near>
+        <far>5.0</far>
+      </clip>
+    </camera>
+  </sensor>
+</gazebo> -->
+
+  <xacro:if value="$(arg use_gazebo_rgbd_camera)">
+    <gazebo reference="head_rgbd_camera_link">
+      <sensor type="rgbd_camera" name="head_rgbd_camera">
+        <always_on>true</always_on>
         <update_rate>15.0</update_rate>
-        <visualize>false</visualize>
+        <topic>/head_rgbd_camera</topic>
+        <visualize>true</visualize>
         <camera>
           <horizontal_fov>1.047</horizontal_fov>  
           <image>
-            <width>800</width>
-            <height>600</height>
+            <width>640</width>
+            <height>480</height>
             <format>B8G8R8</format>
           </image>
           <depth_camera>
           </depth_camera>
           <clip>
-            <near>0.1</near>
-            <far>10</far>
+            <near>0.05</near>
+            <far>3.0</far>
           </clip>
+          <optical_frame_id>head_rgbd_camera_link</optical_frame_id>
         </camera>
-        <plugin name="kinect_controller" filename="libgazebo_ros_openni_kinect.so">
-          <baseline>0.2</baseline>
-          <cameraName>${camera_name}_ir</cameraName>
-          <imageTopicName>/${camera_name}/rgb/image_raw</imageTopicName>
-          <cameraInfoTopicName>/${camera_name}/rgb/camera_info</cameraInfoTopicName>
-          <depthImageTopicName>/${camera_name}/depth/image_raw</depthImageTopicName>
-          <depthImageCameraInfoTopicName>/${camera_name}/depth/camera_info</depthImageCameraInfoTopicName>
-          <pointCloudTopicName>/${camera_name}/depth/points</pointCloudTopicName>
-          <frameName>head_kinect_rgb_optical_frame</frameName>
-          <pointCloudCutoff>0.5</pointCloudCutoff>
-          <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
-          <distortionK1>0.00000001</distortionK1>
-          <distortionK2>0.00000001</distortionK2>
-          <distortionK3>0.00000001</distortionK3>
-          <distortionT1>0.00000001</distortionT1>
-          <distortionT2>0.00000001</distortionT2>
-          <CxPrime>0</CxPrime>
-          <Cx>0</Cx>
-          <Cy>0</Cy>
-          <focalLength>0</focalLength>
-          <hackBaseline>0</hackBaseline>
-        </plugin>
       </sensor>
     </gazebo>
   </xacro:if>
@@ -307,9 +315,18 @@
             rpy="${cal_torso_link2_left_arm_base_joint_roll} ${cal_torso_link2_left_arm_base_joint_pitch} ${cal_torso_link2_left_arm_base_joint_yaw}"/>
   </xacro:kuka_lwr_arm>
 
+  <!-- <xacro:gripper_mount parent="left_arm_7_link" name="left" angle_z="${M_PI/2}"/>
+  <xacro:gripper_mount parent="right_arm_7_link" name="right" angle_z="${M_PI/2}"/> -->
+
+  <xacro:if value="${gripper_mount_type == '45deg'}">
+    <xacro:gripper_mount parent="left_arm_7_link" name="left" angle_z="${M_PI}"/>
+    <xacro:gripper_mount parent="right_arm_7_link" name="right" angle_z="${M_PI}"/>
+  </xacro:if>
+
+<!-- 
   <joint name="right_gripper_mount_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
-    <parent link="right_arm_ee_link"/>
+    <parent link="right_arm_7_link"/>
     <child link="right_gripper_mount_link"/>
   </joint>
 
@@ -366,7 +383,6 @@
     </xacro:unless>
 
     <xacro:if value="$(arg calibration_needles)">
-      <!-- needle -->
       <collision>
         <origin xyz="0 0 0.07" rpy="0 0 0"/>
         <geometry>
@@ -401,7 +417,7 @@
   <xacro:if value="$(arg calibration_needles)">
     <joint name="right_needle_joint" type="fixed">
       <origin xyz="${cal_right_needle_joint_x} ${cal_right_needle_joint_y} ${cal_right_needle_joint_z}" rpy="0 0 0"/>
-      <parent link="right_arm_ee_link"/>
+      <parent link="right_arm_7_link"/>
       <child link="right_needle_link"/>
     </joint>
     <link name="right_needle_link">
@@ -414,7 +430,7 @@
 
     <joint name="left_needle_joint" type="fixed">
       <origin xyz="${cal_left_needle_joint_x} ${cal_left_needle_joint_y} ${cal_left_needle_joint_z}" rpy="0 0 0"/>
-      <parent link="left_arm_ee_link"/>
+      <parent link="left_arm_7_link"/>
       <child link="left_needle_link"/>
     </joint>
     <link name="left_needle_link">
@@ -424,7 +440,7 @@
         <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
       </inertial>
     </link>
-  </xacro:if>
+  </xacro:if> -->
 
 <!--
 gripper mount link:
@@ -443,128 +459,16 @@ LOG: 2     | -0.644945   0.000001   0.764229 |
 LOG: 2 axis momenta are :
 LOG: 2     |  0.010550   0.054601   0.056502 |
 -->
-  <gazebo reference="right_gripper_mount_link">
+  <!-- <gazebo reference="right_gripper_mount_link">
     <turnGravityOff>${gravity_compensation}</turnGravityOff>
     <selfCollide>true</selfCollide>
-  </gazebo>
-
-  <joint name="left_gripper_mount_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 ${M_PI}"/>
-    <parent link="left_arm_ee_link"/>
-    <child link="left_gripper_mount_link"/>
-  </joint>
-
-  <link name="left_gripper_mount_link">
-    <visual>
-      <origin xyz="0 0 0" rpy="0.0 0 0" />
-      <geometry>
-        <mesh filename="package://velma_description/meshes/gripper_mount_simplified.stl" />
-      </geometry>
-        <material name="Orange" >
-          <color rgba="1 0.5 0 1.0"/>
-        </material>
-    </visual>
-
-    <xacro:unless value="$(arg collision_model_no_hands)">
-      <xacro:if value="${collision_detector == 'fcl'}">
-        <collision>
-          <origin xyz="0 0 0" rpy="0 0 0"/>
-          <geometry>
-            <mesh filename="package://velma_description/meshes/collision/gripper_mount_collision2.STL"/>
-          </geometry>
-        </collision>
-      </xacro:if>
-      <xacro:if value="${collision_detector == 'dart'}">
-        <collision>
-          <origin xyz="0.00848898105323 0.0 0.0221745967865" rpy="0 0 0"/>
-          <geometry>
-            <box size="0.110316336155 0.0795853585005 0.0497657060623"/>
-          </geometry>
-        </collision>
-        <collision>
-          <origin xyz="0.0838752761483 0 -0.0117062330246" rpy="0 0.822849241182 0"/>
-          <geometry>
-            <box size="0.068020761013 0.0795853585005 0.025487780571"/>
-          </geometry>
-        </collision>
-        <collision>
-          <origin xyz="0.102500602603 0 -0.0791217014194" rpy="0 0 0"/>
-          <geometry>
-            <box size="0.0187338590622 0.0816289409995 0.100000023842"/>
-          </geometry>
-        </collision>
-      </xacro:if>
-    </xacro:unless>
-
-    <xacro:if value="$(arg calibration_needles)">
-      <!-- needle -->
-      <collision>
-        <origin xyz="0 0 0.07" rpy="0 0 0"/>
-        <geometry>
-          <box size="0.05 0.05 0.14"/>
-        </geometry>
-      </collision>
-
-      <self_collision_checking>
-        <origin xyz="0 0 0.07" rpy="0 0 0"/>
-        <geometry>
-          <capsule radius="0.025" length="0.09"/>
-        </geometry>
-      </self_collision_checking>
-    </xacro:if>
-
-    <self_collision_checking>
-      <origin xyz="0.02 0.0 -0.01" rpy="0 ${M_PI/2.0} 0"/>
-      <geometry>
-        <capsule radius="0.055" length="0.08"/>
-      </geometry>
-    </self_collision_checking>
-
-    <inertial>
-      <mass value="0.2892125"/>
-      <origin rpy="0 0 0" xyz="0.0543534 0.0000315 -0.0313542"/>
-      <inertia ixx="0.0007416" ixy="0" ixz="0.000566225" iyy="0.001365025" iyz="0" izz="0.0009347"/>
-    </inertial>
-
-    <xacro:visual_marker_xy size="0.02" pos_x="0" pos_y="0" pos_z="0.02" />
-  </link>
-
-  <gazebo reference="left_gripper_mount_link">
-    <turnGravityOff>${gravity_compensation}</turnGravityOff>
-    <selfCollide>true</selfCollide>
-  </gazebo>
-
-  <link name="right_FtSensorLink">
-    <inertial>
-      <mass value="0.002"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="0.00000520833333333" ixy="0" ixz="0" iyy="0.00000520833333333" iyz="0" izz="0.00000520833333333"/>
-    </inertial>
-  </link>
-  <gazebo reference="right_FtSensorLink">
-    <turnGravityOff>${gravity_compensation}</turnGravityOff>
-    <selfCollide>true</selfCollide>
-  </gazebo>
-
-  <joint name="rightFtSensorJoint" type="revolute">
-    <parent link="right_gripper_mount_link"/>
-    <child link="right_FtSensorLink"/>
-                                  <!-- 39.56 degrees -->
-    <origin xyz="0.115 0.0 -0.078" rpy="0 ${M_PI/2} 0"/>
-    <axis xyz="0 0 1"/>
-                          <!-- measured max angle is 94.  so upper limit is 94 - start orientation (42 degrees)-->
-    <limit effort="10" lower="0" upper="0.00001" velocity="3.27"/>
-    <dynamics damping="0.05"/>
-  </joint>
-  <gazebo reference="rightFtSensorJoint">
-    <provideFeedback>true</provideFeedback>
-  </gazebo>
+  </gazebo> -->
 
   <xacro:barret_hand prefix="right" parent="right_FtSensorLink" with_optoforce="$(arg use_right_optoforces)">
     <origin xyz="0 0 0.005" rpy="0 0 0"/>
   </xacro:barret_hand>
 
-  <link name="left_FtSensorLink">
+  <!-- <link name="left_FtSensorLink">
     <inertial>
       <mass value="0.002"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -574,25 +478,41 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
   <gazebo reference="left_FtSensorLink">
     <turnGravityOff>${gravity_compensation}</turnGravityOff>
     <selfCollide>true</selfCollide>
-  </gazebo>
+  </gazebo> -->
 
-  <joint name="leftFtSensorJoint" type="revolute">
+  <!-- TODO: use this joint as FT sensor in Gazebo Sim -->
+  <!-- <joint name="leftFtSensorJoint" type="revolute">
     <parent link="left_gripper_mount_link"/>
     <child link="left_FtSensorLink"/>
-                                  <!-- 39.56 degrees -->
     <origin xyz="0.115 0.0 -0.078" rpy="0 ${M_PI/2} 0"/>
     <axis xyz="0 0 1"/>
-                          <!-- measured max angle is 94.  so upper limit is 94 - start orientation (42 degrees)-->
     <limit effort="10" lower="0" upper="0.00001" velocity="3.27"/>
     <dynamics damping="0.05"/>
   </joint>
   <gazebo reference="leftFtSensorJoint">
     <provideFeedback>true</provideFeedback>
-  </gazebo>
+  </gazebo> -->
 
-  <xacro:barret_hand prefix="left" parent="left_FtSensorLink" with_optoforce="$(arg use_left_optoforces)">
+
+  <!-- <joint name="leftFtSensorJoint" type="fixed">
+    <parent link="left_gripper_mount_link"/>
+    <child link="left_FtSensorLink"/>
+    <xacro:if value="${gripper_mount_type == 'old'}">
+      <origin xyz="0.115 0.0 -0.078" rpy="0 ${M_PI/2} 0"/>
+    </xacro:if>
+    <xacro:if value="${gripper_mount_type == 'new'}">
+      <origin xyz="0.1 0.0 0.0" rpy="0 ${M_PI/2} 0"/>
+    </xacro:if>
+  </joint> -->
+
+  <!-- <xacro:barret_hand prefix="left" parent="left_FtSensorLink" with_optoforce="$(arg use_left_optoforces)">
     <origin xyz="0 0 0.005" rpy="0 0 ${M_PI}"/>
-  </xacro:barret_hand>
+  </xacro:barret_hand> -->
+  <xacro:if value="${gripper_mount_type == '45deg'}">
+    <xacro:barret_hand prefix="left" parent="left_FtSensorLink" with_optoforce="$(arg use_left_optoforces)">
+      <origin xyz="0 0 0.005" rpy="0 0 0"/>
+    </xacro:barret_hand>
+  </xacro:if>
 
 <!--
   <joint name="right_gripper_calib_joint" type="fixed">
@@ -657,9 +577,9 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
 
   <!-- This is a part of the tree that is used to enable orientation constraints
        for the end-effectors in planning. -->
-
+<!-- 
   <joint name="rightKeepUprightJoint0" type="revolute">
-    <parent link="right_arm_ee_link"/>
+    <parent link="right_arm_7_link"/>
     <child link="right_keepUprightLink1"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
@@ -701,7 +621,7 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
   </gazebo>
 
   <joint name="leftKeepUprightJoint0" type="revolute">
-    <parent link="left_arm_ee_link"/>
+    <parent link="left_arm_7_link"/>
     <child link="left_keepUprightLink1"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
@@ -740,6 +660,6 @@ LOG: 2     |  0.010550   0.054601   0.056502 |
   <gazebo reference="left_keepUprightLink2">
     <turnGravityOff>${gravity_compensation}</turnGravityOff>
     <selfCollide>true</selfCollide>
-  </gazebo>
+  </gazebo> -->
 
 </robot>

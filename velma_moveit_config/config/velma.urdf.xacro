@@ -8,9 +8,9 @@
     <!-- Import control_xacro -->
     <xacro:include filename="velma.ros2_control.xacro" />
 
-    <gazebo>
+    <!-- <gazebo>
     <xacro:velma_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)"/>
-    </gazebo>
+    </gazebo> -->
 
     <xacro:velma_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)"/>
 
