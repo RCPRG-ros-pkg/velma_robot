@@ -2,7 +2,7 @@
 # default_planning_request_adapters/AddRuckigTrajectorySmoothing
 request_adapters:
   #- default_planning_request_adapters/ResolveConstraintFrames
-  - default_planning_request_adapters/ValidateWorkspaceBounds
+  #- default_planning_request_adapters/ValidateWorkspaceBounds
   - default_planning_request_adapters/CheckStartStateBounds
   - default_planning_request_adapters/CheckStartStateCollision
 planning_plugins:

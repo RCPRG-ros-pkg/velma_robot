@@ -3,30 +3,6 @@ controller_manager:
   ros__parameters:
     update_rate: 500  # Hz
 
-    # arms_torso_controller:
-    #   type: joint_trajectory_controller/JointTrajectoryController
-
-
-    # arms_controller:
-    #   type: joint_trajectory_controller/JointTrajectoryController
-
-
-    # left_arm_torso_controller:
-    #   type: joint_trajectory_controller/JointTrajectoryController
-
-
-    # right_arm_torso_controller:
-    #   type: joint_trajectory_controller/JointTrajectoryController
-
-
-    # left_arm_controller:
-    #   type: joint_trajectory_controller/JointTrajectoryController
-
-
-    # right_arm_controller:
-    #   type: joint_trajectory_controller/JointTrajectoryController
-
-
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
@@ -36,12 +12,6 @@ controller_manager:
     arms_torso_trajectory_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
-    computed_cart_torque_controller:
-      type: wut_velma_effort_controller/CartTorqueController
-
-    cartesian_trajectory_generator:
-      type: cartesian_trajectory_generator/CartesianTrajectoryGenerator
-
     head_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
@@ -50,37 +20,6 @@ controller_manager:
 
     right_hand_controller:
       type: joint_trajectory_controller/JointTrajectoryController
-
-computed_cart_torque_controller:
-  ros__parameters:
-    joints:
-      - torso_0_joint
-      - left_arm_0_joint
-      - left_arm_1_joint
-      - left_arm_2_joint
-      - left_arm_3_joint
-      - left_arm_4_joint
-      - left_arm_5_joint
-      - left_arm_6_joint
-      - right_arm_0_joint
-      - right_arm_1_joint
-      - right_arm_2_joint
-      - right_arm_3_joint
-      - right_arm_4_joint
-      - right_arm_5_joint
-      - right_arm_6_joint
-
-    command_interfaces:
-      - effort
-
-    state_interfaces:
-      - position
-      - velocity
-
-cartesian_trajectory_generator:
-  ros__parameters:
-    downstream_controller: computed_cart_torque_controller
-
 
 arms_torso_trajectory_controller:
   ros__parameters:
@@ -165,6 +104,111 @@ arms_torso_effort:
       - position
       - velocity
       - acceleration
+
+    collision_distance: 0.025
+
+    collision_model_links:
+      - torso_link0
+      - torso_link0
+      - head_bounding_sphere
+      - calib_right_arm_base_link
+      - right_arm_1_link
+      - right_arm_2_link
+      - right_arm_3_link
+      - right_arm_4_link
+      - right_arm_5_link
+      - right_arm_6_link
+      - calib_left_arm_base_link
+      - left_arm_1_link
+      - left_arm_2_link
+      - left_arm_3_link
+      - left_arm_4_link
+      - left_arm_5_link
+      - left_arm_6_link
+      - left_gripper_mount_link
+      - right_gripper_mount_link
+      - right_HandPalmLink
+      - right_HandFingerThreeKnuckleTwoLink
+      - right_HandFingerThreeKnuckleThreeLink
+      - right_HandFingerOneKnuckleTwoLink
+      - right_HandFingerOneKnuckleThreeLink
+      - right_HandFingerTwoKnuckleTwoLink
+      - right_HandFingerTwoKnuckleThreeLink
+      - left_HandPalmLink
+      - left_HandFingerThreeKnuckleTwoLink
+      - left_HandFingerThreeKnuckleThreeLink
+      - left_HandFingerOneKnuckleTwoLink
+      - left_HandFingerOneKnuckleThreeLink
+      - left_HandFingerTwoKnuckleTwoLink
+      - left_HandFingerTwoKnuckleThreeLink
+
+    collision_model_col0: [1.0000, 0.2000, 0.0000, 0.0000, 1.3000, 0.0000, 0.0000, 0.3000]
+    collision_model_col1: [0.4000, 0.1800, -0.1000, 0.0000, 0.6500, -0.1000, 0.0000, 0.2500]
+    collision_model_col2: [0.2300, 0.0400, 0.0000, 1.5700]
+    collision_model_col3: [0.1100, 0.0700, 0.0000, 0.0000, 0.1100, 0.0000, 0.0000, 0.0000]
+    collision_model_col4: [0.2080, 0.0650, 0.0000, -0.0357, 0.2019, 0.0000, 0.0057, -0.0019]
+    collision_model_col5: [0.2080, 0.0650, 0.0000, -0.0057, 0.2019, 0.0000, 0.0357, -0.0019]
+    collision_model_col6: [0.2080, 0.0650, 0.0000, 0.0357, 0.2019, 0.0000, -0.0057, -0.0019]
+    collision_model_col7: [0.2080, 0.0650, 0.0000, 0.0057, 0.2019, 0.0000, -0.0357, -0.0019]
+    collision_model_col8: [0.1980, 0.0650, 0.0000, -0.0353, 0.1919, 0.0000, 0.0053, -0.0019]
+    collision_model_col9: [0.0000, 0.0800, 0.0000, 0.0100, 0.0000, 0.0000, 0.0100, 0.0000]
+    collision_model_col10: [0.1100, 0.0700, 0.0000, 0.0000, 0.1100, 0.0000, 0.0000, 0.0000]
+    collision_model_col11: [0.2080, 0.0650, 0.0000, -0.0357, 0.2019, 0.0000, 0.0057, -0.0019]
+    collision_model_col12: [0.2080, 0.0650, 0.0000, -0.0057, 0.2019, 0.0000, 0.0357, -0.0019]
+    collision_model_col13: [0.2080, 0.0650, 0.0000, 0.0357, 0.2019, 0.0000, -0.0057, -0.0019]
+    collision_model_col14: [0.2080, 0.0650, 0.0000, 0.0057, 0.2019, 0.0000, -0.0357, -0.0019]
+    collision_model_col15: [0.1980, 0.0650, 0.0000, -0.0353, 0.1919, 0.0000, 0.0053, -0.0019]
+    collision_model_col16: [0.0000, 0.0800, 0.0000, 0.0100, 0.0000, 0.0000, 0.0100, 0.0000]
+    collision_model_col17: [0.0800, 0.0550, 0.0600, 0.0000, -0.0100, -0.0200, 0.0000, -0.0100]
+    collision_model_col18: [0.0800, 0.0550, 0.0600, 0.0000, -0.0100, -0.0200, 0.0000, -0.0100]
+    collision_model_col19: [0.0600, 0.0000, 0.0000, 0.0300]
+    collision_model_col20: [0.0600, 0.0150, 0.0600, 0.0000, 0.0000, 0.0000, 0.0000, -0.0000]
+    collision_model_col21: [0.0500, 0.0150, 0.0500, 0.0000, 0.0000, 0.0000, 0.0000, -0.0000]
+    collision_model_col22: [0.0600, 0.0150, 0.0600, 0.0000, 0.0000, 0.0000, 0.0000, -0.0000]
+    collision_model_col23: [0.0500, 0.0150, 0.0500, 0.0000, 0.0000, 0.0000, 0.0000, -0.0000]
+    collision_model_col24: [0.0600, 0.0150, 0.0600, 0.0000, 0.0000, 0.0000, 0.0000, -0.0000]
+    collision_model_col25: [0.0500, 0.0150, 0.0500, 0.0000, 0.0000, 0.0000, 0.0000, -0.0000]
+    collision_model_col26: [0.0600, 0.0000, 0.0000, 0.0300]
+    collision_model_col27: [0.0600, 0.0150, 0.0600, 0.0000, 0.0000, 0.0000, 0.0000, -0.0000]
+    collision_model_col28: [0.0500, 0.0150, 0.0500, 0.0000, 0.0000, 0.0000, 0.0000, -0.0000]
+    collision_model_col29: [0.0600, 0.0150, 0.0600, 0.0000, 0.0000, 0.0000, 0.0000, -0.0000]
+    collision_model_col30: [0.0500, 0.0150, 0.0500, 0.0000, 0.0000, 0.0000, 0.0000, -0.0000]
+    collision_model_col31: [0.0600, 0.0150, 0.0600, 0.0000, 0.0000, 0.0000, 0.0000, -0.0000]
+    collision_model_col32: [0.0500, 0.0150, 0.0500, 0.0000, 0.0000, 0.0000, 0.0000, -0.0000]
+
+    collision_model_groups: 2
+
+    collision_model_group0:
+      - left_arm_1_link
+      - left_arm_2_link
+      - left_arm_3_link
+      - left_arm_4_link
+      - left_arm_5_link
+      - left_arm_6_link
+      - left_gripper_mount_link
+      - left_HandPalmLink
+      - left_HandFingerOneKnuckleTwoLink
+      - left_HandFingerOneKnuckleThreeLink
+      - left_HandFingerTwoKnuckleTwoLink
+      - left_HandFingerTwoKnuckleThreeLink
+      - left_HandFingerThreeKnuckleTwoLink
+      - left_HandFingerThreeKnuckleThreeLink
+
+    collision_model_group1:
+      - right_arm_1_link
+      - right_arm_2_link
+      - right_arm_3_link
+      - right_arm_4_link
+      - right_arm_5_link
+      - right_arm_6_link
+      - right_gripper_mount_link
+      - right_HandPalmLink
+      - right_HandFingerOneKnuckleTwoLink
+      - right_HandFingerOneKnuckleThreeLink
+      - right_HandFingerTwoKnuckleTwoLink
+      - right_HandFingerTwoKnuckleThreeLink
+      - right_HandFingerThreeKnuckleTwoLink
+      - right_HandFingerThreeKnuckleThreeLink
 
 head_controller:
   ros__parameters:
@@ -275,111 +319,3 @@ right_hand_controller:
       right_HandFingerThreeKnuckleThreeJoint:
         trajectory: 0.5236
         goal: 0.5236
-
-# arms_torso_controller:
-#   ros__parameters:
-#     joints:
-#       - torso_0_joint
-#       - left_arm_0_joint
-#       - left_arm_1_joint
-#       - left_arm_2_joint
-#       - left_arm_3_joint
-#       - left_arm_4_joint
-#       - left_arm_5_joint
-#       - left_arm_6_joint
-#       - right_arm_0_joint
-#       - right_arm_1_joint
-#       - right_arm_2_joint
-#       - right_arm_3_joint
-#       - right_arm_4_joint
-#       - right_arm_5_joint
-#       - right_arm_6_joint
-#     command_interfaces:
-#       [position]
-#     state_interfaces:
-#       [position, velocity]
-#     allow_nonzero_velocity_at_trajectory_end: true
-# arms_controller:
-#   ros__parameters:
-#     joints:
-#       - left_arm_0_joint
-#       - left_arm_1_joint
-#       - left_arm_2_joint
-#       - left_arm_3_joint
-#       - left_arm_4_joint
-#       - left_arm_5_joint
-#       - left_arm_6_joint
-#       - right_arm_0_joint
-#       - right_arm_1_joint
-#       - right_arm_2_joint
-#       - right_arm_3_joint
-#       - right_arm_4_joint
-#       - right_arm_5_joint
-#       - right_arm_6_joint
-#     command_interfaces:
-#       []
-#     state_interfaces:
-#       []
-#     allow_nonzero_velocity_at_trajectory_end: true
-# left_arm_torso_controller:
-#   ros__parameters:
-#     joints:
-#       - torso_0_joint
-#       - left_arm_0_joint
-#       - left_arm_1_joint
-#       - left_arm_2_joint
-#       - left_arm_3_joint
-#       - left_arm_4_joint
-#       - left_arm_5_joint
-#       - left_arm_6_joint
-#     command_interfaces:
-#       []
-#     state_interfaces:
-#       []
-#     allow_nonzero_velocity_at_trajectory_end: true
-# right_arm_torso_controller:
-#   ros__parameters:
-#     joints:
-#       - torso_0_joint
-#       - right_arm_0_joint
-#       - right_arm_1_joint
-#       - right_arm_2_joint
-#       - right_arm_3_joint
-#       - right_arm_4_joint
-#       - right_arm_5_joint
-#       - right_arm_6_joint
-#     command_interfaces:
-#       []
-#     state_interfaces:
-#       []
-#     allow_nonzero_velocity_at_trajectory_end: true
-# left_arm_controller:
-#   ros__parameters:
-#     joints:
-#       - left_arm_0_joint
-#       - left_arm_1_joint
-#       - left_arm_2_joint
-#       - left_arm_3_joint
-#       - left_arm_4_joint
-#       - left_arm_5_joint
-#       - left_arm_6_joint
-#     command_interfaces:
-#       []
-#     state_interfaces:
-#       []
-#     allow_nonzero_velocity_at_trajectory_end: true
-# right_arm_controller:
-#   ros__parameters:
-#     joints:
-#       - right_arm_0_joint
-#       - right_arm_1_joint
-#       - right_arm_2_joint
-#       - right_arm_3_joint
-#       - right_arm_4_joint
-#       - right_arm_5_joint
-#       - right_arm_6_joint
-#     command_interfaces:
-#       []
-#     state_interfaces:
-#       []
-#     allow_nonzero_velocity_at_trajectory_end: true
