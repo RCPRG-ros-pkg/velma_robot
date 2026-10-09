@@ -54,12 +54,12 @@ def generate_launch_description():
 
     robot_ns = LaunchConfiguration("robot_ns")
 
-    sensors_3d = load_yaml("velma_moveit_config", "config/sensors_3d.yaml")
-    octomap_config = {
-        "octomap_frame": "world",
-        "octomap_resolution": 0.05,
-        "max_range": 5.0,
-    }
+    # sensors_3d = load_yaml("velma_moveit_config", "config/sensors_3d.yaml")
+    # octomap_config = {
+    #     "octomap_frame": "world",
+    #     "octomap_resolution": 0.05,
+    #     "max_range": 5.0,
+    # }
 
     move_group_node = Node(
         package="moveit_ros_move_group",
@@ -69,8 +69,8 @@ def generate_launch_description():
         parameters=[
             moveit_config.to_dict(),
             move_group_configuration,
-            sensors_3d,
-            octomap_config,
+            # sensors_3d,
+            # octomap_config,
         ],
     )
 

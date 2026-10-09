@@ -44,6 +44,13 @@
   <exec_depend>velma_description</exec_depend>
   <exec_depend>warehouse_ros_mongo</exec_depend>
 
+  <exec_depend>moveit_task_constructor_core</exec_depend>
+  <exec_depend>moveit_task_constructor_capabilities</exec_depend>
+  <exec_depend>moveit_task_constructor_msgs</exec_depend>
+  <exec_depend>moveit_task_constructor_visualization</exec_depend>
+  <exec_depend>gz_ros2_control</exec_depend>
+  <exec_depend>ros2_control</exec_depend>
+  <exec_depend>ros2_controllers</exec_depend>
 
   <export>
       <build_type>ament_cmake</build_type>
