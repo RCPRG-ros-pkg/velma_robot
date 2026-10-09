@@ -310,7 +310,7 @@
       <child link="${prefix}_HandFinger${number}KnuckleOneLink"/>
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="${axis}"/>
-      <limit effort="20" lower="0" upper="${PI}" velocity="3.27"/>
+      <limit effort="20" lower="-0.01" upper="${PI}" velocity="3.27"/>
       <dynamics damping="0.1"/>
     </joint>
     <gazebo reference="${prefix}_HandFinger${number}KnuckleOneJoint">
@@ -398,7 +398,7 @@
       <origin xyz="${xyz}" rpy="${rpy}"/>
       <axis xyz="0 0 -1"/>
                       <!-- 122 degrees - start orientation of 0.4 degrees-->
-      <limit effort="20" lower="0" upper="2.443388889" velocity="3.27"/>
+      <limit effort="20" lower="-0.01" upper="2.443388889" velocity="3.27"/>
       <dynamics damping="0.05"/>
     </joint>
     <gazebo reference="${prefix}_HandFinger${number}KnuckleTwoJoint">
@@ -506,7 +506,7 @@
       <origin xyz="0.07 0 0" rpy="0 0 -0.690452252"/>
       <axis xyz="0 0 -1"/>
                           <!-- measured max angle is 94.  so upper limit is 94 - start orientation (42 degrees)-->
-      <limit effort="20" lower="0" upper="0.837733333" velocity="3.27"/>
+      <limit effort="20" lower="-0.01" upper="0.837733333" velocity="3.27"/>
       <dynamics damping="0.05"/>
     </joint>
     <gazebo reference="${prefix}_HandFinger${number}KnuckleThreeJoint">

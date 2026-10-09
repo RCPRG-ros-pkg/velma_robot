@@ -138,14 +138,14 @@
         <joint name="left_arm_3_joint" value="-0.85"/>
         <joint name="left_arm_4_joint" value="0"/>
         <joint name="left_arm_5_joint" value="0.5"/>
-        <joint name="left_arm_6_joint" value="-0.15"/>
+        <joint name="left_arm_6_joint" value="1.57"/>
         <joint name="right_arm_0_joint" value="-0.3"/>
         <joint name="right_arm_1_joint" value="-1.8"/>
         <joint name="right_arm_2_joint" value="1.25"/>
         <joint name="right_arm_3_joint" value="0.85"/>
         <joint name="right_arm_4_joint" value="0"/>
         <joint name="right_arm_5_joint" value="-0.5"/>
-        <joint name="right_arm_6_joint" value="0.15"/>
+        <joint name="right_arm_6_joint" value="-1.57"/>
         <joint name="torso_0_joint" value="0"/>
     </group_state>
     <group_state name="zero" group="arms_torso">
@@ -172,14 +172,14 @@
         <joint name="left_arm_3_joint" value="-2"/>
         <joint name="left_arm_4_joint" value="-0.7"/>
         <joint name="left_arm_5_joint" value="1.7"/>
-        <joint name="left_arm_6_joint" value="-0.6"/>
+        <joint name="left_arm_6_joint" value="1.57"/>
         <joint name="right_arm_0_joint" value="0.25"/>
         <joint name="right_arm_1_joint" value="-1.85"/>
         <joint name="right_arm_2_joint" value="2.5"/>
         <joint name="right_arm_3_joint" value="2"/>
         <joint name="right_arm_4_joint" value="0.7"/>
         <joint name="right_arm_5_joint" value="-1.7"/>
-        <joint name="right_arm_6_joint" value="0.6"/>
+        <joint name="right_arm_6_joint" value="-1.57"/>
         <joint name="torso_0_joint" value="0"/>
     </group_state>
     <group_state name="work_01" group="arms_torso">
@@ -189,14 +189,14 @@
         <joint name="left_arm_3_joint" value="-1.5"/>
         <joint name="left_arm_4_joint" value="-0.4"/>
         <joint name="left_arm_5_joint" value="1.2"/>
-        <joint name="left_arm_6_joint" value="0"/>
+        <joint name="left_arm_6_joint" value="1.57"/>
         <joint name="right_arm_0_joint" value="0"/>
         <joint name="right_arm_1_joint" value="-1.6"/>
         <joint name="right_arm_2_joint" value="1.4"/>
         <joint name="right_arm_3_joint" value="1.5"/>
         <joint name="right_arm_4_joint" value="0.4"/>
         <joint name="right_arm_5_joint" value="-1.2"/>
-        <joint name="right_arm_6_joint" value="0"/>
+        <joint name="right_arm_6_joint" value="-1.57"/>
         <joint name="torso_0_joint" value="0"/>
     </group_state>
     <group_state name="work_02" group="arms_torso">
@@ -206,14 +206,14 @@
         <joint name="left_arm_3_joint" value="1.5"/>
         <joint name="left_arm_4_joint" value="2.6"/>
         <joint name="left_arm_5_joint" value="1.2"/>
-        <joint name="left_arm_6_joint" value="0"/>
+        <joint name="left_arm_6_joint" value="1.57"/>
         <joint name="right_arm_0_joint" value="0"/>
         <joint name="right_arm_1_joint" value="-1.6"/>
         <joint name="right_arm_2_joint" value="-1.8"/>
         <joint name="right_arm_3_joint" value="-1.5"/>
         <joint name="right_arm_4_joint" value="-2.6"/>
         <joint name="right_arm_5_joint" value="-1.2"/>
-        <joint name="right_arm_6_joint" value="0"/>
+        <joint name="right_arm_6_joint" value="-1.57"/>
         <joint name="torso_0_joint" value="0"/>
     </group_state>
     <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->

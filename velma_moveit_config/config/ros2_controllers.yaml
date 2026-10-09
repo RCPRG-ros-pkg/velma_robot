@@ -240,13 +240,48 @@ left_hand_controller:
       - left_HandFingerTwoKnuckleTwoJoint
       - left_HandFingerTwoKnuckleThreeJoint
 
-    command_interfaces:
-      - position
-      - velocity
+    command_interfaces: [effort]
+    state_interfaces: [position, velocity]
+    gains:
+      left_HandFingerOneKnuckleOneJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
 
-    state_interfaces:
-      - position
-      - velocity
+      left_HandFingerOneKnuckleTwoJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
+
+      left_HandFingerOneKnuckleThreeJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
+
+      left_HandFingerTwoKnuckleOneJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
+
+      left_HandFingerTwoKnuckleTwoJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
+
+      left_HandFingerTwoKnuckleThreeJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
+
+      left_HandFingerThreeKnuckleTwoJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
+
+      left_HandFingerThreeKnuckleThreeJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
 
     allow_partial_joints_goal: false
     interpolation_method: splines
@@ -255,11 +290,17 @@ left_hand_controller:
       goal_time: 0.1
       stopped_velocity_tolerance: 0.01
 
+      left_HandFingerOneKnuckleOneJoint:
+        trajectory: 0.5236  # 30 deg.
+        goal: 0.5236
       left_HandFingerOneKnuckleTwoJoint:
         trajectory: 0.5236  # 30 deg.
         goal: 0.5236
       left_HandFingerOneKnuckleThreeJoint:
         trajectory: 0.5236
+        goal: 0.5236
+      left_HandFingerTwoKnuckleOneJoint:
+        trajectory: 0.5236  # 30 deg.
         goal: 0.5236
       left_HandFingerTwoKnuckleTwoJoint:
         trajectory: 0.5236  # 30 deg.
@@ -274,6 +315,7 @@ left_hand_controller:
         trajectory: 0.5236
         goal: 0.5236
 
+
 right_hand_controller:
   ros__parameters:
     joints:
@@ -286,13 +328,48 @@ right_hand_controller:
       - right_HandFingerTwoKnuckleTwoJoint
       - right_HandFingerTwoKnuckleThreeJoint
 
-    command_interfaces:
-      - position
-      - velocity
+    command_interfaces: [effort]
+    state_interfaces: [position, velocity]
+    gains:
+      right_HandFingerOneKnuckleOneJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
 
-    state_interfaces:
-      - position
-      - velocity
+      right_HandFingerOneKnuckleTwoJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
+
+      right_HandFingerOneKnuckleThreeJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
+
+      right_HandFingerTwoKnuckleOneJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
+
+      right_HandFingerTwoKnuckleTwoJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
+
+      right_HandFingerTwoKnuckleThreeJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
+
+      right_HandFingerThreeKnuckleTwoJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
+
+      right_HandFingerThreeKnuckleThreeJoint:
+        p: 10.0
+        u_clamp_max: 1.0
+        u_clamp_min: -1.0
 
     allow_partial_joints_goal: false
     interpolation_method: splines
@@ -304,10 +381,16 @@ right_hand_controller:
       right_HandFingerOneKnuckleTwoJoint:
         trajectory: 0.5236  # 30 deg.
         goal: 0.5236
+      right_HandFingerOneKnuckleOneoint:
+        trajectory: 0.5236  # 30 deg.
+        goal: 0.5236
       right_HandFingerOneKnuckleThreeJoint:
         trajectory: 0.5236
         goal: 0.5236
       right_HandFingerTwoKnuckleTwoJoint:
+        trajectory: 0.5236  # 30 deg.
+        goal: 0.5236
+      right_HandFingerTwoKnuckleOneJoint:
         trajectory: 0.5236  # 30 deg.
         goal: 0.5236
       right_HandFingerTwoKnuckleThreeJoint:

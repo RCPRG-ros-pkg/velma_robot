@@ -61,6 +61,7 @@ planner_configs:
     type: geometric::RRTConnect
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
     longest_valid_segment_fraction: 0.005
+    allowed_start_tolerance: 0.05
   RRTstarkConfigDefault:
     type: geometric::RRTstar
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
@@ -152,6 +153,35 @@ planner_configs:
     max_failures: 5000  # maximum consecutive failure limit. default: 5000
   TrajOptDefault:
     type: geometric::TrajOpt
+
+arms:
+  planner_configs:
+    - RRTConnectkConfigDefault
+
+arms_torso:
+  planner_configs:
+    - RRTConnectkConfigDefault
+
+left_arm:
+  planner_configs:
+    - RRTConnectkConfigDefault
+
+left_arm_torso:
+  planner_configs:
+    - RRTConnectkConfigDefault
+
+right_arm:
+  planner_configs:
+    - RRTConnectkConfigDefault
+
+right_arm_torso:
+  planner_configs:
+    - RRTConnectkConfigDefault
+
+#head:
+#left_hand_group:
+#right_hand_group:
+
 
 # arms_torso:
 #   longest_valid_segment_fraction: 0.002
