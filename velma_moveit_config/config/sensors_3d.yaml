@@ -1,6 +1,6 @@
-sensors:
-  - default_sensor
-default_sensor:
+sensors: []
+#  - default_sensor
+#default_sensor:
   # far_clipping_plane_distance: 3.1
   # image_topic: /head_rgbd_camera/depth_image
   # max_update_rate: 1.0
@@ -12,11 +12,11 @@ default_sensor:
   # shadow_threshold: 0.2
   # filtered_cloud_topic: /head_rgbd_camera/filtered_cloud
 
-  sensor_plugin: occupancy_map_monitor/PointCloudOctomapUpdater
-  point_cloud_topic: /head_rgbd_camera/points
-  max_range: 4.0
-  point_subsample: 1
-  padding_offset: 0.05
-  padding_scale: 1.0
-  max_update_rate: 2.0
-  filtered_cloud_topic: /head_rgbd_camera/filtered_points
+#  sensor_plugin: occupancy_map_monitor/PointCloudOctomapUpdater
+#  point_cloud_topic: /head_rgbd_camera/points
+#  max_range: 4.0
+#  point_subsample: 1
+#  padding_offset: 0.05
+#  padding_scale: 1.0
+#  max_update_rate: 2.0
+#  filtered_cloud_topic: /head_rgbd_camera/filtered_points
